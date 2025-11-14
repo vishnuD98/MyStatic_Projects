@@ -1,0 +1,2201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarX Support Hub</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* Core brand & surface */
+:root{
+--primary: #e63946;
+--secondary: #1d3557;
+--accent: #457b9d;
+--light: #f1faee;
+--dark: #000000;
+--bg: #f8f9fa;
+--panel: rgba(255, 255, 255, 0.95);
+--panel-2: rgba(240, 248, 255, 0.9);
+--text: #1d3557;
+--muted: #6c757d;
+--line: rgba(29, 53, 87, 0.15);
+--shadow-1: 0 4px 12px rgba(0, 0, 0, 0.1);
+--shadow-2: 0 8px 24px rgba(0, 0, 0, 0.15);
+--radius-xl: 20px;
+--radius-lg: 16px;
+--radius-md: 12px;
+--radius-sm: 8px;
+--grad-primary: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+--grad-secondary: linear-gradient(135deg, #1d3557 0%, #0a1929 100%);
+--grad-accent: linear-gradient(135deg, #457b9d 0%, #2a6f97 100%);
+}
+/* Dark theme */
+#chatWidget[data-theme="dark"] {
+--bg: #121212;
+--panel: rgba(30, 30, 30, 0.95);
+--panel-2: rgba(40, 40, 40, 0.9);
+--text: #f1faee;
+--muted: #a8dadc;
+--line: rgba(255, 255, 255, 0.1);
+--shadow-1: 0 4px 12px rgba(0, 0, 0, 0.3);
+--shadow-2: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+/* Global styles */
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
+  transition: none;
+}
+/* ================= Floating Button ================= */
+#chatBtn{
+position: fixed; inset: auto 20px 20px auto;
+width: 60px; height: 60px; border-radius: 50%;
+border: none; cursor: pointer; z-index: 1000; margin-right: 60px;
+background: var(--grad-primary); color: #ffffff;
+box-shadow: var(--shadow-2);
+display:grid; place-items:center; font-size:24px;
+transform: translateZ(0);
+transition: all 0.3s ease;
+animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(230, 57, 70, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
+}
+#chatBtn:hover{ transform: translateY(-3px) scale(1.05); }
+#chatBtn:active{ transform: translateY(0) scale(0.98); }
+/* ================= Widget Shell ================= */
+#chatWidget{
+position: fixed; right: 82px; bottom: 80px; width: 400px; max-width: calc(100vw - 24px);
+height: 600px; max-height: calc(100vh - 120px);
+background: var(--panel);
+border: 1px solid var(--line);
+border-radius: var(--radius-xl);
+box-shadow: var(--shadow-2);
+overflow: hidden; display:none; flex-direction: column; z-index: 1001;
+backdrop-filter: blur(10px);
+animation: slideUp .35s ease both;
+transition: all 0.3s ease;
+}
+#chatWidget.expanded {
+  width: 500px;
+  height: 700px;
+}
+@keyframes slideUp{
+from{ opacity:0; transform: translateY(10px) scale(.98); }
+to{ opacity:1; transform: translateY(0) scale(1); }
+}
+/* ================= Header ================= */
+#chatHeader{
+position: relative;
+background: var(--grad-secondary);
+color: var(--light); padding: 16px 16px 14px 16px;
+display:flex; align-items:center; gap:12px; justify-content:space-between;
+border-bottom: 1px solid var(--line);
+}
+.header-left{ display:flex; gap:12px; align-items:center; }
+.brand-dot{
+width:42px; height:42px; border-radius:12px; background: var(--light);
+display:grid; place-items:center; backdrop-filter: blur(2px);
+}
+.brand-dot i{ font-size:18px; color: var(--primary); }
+.title-wrap{ line-height: 1.2; }
+.title-wrap .h{
+font-weight:700; font-size:16px; letter-spacing:.3px;
+color: var(--light);
+}
+.title-wrap .s{
+font-size:12px; opacity:.9;
+color: var(--light);
+}
+.header-actions{
+display:flex; gap:8px; align-items:center;
+}
+.icon-btn{
+background: var(--panel-2);
+color: var(--text); border:1px solid var(--line);
+width:36px; height:36px; border-radius:10px;
+display:grid; place-items:center; cursor:pointer;
+transition:.2s ease;
+}
+.icon-btn:hover{ background: var(--accent-light); transform: translateY(-1px); }
+.icon-btn:active{ transform: none; }
+.tabs{
+position:absolute; left:16px; right:16px; bottom:-50px;
+display:flex; gap:8px; padding:6px; border-radius:12px;
+background: var(--panel-2);
+border:1px solid var(--line);
+backdrop-filter: blur(6px);
+box-shadow: var(--shadow-1);
+}
+.tab-btn{
+flex:1; font-size:12px; padding:8px 10px; border-radius:10px;
+color: var(--text); text-align:center; cursor:pointer; user-select:none; opacity:.85;
+transition: all 0.2s ease;
+}
+.tab-btn.active{ background: var(--primary); color: white; opacity:1; }
+.tab-btn:hover { opacity: 1; }
+/* ================= Topics Menu ================= */
+.topics-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 5px;
+  width: 240px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
+  padding: 8px;
+  z-index: 1003;
+  display: none;
+}
+.topics-menu.show {
+  display: block;
+}
+.topics-menu-item {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.topics-menu-item:hover {
+  background: var(--primary);
+  color: white;
+}
+.topics-menu-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 8px 0;
+}
+/* ================= Body ================= */
+#chatBody{
+margin-top: 60px; /* space for tabs overlap */
+flex:1; padding: 16px; overflow:auto; background: transparent;
+transition: margin-top 0.3s ease;
+}
+#chatBody.no-tabs {
+  margin-top: 0;
+}
+/* Message bubble */
+.msg{ margin:14px 0; display:flex; flex-direction:column; gap:6px; }
+.message-bubble{
+max-width: 86%; padding: 14px 18px; margin-top: 8px; border-radius: 18px;
+border:1px solid var(--line); background: var(--bot);
+box-shadow: var(--shadow-1);
+color: var(--text);
+font-size: 14px;
+line-height: 1.5;
+}
+.bot .message-bubble{ align-self:flex-start; }
+.user .message-bubble{ align-self:flex-end; background: var(--primary); color:#ffffff; border:none; }
+.message-time{
+font-size: 11px; color: var(--muted);
+}
+.user .message-time{ align-self:flex-end; }
+.bot .message-time{ align-self:flex-start; }
+/* Typing */
+.typing{
+display:inline-flex; gap:6px; padding:10px 14px; border-radius:16px;
+border:1px dashed var(--line); background: var(--panel-2);
+align-self:flex-start; box-shadow: var(--shadow-1);
+}
+.dot{ width:8px; height:8px; border-radius:50%; background: var(--primary); animation: bl 1.2s infinite; }
+.dot:nth-child(2){ animation-delay:.15s; }
+.dot:nth-child(3){ animation-delay:.3s; }
+@keyframes bl{ 0%,80%,100%{opacity:.25} 40%{opacity:1} }
+.chat-sticker{ max-width: 180px; border-radius: 12px; margin-top:6px; }
+/* ================= Input Area ================= */
+#chatInputArea{
+display:flex; gap:10px; padding:14px; border-top: 1px solid var(--line);
+background: var(--panel);
+}
+#chatInputWrapper {
+  flex:1;
+  position: relative;
+}
+#chatInput{
+width: 85%; padding: 12px 18px; border-radius: 20px; outline:none;
+border:1px solid var(--line); background: var(--panel-2); color: var(--text);
+transition: .18s ease; font-size:14px;
+}
+#chatInput:focus{ border-color: var(--primary); box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.18); }
+#sendBtn{
+border:none; border-radius: 20px; padding: 0 18px; cursor:pointer;
+background: var(--grad-primary); color:#ffffff; font-weight:600;
+display:grid; place-items:center; box-shadow: var(--shadow-1);
+min-width: 44px;
+}
+#sendBtn:hover{ filter:brightness(1.05); }
+/* Enhanced Input Area */
+.input-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.action-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: var(--panel-2);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.action-btn:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-1px);
+}
+/* Emoji Picker */
+.emoji-picker {
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+  width: 300px;
+  height: 220px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
+  padding: 12px;
+  display: none;
+  overflow-y: auto;
+  z-index: 1002;
+}
+.emoji-picker.show {
+  display: block;
+}
+.emoji-category {
+  margin-bottom: 12px;
+}
+.emoji-category-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.emoji-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.emoji-item {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s;
+}
+.emoji-item:hover {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.2);
+}
+/* File Upload */
+.file-upload {
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+  width: 300px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
+  padding: 18px;
+  display: none;
+  z-index: 1002;
+}
+.file-upload.show {
+  display: block;
+}
+.file-upload-area {
+  border: 2px dashed var(--line);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.file-upload-area:hover {
+  border-color: var(--primary);
+  background: rgba(230, 57, 70, 0.1);
+}
+.file-upload-area i {
+  font-size: 28px;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+.file-upload-area p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text);
+}
+.file-upload input[type="file"] {
+  display: none;
+}
+.file-list {
+  margin-top: 12px;
+}
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: var(--panel-2);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+}
+.file-name {
+  font-size: 13px;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 180px;
+}
+.file-remove {
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.file-remove:hover {
+  color: var(--primary);
+}
+/* Quick Replies */
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+}
+.quick-reply {
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.quick-reply:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-1px);
+}
+/* ================= Vehicle Cards ================= */
+.vehicle-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+.vehicle-card {
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  transition: all 0.3s;
+  box-shadow: var(--shadow-1);
+}
+.vehicle-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
+}
+.vehicle-image {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.vehicle-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--primary);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.vehicle-content {
+  padding: 16px;
+}
+.vehicle-title {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.vehicle-category {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.vehicle-description {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.vehicle-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.vehicle-price {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--primary);
+}
+.vehicle-actions {
+  display: flex;
+  gap: 8px;
+}
+.vehicle-btn {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: var(--grad-primary);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.vehicle-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+.vehicle-btn.secondary {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+.vehicle-btn.secondary:hover {
+  background: var(--primary);
+  color: white;
+}
+/* ================= Service Booking ================= */
+.service-booking {
+  padding: 16px;
+}
+.service-form {
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-1);
+}
+.service-form h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: var(--text);
+  text-align: center;
+}
+.form-group {
+  margin-bottom: 16px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--text);
+}
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--text);
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+}
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.btn {
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s;
+  flex: 1;
+}
+.btn-primary {
+  background: var(--grad-primary);
+  color: #ffffff;
+}
+.btn-primary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+.btn-secondary:hover {
+  background: var(--primary);
+  color: white;
+}
+/* ================= Finance Calculator ================= */
+.finance-calculator {
+  padding: 16px;
+}
+.calc-container {
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-1);
+}
+.calc-container h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: var(--text);
+  text-align: center;
+}
+.calc-result {
+  background: var(--panel-2);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-top: 16px;
+  text-align: center;
+}
+.calc-result h4 {
+  margin-top: 0;
+  color: var(--primary);
+}
+.calc-result p {
+  margin: 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+/* ================= Dealership Finder ================= */
+.dealership-finder {
+  padding: 16px;
+}
+.dealership-container {
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-1);
+}
+.dealership-container h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: var(--text);
+  text-align: center;
+}
+.dealership-map {
+  height: 200px;
+  background: var(--panel-2);
+  border-radius: var(--radius-md);
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
+.dealership-list {
+  margin-top: 16px;
+}
+.dealership-item {
+  background: var(--panel-2);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  margin-bottom: 12px;
+}
+.dealership-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.dealership-address {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.dealership-distance {
+  font-size: 14px;
+  color: var(--primary);
+  font-weight: 600;
+}
+/* ================= FAQ view ================= */
+.faq-wrap{ display:flex; flex-direction:column; gap:8px; }
+.faq-search{
+display:flex; gap:8px; align-items:center; padding:12px 16px;
+border:1px solid var(--line); border-radius: var(--radius-md); background: var(--panel);
+position:sticky;
+}
+.faq-search input{
+flex:1; border:none; background:transparent; outline:none; color:var(--text);
+font-size:14px;
+}
+.faq-category{
+border:1px solid var(--line); background: var(--primary); border-radius: var(--radius-md);
+padding: 14px 16px; font-size: 15px; display:flex; justify-content:space-between; align-items:center;
+cursor:pointer; transition: .18s ease;
+}
+.faq-category:hover{ transform: translateY(-1px); box-shadow: var(--shadow-1); }
+.faq-category .left{ display:flex; gap:10px; align-items:center; }
+.faq-category small{ color: white; font-weight:500; }
+.faq-accordion{ padding: 8px 8px 2px 8px; display:none; }
+.faq-accordion.open{ display:block; }
+.faq-question{
+background: var(--panel-2); border:1px dashed var(--line); border-radius: var(--radius-sm);
+padding:12px 14px; font-size: 14px; margin:8px 0; cursor:pointer;
+transition:.16s ease;
+}
+.faq-question:hover{ background: rgba(230, 57, 70, 0.1); transform: translateY(-1px); }
+/* ================= Modern Date/Time Picker ================= */
+.datetime-picker-modern {
+  margin-top: 16px;
+  border-radius: var(--radius-md);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  padding: 18px;
+  box-shadow: var(--shadow-1);
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+}
+.datetime-picker-modern h5 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: var(--text);
+  text-align: center;
+  font-weight: 600;
+}
+.datetime-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.datetime-input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.datetime-input-label {
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.datetime-input-field {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 14px;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+.datetime-input-field:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(230, 57, 70, 0.2);
+}
+.datetime-schedule-btn {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--grad-primary);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+.datetime-schedule-btn:hover {
+  filter: brightness(1.05);
+}
+/* ================= Mobile ================= */
+@media (max-width: 600px){
+#chatWidget{ right: 0; bottom: 0; width: 100%; height: 100%; max-height: 100%; border-radius: 0; }
+#chatBtn{ right: 18px; bottom: 18px; }
+}
+</style>
+</head>
+<body>
+<!-- Floating Button -->
+<button id="chatBtn" aria-label="Open CarX support" title="CarX Support Hub">
+<i class="bi bi-car-front-fill"></i>
+</button>
+<!-- Chat Widget -->
+<div id="chatWidget" aria-live="polite">
+<div id="chatHeader">
+<div class="header-left">
+<div class="brand-dot"><i class="bi bi-car-front-fill"></i></div>
+<div class="title-wrap">
+<div class="h">CarX Support Hub</div>
+<div class="s">Vehicles • Services • Financing</div>
+</div>
+</div>
+<div class="header-actions">
+<button class="icon-btn" id="clearChatBtn" title="Clear chat" aria-label="Clear chat"><i class="bi bi-trash"></i></button>
+<button class="icon-btn" id="themeToggleBtn" title="Toggle theme" aria-label="Toggle theme"><i class="bi bi-moon-stars"></i></button>
+<button class="icon-btn" id="expandWidgetBtn" title="Expand widget" aria-label="Expand widget"><i class="bi bi-arrows-angle-expand"></i></button>
+<button class="icon-btn" id="topicsMenuBtn" title="Topics menu" aria-label="Topics menu"><i class="bi bi-list-ul"></i></button>
+<button class="icon-btn" id="closeWidgetBtn" title="Minimize" aria-label="Minimize"><i class="bi bi-dash-lg"></i></button>
+<!-- Topics Menu -->
+<div class="topics-menu" id="topicsMenu">
+  <div class="topics-menu-item" data-value="chat">
+    <i class="bi bi-chat-dots"></i> Chat Support
+  </div>
+  <div class="topics-menu-item" data-value="vehicles">
+    <i class="bi bi-car-front"></i> Browse Vehicles
+  </div>
+  <div class="topics-menu-item" data-value="services">
+    <i class="bi bi-tools"></i> Book Service
+  </div>
+  <div class="topics-menu-item" data-value="finance">
+    <i class="bi bi-calculator"></i> Finance Calculator
+  </div>
+  <div class="topics-menu-item" data-value="dealership">
+    <i class="bi bi-geo-alt"></i> Find Dealership
+  </div>
+  <div class="topics-menu-item" data-value="faq">
+    <i class="bi bi-question-circle"></i> FAQ
+  </div>
+  <div class="topics-menu-divider"></div>
+  <div class="topics-menu-item" data-value="Models">
+    <i class="bi bi-car-front"></i> Vehicle Models
+  </div>
+  <div class="topics-menu-item" data-value="Pricing">
+    <i class="bi bi-currency-dollar"></i> Pricing & Deals
+  </div>
+  <div class="topics-menu-item" data-value="Test Drive">
+    <i class="bi bi-calendar-event"></i> Schedule Test Drive
+  </div>
+  <div class="topics-menu-item" data-value="Warranty">
+    <i class="bi bi-shield-check"></i> Warranty Info
+  </div>
+  <div class="topics-menu-item" data-value="Parts">
+    <i class="bi bi-puzzle"></i> Parts & Accessories
+  </div>
+  <div class="topics-menu-item" data-value="Contact">
+    <i class="bi bi-telephone"></i> Contact Us
+  </div>
+</div>
+</div>
+<div class="tabs" id="tabsContainer">
+<div class="tab-btn active" data-tab="chat">💬 Chat</div>
+<div class="tab-btn" data-tab="vehicles">🚗 Vehicles</div>
+<div class="tab-btn" data-tab="services">🔧 Service</div>
+<div class="tab-btn" data-tab="finance">💰 Finance</div>
+<div class="tab-btn" data-tab="dealership">📍 Dealers</div>
+<div class="tab-btn" data-tab="faq">📖 FAQ</div>
+</div>
+</div>
+<div id="chatBody"></div>
+<div class="quick-replies" id="quickReplies">
+  <div class="quick-reply" data-message="Show me your vehicles">Show me your vehicles</div>
+  <div class="quick-reply" data-message="Schedule a test drive">Schedule a test drive</div>
+  <div class="quick-reply" data-message="Book a service appointment">Book a service</div>
+  <div class="quick-reply" data-message="Calculate financing options">Calculate financing</div>
+</div>
+<div id="chatInputArea">
+<div id="chatInputWrapper">
+  <input type="text" id="chatInput" placeholder="Type a message..." />
+</div>
+<div class="input-actions">
+  <button class="action-btn" id="emojiBtn" title="Add emoji"><i class="far fa-smile"></i></button>
+  <button class="action-btn" id="attachBtn" title="Attach file"><i class="fas fa-paperclip"></i></button>
+</div>
+<button id="sendBtn" title="Send">➤</button>
+</div>
+<!-- Emoji Picker -->
+<div class="emoji-picker" id="emojiPicker">
+  <div class="emoji-category">
+    <div class="emoji-category-title">Smileys</div>
+    <div class="emoji-list">
+      <div class="emoji-item">😀</div>
+      <div class="emoji-item">😃</div>
+      <div class="emoji-item">😄</div>
+      <div class="emoji-item">😁</div>
+      <div class="emoji-item">😅</div>
+      <div class="emoji-item">😂</div>
+      <div class="emoji-item">🤣</div>
+      <div class="emoji-item">😊</div>
+      <div class="emoji-item">😇</div>
+      <div class="emoji-item">🙂</div>
+      <div class="emoji-item">😉</div>
+      <div class="emoji-item">😌</div>
+      <div class="emoji-item">😍</div>
+      <div class="emoji-item">🥰</div>
+      <div class="emoji-item">😘</div>
+      <div class="emoji-item">😗</div>
+      <div class="emoji-item">😙</div>
+      <div class="emoji-item">😚</div>
+      <div class="emoji-item">😋</div>
+      <div class="emoji-item">😛</div>
+    </div>
+  </div>
+  <div class="emoji-category">
+    <div class="emoji-category-title">Vehicles</div>
+    <div class="emoji-list">
+      <div class="emoji-item">🚗</div>
+      <div class="emoji-item">🚙</div>
+      <div class="emoji-item">🚕</div>
+      <div class="emoji-item">🚐</div>
+      <div class="emoji-item">🚎</div>
+      <div class="emoji-item">🏎️</div>
+      <div class="emoji-item">🚓</div>
+      <div class="emoji-item">🚑</div>
+      <div class="emoji-item">🚒</div>
+      <div class="emoji-item">🚚</div>
+      <div class="emoji-item">🚛</div>
+      <div class="emoji-item">🚜</div>
+      <div class="emoji-item">🦯</div>
+      <div class="emoji-item">🦽</div>
+      <div class="emoji-item">🦼</div>
+      <div class="emoji-item">🛴</div>
+      <div class="emoji-item">🚲</div>
+      <div class="emoji-item">🛵</div>
+      <div class="emoji-item">🏍️</div>
+      <div class="emoji-item">🛺</div>
+    </div>
+  </div>
+  <div class="emoji-category">
+    <div class="emoji-category-title">Tools & Tech</div>
+    <div class="emoji-list">
+      <div class="emoji-item">🔧</div>
+      <div class="emoji-item">⚙️</div>
+      <div class="emoji-item">🔩</div>
+      <div class="emoji-item">⛽</div>
+      <div class="emoji-item">🛢️</div>
+      <div class="emoji-item">🔋</div>
+      <div class="emoji-item">💡</div>
+      <div class="emoji-item">🧰</div>
+      <div class="emoji-item">🛠️</div>
+      <div class="emoji-item">⚡</div>
+      <div class="emoji-item">🔌</div>
+      <div class="emoji-item">💻</div>
+      <div class="emoji-item">📱</div>
+      <div class="emoji-item">📟</div>
+      <div class="emoji-item">📠</div>
+      <div class="emoji-item">📡</div>
+      <div class="emoji-item">🔦</div>
+      <div class="emoji-item">🕯️</div>
+      <div class="emoji-item">🧯</div>
+      <div class="emoji-item">🛡️</div>
+    </div>
+  </div>
+</div>
+<!-- File Upload -->
+<div class="file-upload" id="fileUpload">
+  <div class="file-upload-area" id="fileUploadArea">
+    <i class="fas fa-cloud-upload-alt"></i>
+    <p>Drag & drop files here or click to browse</p>
+    <input type="file" id="fileInput" multiple>
+  </div>
+  <div class="file-list" id="fileList"></div>
+</div>
+</div>
+<script>
+/* ========= DOM refs ========= */
+const chatBtn = document.getElementById('chatBtn');
+const chatWidget = document.getElementById('chatWidget');
+const closeWidgetBtn = document.getElementById('closeWidgetBtn');
+const themeToggleBtn = document.getElementById('themeToggleBtn');
+const clearChatBtn = document.getElementById('clearChatBtn');
+const expandWidgetBtn = document.getElementById('expandWidgetBtn');
+const topicsMenuBtn = document.getElementById('topicsMenuBtn');
+const topicsMenu = document.getElementById('topicsMenu');
+const chatBody = document.getElementById('chatBody');
+const chatInput = document.getElementById('chatInput');
+const chatInputWrapper = document.getElementById('chatInputWrapper');
+const sendBtn = document.getElementById('sendBtn');
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabsContainer = document.getElementById('tabsContainer');
+const quickReplies = document.getElementById('quickReplies');
+const emojiBtn = document.getElementById('emojiBtn');
+const emojiPicker = document.getElementById('emojiPicker');
+const attachBtn = document.getElementById('attachBtn');
+const fileUpload = document.getElementById('fileUpload');
+const fileUploadArea = document.getElementById('fileUploadArea');
+const fileInput = document.getElementById('fileInput');
+const fileList = document.getElementById('fileList');
+const chatInputArea = document.getElementById('chatInputArea');
+/* ========= LocalStorage helpers ========= */
+const LS = {
+open: 'carx_open',
+history: 'carx_history',
+theme: 'carx_theme',
+view: 'carx_view',
+expanded: 'carx_expanded',
+favorites: 'carx_favorites'
+};
+const safeParse = (raw, fallback) => {
+if (!raw) return fallback;
+try {
+const parsed = JSON.parse(raw);
+return Array.isArray(parsed) ? parsed : fallback;
+} catch (e) {
+console.warn('LocalStorage parse failed, resetting key:', e);
+return fallback;
+}
+};
+/* ========= Theme autodetect & set ========= */
+const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const savedTheme = localStorage.getItem(LS.theme);
+const currentTheme = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
+/* ========= Sounds ========= */
+let sendSound, receiveSound;
+try {
+  sendSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3');
+  receiveSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-bell-notification-933.mp3');
+} catch (e) {
+  console.warn('Audio files could not be loaded:', e);
+  sendSound = { play: () => {} };
+  receiveSound = { play: () => {} };
+}
+/* ========= Vehicle Data ========= */
+const vehicleData = [
+  {
+    id: 'sedan-premium',
+    title: 'CarX Sedan Premium',
+    category: 'Sedan',
+    price: '$32,999',
+    image: 'https://images.unsplash.com/photo-1554224712-d8560f709cbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    description: 'Experience luxury and performance with our premium sedan featuring advanced safety technology, premium interior materials, and exceptional fuel efficiency.'
+  },
+  {
+    id: 'suv-adventure',
+    title: 'CarX SUV Adventure',
+    category: 'SUV',
+    price: '$42,999',
+    image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    description: 'Conquer any terrain with our rugged SUV. Equipped with all-wheel drive, advanced off-road capabilities, and spacious interior for the whole family.'
+  },
+  {
+    id: 'electric-future',
+    title: 'CarX Electric Future',
+    category: 'Electric',
+    price: '$38,999',
+    image: 'https://images.unsplash.com/photo-1560972550-87ed900d3b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    description: 'Join the electric revolution with our zero-emission vehicle featuring fast-charging technology, extended range, and cutting-edge autonomous driving features.'
+  },
+  {
+    id: 'sports-racer',
+    title: 'CarX Sports Racer',
+    category: 'Sports',
+    price: '$55,999',
+    image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    description: 'Feel the adrenaline rush with our high-performance sports car. Precision engineering, aerodynamic design, and powerful engine deliver an unmatched driving experience.'
+  },
+  {
+    id: 'compact-urban',
+    title: 'CarX Compact Urban',
+    category: 'Compact',
+    price: '$22,999',
+    image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    description: 'Navigate city streets with ease in our fuel-efficient compact car. Smart technology, agile handling, and compact size make it perfect for urban driving.'
+  },
+  {
+    id: 'hybrid-efficient',
+    title: 'CarX Hybrid Efficient',
+    category: 'Hybrid',
+    price: '$28,999',
+    image: 'https://images.unsplash.com/photo-1609521261020-6344b677ad6b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    description: 'Get the best of both worlds with our hybrid vehicle. Combining gasoline engine with electric motor for exceptional fuel economy without sacrificing performance.'
+  }
+];
+/* ========= Dealership Data ========= */
+const dealershipData = [
+  {
+    name: 'CarX Downtown',
+    address: '123 Main Street, Downtown',
+    distance: '2.5 miles'
+  },
+  {
+    name: 'CarX Westside',
+    address: '456 West Avenue, Westside',
+    distance: '5.8 miles'
+  },
+  {
+    name: 'CarX Northpark',
+    address: '789 North Road, Northpark',
+    distance: '8.2 miles'
+  },
+  {
+    name: 'CarX Eastend',
+    address: '101 East Boulevard, Eastend',
+    distance: '10.4 miles'
+  }
+];
+/* ========= Chat state ========= */
+let currentView = localStorage.getItem(LS.view) || 'chat';
+let chatHistory = safeParse(localStorage.getItem(LS.history), []);
+let chatOpen = localStorage.getItem(LS.open) === 'true';
+let widgetExpanded = localStorage.getItem(LS.expanded) === 'true';
+let favorites = safeParse(localStorage.getItem(LS.favorites), []);
+let attachedFiles = [];
+let currentTestDriveVehicle = null;
+let currentServiceVehicle = null;
+/* ========= Init ========= */
+function initChat() {
+// Apply theme to widget only
+chatWidget.setAttribute('data-theme', currentTheme);
+themeToggleBtn.innerHTML = currentTheme === 'dark' ? '<i class="bi bi-brightness-high"></i>' : '<i class="bi bi-moon-stars"></i>';
+// open state
+chatWidget.style.display = chatOpen ? 'flex' : 'none';
+// expanded state
+if (widgetExpanded) {
+  chatWidget.classList.add('expanded');
+  expandWidgetBtn.innerHTML = '<i class="bi bi-arrows-angle-contract"></i>';
+}
+// render initial view
+if (currentView === 'faq') {
+  renderFAQ();
+} else if (currentView === 'vehicles') {
+  renderVehicles();
+} else if (currentView === 'services') {
+  renderServiceBooking();
+} else if (currentView === 'finance') {
+  renderFinanceCalculator();
+} else if (currentView === 'dealership') {
+  renderDealershipFinder();
+} else {
+  renderChatFromHistory();
+  if (chatHistory.length === 0) {
+    setTimeout(()=> botReply("Welcome to CarX Support Hub! 🚗 How can I assist you today?"), 400);
+  }
+}
+// listeners
+chatBtn.addEventListener('click', toggleChat);
+closeWidgetBtn.addEventListener('click', toggleChat);
+sendBtn.addEventListener('click', sendMessage);
+chatInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
+clearChatBtn.addEventListener('click', clearChatSafe);
+themeToggleBtn.addEventListener('click', toggleTheme);
+expandWidgetBtn.addEventListener('click', toggleWidgetSize);
+tabButtons.forEach(btn => btn.addEventListener('click', ()=> switchTab(btn.dataset.tab)));
+// Topics menu
+topicsMenuBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+  topicsMenu.classList.toggle('show');
+  emojiPicker.classList.remove('show');
+  fileUpload.classList.remove('show');
+});
+document.addEventListener('click', function(e) {
+  if (!topicsMenuBtn.contains(e.target) && !topicsMenu.contains(e.target)) {
+    topicsMenu.classList.remove('show');
+  }
+});
+topicsMenu.addEventListener('click', function(e) {
+  if (e.target.classList.contains('topics-menu-item')) {
+    const value = e.target.getAttribute('data-value');
+    topicsMenu.classList.remove('show');
+    
+    // Check if it's a tab selection
+    if (['chat', 'vehicles', 'services', 'finance', 'dealership', 'faq'].includes(value)) {
+      switchTab(value);
+    } else {
+      // It's a topic selection
+      const question = value;
+      addMessage(question, 'user');
+      handleUserMessage(question);
+    }
+  }
+});
+// Quick replies
+quickReplies.addEventListener('click', function(e) {
+  if (e.target.classList.contains('quick-reply')) {
+    const message = e.target.getAttribute('data-message');
+    addMessage(message, 'user');
+    handleUserMessage(message);
+  }
+});
+// Emoji picker
+emojiBtn.addEventListener('click', function() {
+  emojiPicker.classList.toggle('show');
+  fileUpload.classList.remove('show');
+  topicsMenu.classList.remove('show');
+});
+document.addEventListener('click', function(e) {
+  if (!emojiBtn.contains(e.target) && !emojiPicker.contains(e.target)) {
+    emojiPicker.classList.remove('show');
+  }
+});
+emojiPicker.addEventListener('click', function(e) {
+  if (e.target.classList.contains('emoji-item')) {
+    const emoji = e.target.textContent;
+    chatInput.value += emoji;
+    chatInput.focus();
+  }
+});
+// File upload
+attachBtn.addEventListener('click', function() {
+  fileUpload.classList.toggle('show');
+  emojiPicker.classList.remove('show');
+  topicsMenu.classList.remove('show');
+});
+document.addEventListener('click', function(e) {
+  if (!attachBtn.contains(e.target) && !fileUpload.contains(e.target)) {
+    fileUpload.classList.remove('show');
+  }
+});
+fileUploadArea.addEventListener('click', function() {
+  fileInput.click();
+});
+fileInput.addEventListener('change', function() {
+  handleFiles(this.files);
+});
+// Drag and drop
+['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+  fileUploadArea.addEventListener(eventName, preventDefaults, false);
+});
+function preventDefaults(e) {
+  e.preventDefault();
+  e.stopPropagation();
+}
+['dragenter', 'dragover'].forEach(eventName => {
+  fileUploadArea.addEventListener(eventName, highlight, false);
+});
+['dragleave', 'drop'].forEach(eventName => {
+  fileUploadArea.addEventListener(eventName, unhighlight, false);
+});
+function highlight() {
+  fileUploadArea.style.borderColor = 'var(--primary)';
+  fileUploadArea.style.backgroundColor = 'rgba(230, 57, 70, 0.1)';
+}
+function unhighlight() {
+  fileUploadArea.style.borderColor = 'var(--line)';
+  fileUploadArea.style.backgroundColor = 'transparent';
+}
+fileUploadArea.addEventListener('drop', function(e) {
+  handleFiles(e.dataTransfer.files);
+});
+}
+function toggleChat(){
+chatOpen = !chatOpen;
+chatWidget.style.display = chatOpen ? 'flex' : 'none';
+localStorage.setItem(LS.open, chatOpen);
+}
+function toggleWidgetSize() {
+  widgetExpanded = !widgetExpanded;
+  chatWidget.classList.toggle('expanded');
+  localStorage.setItem(LS.expanded, widgetExpanded);
+  
+  if (widgetExpanded) {
+    expandWidgetBtn.innerHTML = '<i class="bi bi-arrows-angle-contract"></i>';
+  } else {
+    expandWidgetBtn.innerHTML = '<i class="bi bi-arrows-angle-expand"></i>';
+  }
+}
+function switchTab(tab){
+  currentView = tab;
+  localStorage.setItem(LS.view, tab);
+  tabButtons.forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  
+  if (tab === 'faq') {
+    renderFAQ();
+  } else if (tab === 'vehicles') {
+    renderVehicles();
+  } else if (tab === 'services') {
+    renderServiceBooking();
+  } else if (tab === 'finance') {
+    renderFinanceCalculator();
+  } else if (tab === 'dealership') {
+    renderDealershipFinder();
+  } else {
+    renderChatFromHistory();
+  }
+}
+function renderChatFromHistory(){
+chatBody.innerHTML = '';
+chatHistory.forEach(m => addMessage(m.text, m.sender, false, m.time));
+}
+/* ========= Chat helpers ========= */
+function addMessage(text, sender='bot', save=true, isoTime){
+// Always show in chat tab
+if (currentView !== 'chat') switchTab('chat');
+const msgDiv = document.createElement('div');
+msgDiv.className = `msg ${sender}`;
+const bubble = document.createElement('div');
+bubble.className = 'message-bubble';
+bubble.innerHTML = (sender==='bot') ? text : escapeHTML(text);
+const time = document.createElement('div');
+time.className = 'message-time';
+const t = isoTime ? new Date(isoTime) : new Date();
+time.textContent = t.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+msgDiv.appendChild(bubble);
+msgDiv.appendChild(time);
+chatBody.appendChild(msgDiv);
+chatBody.scrollTop = chatBody.scrollHeight;
+if (save){
+chatHistory.push({ text, sender, time: new Date().toISOString() });
+localStorage.setItem(LS.history, JSON.stringify(chatHistory));
+}
+}
+function botReply(text, sticker){
+// typing indicator
+const typ = document.createElement('div');
+typ.className = 'msg bot';
+const tBubble = document.createElement('div');
+tBubble.className = 'typing';
+tBubble.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+typ.appendChild(tBubble);
+chatBody.appendChild(typ);
+chatBody.scrollTop = chatBody.scrollHeight;
+setTimeout(()=>{
+typ.remove();
+const msgDiv = document.createElement('div');
+msgDiv.className = 'msg bot';
+const bubble = document.createElement('div');
+bubble.className = 'message-bubble';
+bubble.innerHTML = text;
+const time = document.createElement('div');
+time.className = 'message-time';
+time.textContent = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+msgDiv.appendChild(bubble);
+if (sticker){
+const img = document.createElement('img');
+img.className = 'chat-sticker';
+img.src = sticker;
+img.alt = "";
+msgDiv.appendChild(img);
+}
+msgDiv.appendChild(time);
+chatBody.appendChild(msgDiv);
+chatBody.scrollTop = chatBody.scrollHeight;
+chatHistory.push({ text, sender:'bot', time: new Date().toISOString() });
+localStorage.setItem(LS.history, JSON.stringify(chatHistory));
+try {
+  receiveSound.play().catch(e => console.warn('Could not play receive sound:', e));
+} catch (e) {
+  console.warn('Error playing receive sound:', e);
+}
+}, 850);
+}
+function sendMessage(){
+const text = chatInput.value.trim();
+if (!text) return;
+addMessage(text, 'user');
+chatInput.value = '';
+try {
+  sendSound.play().catch(e => console.warn('Could not play send sound:', e));
+} catch (e) {
+  console.warn('Error playing send sound:', e);
+}
+handleUserMessage(text);
+}
+function handleUserMessage(text){
+const lower = text.toLowerCase();
+let response = "";
+let sticker = "";
+let showVehicles = false;
+let showDateTimePicker = false;
+let showServiceBooking = false;
+let showFinanceCalculator = false;
+let showDealershipFinder = false;
+
+if (lower.includes('test drive')) {
+  response = "Great! I'd be happy to schedule a test drive for you. Please select your preferred date and time:";
+  showDateTimePicker = true;
+} else if (lower.includes('service') || lower.includes('maintenance') || lower.includes('repair')) {
+  response = "I can help you book a service appointment. Please provide your vehicle details and preferred service date.";
+  showServiceBooking = true;
+} else if (lower.includes('finance') || lower.includes('loan') || lower.includes('payment') || lower.includes('lease')) {
+  response = "Let me help you calculate your financing options. Please provide the vehicle price, down payment, and preferred loan term.";
+  showFinanceCalculator = true;
+} else if (lower.includes('dealership') || lower.includes('location') || lower.includes('showroom') || lower.includes('near me')) {
+  response = "I can help you find the nearest CarX dealership. Here are our locations:";
+  showDealershipFinder = true;
+} else if (lower.includes('vehicle') || lower.includes('car') || lower.includes('model') || lower.includes('inventory')) {
+  response = "I'd be happy to show you our vehicle inventory. Here are our current models:";
+  showVehicles = true;
+} else if (lower.includes('buy') || lower.includes('purchase') || lower.includes('order')) {
+  response = "To purchase a vehicle, you can visit any of our dealerships or start the process online. Would you like to see our available vehicles first?";
+  showVehicles = true;
+} else if (lower.includes('price') || lower.includes('cost') || lower.includes('how much')) {
+  response = "Our vehicle prices range from $22,999 to $55,999 depending on the model and features. We also offer financing options to fit your budget. Would you like to see specific models and their prices?";
+  showVehicles = true;
+} else if (lower.includes('warranty') || lower.includes('guarantee')) {
+  response = "All our vehicles come with comprehensive warranty coverage. New vehicles include a 5-year/60,000-mile basic warranty and a 10-year/100,000-mile powertrain warranty. Extended warranty options are also available.";
+} else if (lower.includes('feature') || lower.includes('spec') || lower.includes('tech')) {
+  response = "Our vehicles feature the latest automotive technology including advanced safety systems, infotainment, driver assistance, connectivity, and more. Specific features vary by model. Would you like details about a particular vehicle?";
+  showVehicles = true;
+} else if (lower.includes('trade') || lower.includes('trade-in')) {
+  response = "Yes, we accept trade-ins! Our team will evaluate your current vehicle's condition, mileage, and market value to provide a fair trade-in offer that can be applied toward your new CarX vehicle.";
+} else if (lower.includes('contact') || lower.includes('call') || lower.includes('phone')) {
+  response = "You can reach our customer support team at 1-800-CARX during business hours, or you can chat with us here 24/7. For emergencies, please call our roadside assistance at 1-800-HELP-CAR.";
+} else if (lower.includes('hello') || lower.includes('hi')) {
+  response = "Hello! 👋 Welcome to CarX Support Hub! How can I assist you with your vehicle needs today?";
+  sticker = "https://media.giphy.com/media/3o7TKsQ8UQ4k4kGk5a/giphy.gif";
+} else if (lower.includes('thank')) {
+  response = "You're welcome! 😊 Is there anything else I can help with regarding our vehicles or services?";
+} else {
+  response = "Thanks for your message! Our support team will get back to you shortly with information about our vehicles and services.";
+}
+
+const funEmojis = ["🚗", "🚙", "🏎️", "🚐", "🚛", "🏁", "🛞", "⛽", "🔧", "🚦"];
+response += " " + funEmojis[Math.floor(Math.random()*funEmojis.length)];
+botReply(response, sticker);
+
+if (showDateTimePicker) {
+  setTimeout(() => {
+    renderDateTimePicker();
+  }, 1500);
+}
+if (showServiceBooking) {
+  setTimeout(() => {
+    renderServiceBooking();
+  }, 1500);
+}
+if (showFinanceCalculator) {
+  setTimeout(() => {
+    renderFinanceCalculator();
+  }, 1500);
+}
+if (showDealershipFinder) {
+  setTimeout(() => {
+    renderDealershipFinder();
+  }, 1500);
+}
+if (showVehicles) {
+  setTimeout(() => {
+    addMessage("I'll show you our vehicle inventory now.", 'bot');
+    switchTab('vehicles');
+  }, 2000);
+}
+}
+/* ========= File handling ========= */
+function handleFiles(files) {
+  if (files.length > 0) {
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      if (file.size > 10 * 1024 * 1024) {
+        botReply(`File "${file.name}" is too large. Please select files smaller than 10MB.`);
+        continue;
+      }
+      attachedFiles.push(file);
+      addFileToList(file);
+    }
+    
+    const fileNames = Array.from(files).filter(file => file.size <= 10 * 1024 * 1024).map(file => file.name).join(', ');
+    if (fileNames) {
+      addMessage(`Attached files: ${fileNames}`, 'user');
+      botReply(`Thank you for attaching files. I've received your files and will review them.`);
+    }
+  }
+}
+function addFileToList(file) {
+  const fileItem = document.createElement('div');
+  fileItem.className = 'file-item';
+  
+  const fileName = document.createElement('div');
+  fileName.className = 'file-name';
+  fileName.textContent = file.name;
+  
+  const fileSize = document.createElement('div');
+  fileSize.className = 'file-size';
+  fileSize.textContent = formatFileSize(file.size);
+  fileSize.style.fontSize = '11px';
+  fileSize.style.color = 'var(--muted)';
+  
+  const fileRemove = document.createElement('div');
+  fileRemove.className = 'file-remove';
+  fileRemove.innerHTML = '<i class="fas fa-times"></i>';
+  fileRemove.addEventListener('click', function() {
+    const index = attachedFiles.indexOf(file);
+    if (index > -1) {
+      attachedFiles.splice(index, 1);
+      fileItem.remove();
+    }
+  });
+  
+  const fileInfo = document.createElement('div');
+  fileInfo.style.display = 'flex';
+  fileInfo.style.flexDirection = 'column';
+  fileInfo.style.flex = '1';
+  fileInfo.appendChild(fileName);
+  fileInfo.appendChild(fileSize);
+  
+  fileItem.appendChild(fileInfo);
+  fileItem.appendChild(fileRemove);
+  fileList.appendChild(fileItem);
+}
+function formatFileSize(bytes) {
+  if (bytes === 0) return '0 Bytes';
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+/* ========= Vehicle Rendering ========= */
+function renderVehicles() {
+  chatBody.innerHTML = '';
+  const container = document.createElement('div');
+  container.className = 'vehicle-cards';
+  
+  vehicleData.forEach(vehicle => {
+    const card = document.createElement('div');
+    card.className = 'vehicle-card';
+    
+    const image = document.createElement('div');
+    image.className = 'vehicle-image';
+    image.style.backgroundImage = `url(${vehicle.image})`;
+    
+    const badge = document.createElement('div');
+    badge.className = 'vehicle-badge';
+    badge.textContent = vehicle.category;
+    image.appendChild(badge);
+    
+    const content = document.createElement('div');
+    content.className = 'vehicle-content';
+    
+    const title = document.createElement('div');
+    title.className = 'vehicle-title';
+    title.textContent = vehicle.title;
+    
+    const category = document.createElement('div');
+    category.className = 'vehicle-category';
+    category.innerHTML = `<i class="bi bi-tag"></i> ${vehicle.category}`;
+    
+    const description = document.createElement('div');
+    description.className = 'vehicle-description';
+    description.textContent = vehicle.description;
+    
+    const footer = document.createElement('div');
+    footer.className = 'vehicle-footer';
+    
+    const price = document.createElement('div');
+    price.className = 'vehicle-price';
+    price.textContent = vehicle.price;
+    
+    const actions = document.createElement('div');
+    actions.className = 'vehicle-actions';
+    
+    const testDriveBtn = document.createElement('button');
+    testDriveBtn.className = 'vehicle-btn';
+    testDriveBtn.innerHTML = '<i class="bi bi-calendar-event"></i> Test Drive';
+    testDriveBtn.addEventListener('click', function() {
+      currentTestDriveVehicle = vehicle.title;
+      addMessage(`I would like to schedule a test drive for ${vehicle.title}`, 'user');
+      botReply("Great! Please type 'test drive' in the chat to schedule your test drive session.");
+    });
+    
+    const favoriteBtn = document.createElement('button');
+    favoriteBtn.className = 'vehicle-btn secondary';
+    favoriteBtn.innerHTML = favorites.includes(vehicle.id) ? 
+      '<i class="bi bi-heart-fill"></i> Saved' : 
+      '<i class="bi bi-heart"></i> Save';
+    favoriteBtn.addEventListener('click', function() {
+      if (favorites.includes(vehicle.id)) {
+        favorites = favorites.filter(id => id !== vehicle.id);
+        favoriteBtn.innerHTML = '<i class="bi bi-heart"></i> Save';
+        botReply(`Removed ${vehicle.title} from your favorites.`);
+      } else {
+        favorites.push(vehicle.id);
+        favoriteBtn.innerHTML = '<i class="bi bi-heart-fill"></i> Saved';
+        botReply(`Added ${vehicle.title} to your favorites!`);
+      }
+      localStorage.setItem(LS.favorites, JSON.stringify(favorites));
+    });
+    
+    actions.appendChild(testDriveBtn);
+    actions.appendChild(favoriteBtn);
+    
+    footer.appendChild(price);
+    footer.appendChild(actions);
+    
+    content.appendChild(title);
+    content.appendChild(category);
+    content.appendChild(description);
+    content.appendChild(footer);
+    
+    card.appendChild(image);
+    card.appendChild(content);
+    container.appendChild(card);
+  });
+  
+  chatBody.appendChild(container);
+}
+/* ========= Service Booking ========= */
+function renderServiceBooking() {
+  chatBody.innerHTML = '';
+  const container = document.createElement('div');
+  container.className = 'service-booking';
+  
+  const form = document.createElement('div');
+  form.className = 'service-form';
+  
+  const title = document.createElement('h3');
+  title.textContent = 'Book a Service Appointment';
+  
+  const vehicleGroup = document.createElement('div');
+  vehicleGroup.className = 'form-group';
+  const vehicleLabel = document.createElement('label');
+  vehicleLabel.textContent = 'Select Vehicle';
+  vehicleLabel.setAttribute('for', 'service-vehicle');
+  const vehicleSelect = document.createElement('select');
+  vehicleSelect.id = 'service-vehicle';
+  vehicleSelect.className = 'form-control';
+  vehicleSelect.required = true;
+  
+  const defaultOption = document.createElement('option');
+  defaultOption.value = '';
+  defaultOption.textContent = 'Select your vehicle...';
+  vehicleSelect.appendChild(defaultOption);
+  
+  vehicleData.forEach(vehicle => {
+    const option = document.createElement('option');
+    option.value = vehicle.id;
+    option.textContent = vehicle.title;
+    vehicleSelect.appendChild(option);
+  });
+  
+  vehicleGroup.appendChild(vehicleLabel);
+  vehicleGroup.appendChild(vehicleSelect);
+  
+  const serviceGroup = document.createElement('div');
+  serviceGroup.className = 'form-group';
+  const serviceLabel = document.createElement('label');
+  serviceLabel.textContent = 'Service Type';
+  serviceLabel.setAttribute('for', 'service-type');
+  const serviceSelect = document.createElement('select');
+  serviceSelect.id = 'service-type';
+  serviceSelect.className = 'form-control';
+  serviceSelect.required = true;
+  
+  const serviceOptions = [
+    { value: '', text: 'Select service type...' },
+    { value: 'oil-change', text: 'Oil Change' },
+    { value: 'tire-rotation', text: 'Tire Rotation' },
+    { value: 'brake-service', text: 'Brake Service' },
+    { value: 'battery-replacement', text: 'Battery Replacement' },
+    { value: 'engine-diagnostic', text: 'Engine Diagnostic' },
+    { value: 'transmission-service', text: 'Transmission Service' },
+    { value: 'air-conditioning', text: 'Air Conditioning Service' },
+    { value: 'other', text: 'Other' }
+  ];
+  
+  serviceOptions.forEach(option => {
+    const opt = document.createElement('option');
+    opt.value = option.value;
+    opt.textContent = option.text;
+    serviceSelect.appendChild(opt);
+  });
+  
+  serviceGroup.appendChild(serviceLabel);
+  serviceGroup.appendChild(serviceSelect);
+  
+  const dateGroup = document.createElement('div');
+  dateGroup.className = 'form-group';
+  const dateLabel = document.createElement('label');
+  dateLabel.textContent = 'Preferred Date';
+  dateLabel.setAttribute('for', 'service-date');
+  const dateInput = document.createElement('input');
+  dateInput.type = 'date';
+  dateInput.id = 'service-date';
+  dateInput.className = 'form-control';
+  dateInput.required = true;
+  dateInput.min = new Date().toISOString().split('T')[0];
+  
+  dateGroup.appendChild(dateLabel);
+  dateGroup.appendChild(dateInput);
+  
+  const timeGroup = document.createElement('div');
+  timeGroup.className = 'form-group';
+  const timeLabel = document.createElement('label');
+  timeLabel.textContent = 'Preferred Time';
+  timeLabel.setAttribute('for', 'service-time');
+  const timeSelect = document.createElement('select');
+  timeSelect.id = 'service-time';
+  timeSelect.className = 'form-control';
+  timeSelect.required = true;
+  
+  const timeOptions = [
+    { value: '', text: 'Select time...' },
+    { value: '09:00', text: '9:00 AM' },
+    { value: '10:00', text: '10:00 AM' },
+    { value: '11:00', text: '11:00 AM' },
+    { value: '13:00', text: '1:00 PM' },
+    { value: '14:00', text: '2:00 PM' },
+    { value: '15:00', text: '3:00 PM' },
+    { value: '16:00', text: '4:00 PM' }
+  ];
+  
+  timeOptions.forEach(option => {
+    const opt = document.createElement('option');
+    opt.value = option.value;
+    opt.textContent = option.text;
+    timeSelect.appendChild(opt);
+  });
+  
+  timeGroup.appendChild(timeLabel);
+  timeGroup.appendChild(timeSelect);
+  
+  const notesGroup = document.createElement('div');
+  notesGroup.className = 'form-group';
+  const notesLabel = document.createElement('label');
+  notesLabel.textContent = 'Additional Notes';
+  notesLabel.setAttribute('for', 'service-notes');
+  const notesTextarea = document.createElement('textarea');
+  notesTextarea.id = 'service-notes';
+  notesTextarea.className = 'form-control';
+  notesTextarea.rows = 3;
+  notesTextarea.placeholder = 'Any specific concerns or requests...';
+  
+  notesGroup.appendChild(notesLabel);
+  notesGroup.appendChild(notesTextarea);
+  
+  const actions = document.createElement('div');
+  actions.className = 'form-actions';
+  
+  const submitBtn = document.createElement('button');
+  submitBtn.type = 'button';
+  submitBtn.className = 'btn btn-primary';
+  submitBtn.textContent = 'Book Appointment';
+  submitBtn.addEventListener('click', function() {
+    const vehicleId = vehicleSelect.value;
+    const serviceType = serviceSelect.value;
+    const date = dateInput.value;
+    const time = timeSelect.value;
+    
+    if (!vehicleId || !serviceType || !date || !time) {
+      botReply("Please fill in all required fields to book your service appointment.");
+      return;
+    }
+    
+    const vehicle = vehicleData.find(v => v.id === vehicleId);
+    const serviceText = serviceOptions.find(s => s.value === serviceType).text;
+    const formattedDate = new Date(date).toLocaleDateString();
+    const formattedTime = timeOptions.find(t => t.value === time).text;
+    
+    addMessage(`Service appointment booked for ${vehicle.title} on ${formattedDate} at ${formattedTime} for ${serviceText}`, 'user');
+    botReply(`Perfect! Your service appointment has been confirmed. We'll send you a reminder before your appointment. Is there anything else you need help with?`);
+  });
+  
+  const cancelBtn = document.createElement('button');
+  cancelBtn.type = 'button';
+  cancelBtn.className = 'btn btn-secondary';
+  cancelBtn.textContent = 'Cancel';
+  cancelBtn.addEventListener('click', function() {
+    switchTab('chat');
+  });
+  
+  actions.appendChild(submitBtn);
+  actions.appendChild(cancelBtn);
+  
+  form.appendChild(title);
+  form.appendChild(vehicleGroup);
+  form.appendChild(serviceGroup);
+  form.appendChild(dateGroup);
+  form.appendChild(timeGroup);
+  form.appendChild(notesGroup);
+  form.appendChild(actions);
+  
+  container.appendChild(form);
+  chatBody.appendChild(container);
+}
+/* ========= Finance Calculator ========= */
+function renderFinanceCalculator() {
+  chatBody.innerHTML = '';
+  const container = document.createElement('div');
+  container.className = 'finance-calculator';
+  
+  const calc = document.createElement('div');
+  calc.className = 'calc-container';
+  
+  const title = document.createElement('h3');
+  title.textContent = 'Finance Calculator';
+  
+  const priceGroup = document.createElement('div');
+  priceGroup.className = 'form-group';
+  const priceLabel = document.createElement('label');
+  priceLabel.textContent = 'Vehicle Price ($)';
+  priceLabel.setAttribute('for', 'finance-price');
+  const priceInput = document.createElement('input');
+  priceInput.type = 'number';
+  priceInput.id = 'finance-price';
+  priceInput.className = 'form-control';
+  priceInput.placeholder = 'Enter vehicle price';
+  priceInput.value = '30000';
+  priceInput.required = true;
+  
+  priceGroup.appendChild(priceLabel);
+  priceGroup.appendChild(priceInput);
+  
+  const downGroup = document.createElement('div');
+  downGroup.className = 'form-group';
+  const downLabel = document.createElement('label');
+  downLabel.textContent = 'Down Payment ($)';
+  downLabel.setAttribute('for', 'finance-down');
+  const downInput = document.createElement('input');
+  downInput.type = 'number';
+  downInput.id = 'finance-down';
+  downInput.className = 'form-control';
+  downInput.placeholder = 'Enter down payment';
+  downInput.value = '5000';
+  downInput.required = true;
+  
+  downGroup.appendChild(downLabel);
+  downGroup.appendChild(downInput);
+  
+  const rateGroup = document.createElement('div');
+  rateGroup.className = 'form-group';
+  const rateLabel = document.createElement('label');
+  rateLabel.textContent = 'Interest Rate (%)';
+  rateLabel.setAttribute('for', 'finance-rate');
+  const rateInput = document.createElement('input');
+  rateInput.type = 'number';
+  rateInput.id = 'finance-rate';
+  rateInput.className = 'form-control';
+  rateInput.placeholder = 'Enter interest rate';
+  rateInput.value = '4.5';
+  rateInput.step = '0.1';
+  rateInput.required = true;
+  
+  rateGroup.appendChild(rateLabel);
+  rateGroup.appendChild(rateInput);
+  
+  const termGroup = document.createElement('div');
+  termGroup.className = 'form-group';
+  const termLabel = document.createElement('label');
+  termLabel.textContent = 'Loan Term (years)';
+  termLabel.setAttribute('for', 'finance-term');
+  const termSelect = document.createElement('select');
+  termSelect.id = 'finance-term';
+  termSelect.className = 'form-control';
+  termSelect.required = true;
+  
+  const termOptions = [
+    { value: '1', text: '1 year' },
+    { value: '2', text: '2 years' },
+    { value: '3', text: '3 years' },
+    { value: '4', text: '4 years' },
+    { value: '5', text: '5 years' },
+    { value: '6', text: '6 years' },
+    { value: '7', text: '7 years' }
+  ];
+  
+  termOptions.forEach(option => {
+    const opt = document.createElement('option');
+    opt.value = option.value;
+    opt.textContent = option.text;
+    termSelect.appendChild(opt);
+  });
+  
+  termSelect.value = '5';
+  
+  termGroup.appendChild(termLabel);
+  termGroup.appendChild(termSelect);
+  
+  const calculateBtn = document.createElement('button');
+  calculateBtn.className = 'btn btn-primary';
+  calculateBtn.textContent = 'Calculate Payment';
+  calculateBtn.style.width = '100%';
+  calculateBtn.style.marginTop = '16px';
+  calculateBtn.addEventListener('click', function() {
+    const price = parseFloat(priceInput.value);
+    const down = parseFloat(downInput.value);
+    const rate = parseFloat(rateInput.value) / 100 / 12;
+    const term = parseFloat(termSelect.value) * 12;
+    
+    if (!price || !down || !rate || !term) {
+      botReply("Please fill in all fields to calculate your payment.");
+      return;
+    }
+    
+    const loanAmount = price - down;
+    const monthlyPayment = loanAmount * rate * Math.pow(1 + rate, term) / (Math.pow(1 + rate, term) - 1);
+    const totalPayment = monthlyPayment * term;
+    const totalInterest = totalPayment - loanAmount;
+    
+    const resultDiv = document.createElement('div');
+    resultDiv.className = 'calc-result';
+    resultDiv.innerHTML = `
+      <h4>Payment Summary</h4>
+      <p>Monthly Payment: <strong>$${monthlyPayment.toFixed(2)}</strong></p>
+      <p>Total Loan Amount: <strong>$${loanAmount.toFixed(2)}</strong></p>
+      <p>Total Interest: <strong>$${totalInterest.toFixed(2)}</strong></p>
+      <p>Total Payment: <strong>$${totalPayment.toFixed(2)}</strong></p>
+    `;
+    
+    // Remove previous result if exists
+    const existingResult = calc.querySelector('.calc-result');
+    if (existingResult) {
+      existingResult.remove();
+    }
+    
+    calc.appendChild(resultDiv);
+  });
+  
+  calc.appendChild(title);
+  calc.appendChild(priceGroup);
+  calc.appendChild(downGroup);
+  calc.appendChild(rateGroup);
+  calc.appendChild(termGroup);
+  calc.appendChild(calculateBtn);
+  
+  container.appendChild(calc);
+  chatBody.appendChild(container);
+}
+/* ========= Dealership Finder ========= */
+function renderDealershipFinder() {
+  chatBody.innerHTML = '';
+  const container = document.createElement('div');
+  container.className = 'dealership-finder';
+  
+  const finder = document.createElement('div');
+  finder.className = 'dealership-container';
+  
+  const title = document.createElement('h3');
+  title.textContent = 'Find a Dealership Near You';
+  
+  const map = document.createElement('div');
+  map.className = 'dealership-map';
+  map.innerHTML = `
+    <div style="text-align: center;">
+      <i class="bi bi-geo-alt" style="font-size: 48px; color: var(--primary);"></i>
+      <p>Map showing nearby dealerships</p>
+    </div>
+  `;
+  
+  const list = document.createElement('div');
+  list.className = 'dealership-list';
+  
+  dealershipData.forEach(dealership => {
+    const item = document.createElement('div');
+    item.className = 'dealership-item';
+    
+    const name = document.createElement('div');
+    name.className = 'dealership-name';
+    name.textContent = dealership.name;
+    
+    const address = document.createElement('div');
+    address.className = 'dealership-address';
+    address.innerHTML = `<i class="bi bi-geo-alt"></i> ${dealership.address}`;
+    
+    const distance = document.createElement('div');
+    distance.className = 'dealership-distance';
+    distance.innerHTML = `<i class="bi bi-signpost"></i> ${dealership.distance} away`;
+    
+    const actions = document.createElement('div');
+    actions.style.marginTop = '10px';
+    
+    const directionsBtn = document.createElement('button');
+    directionsBtn.className = 'btn btn-primary';
+    directionsBtn.textContent = 'Get Directions';
+    directionsBtn.style.fontSize = '12px';
+    directionsBtn.style.padding = '6px 12px';
+    directionsBtn.addEventListener('click', function() {
+      addMessage(`Get directions to ${dealership.name}`, 'user');
+      botReply(`Opening directions to ${dealership.name} at ${dealership.address}.`);
+    });
+    
+    const callBtn = document.createElement('button');
+    callBtn.className = 'btn btn-secondary';
+    callBtn.textContent = 'Call Now';
+    callBtn.style.fontSize = '12px';
+    callBtn.style.padding = '6px 12px';
+    callBtn.style.marginLeft = '8px';
+    callBtn.addEventListener('click', function() {
+      addMessage(`Call ${dealership.name}`, 'user');
+      botReply(`Connecting you to ${dealership.name}. Please wait...`);
+    });
+    
+    actions.appendChild(directionsBtn);
+    actions.appendChild(callBtn);
+    
+    item.appendChild(name);
+    item.appendChild(address);
+    item.appendChild(distance);
+    item.appendChild(actions);
+    
+    list.appendChild(item);
+  });
+  
+  finder.appendChild(title);
+  finder.appendChild(map);
+  finder.appendChild(list);
+  
+  container.appendChild(finder);
+  chatBody.appendChild(container);
+}
+/* ========= FAQ Data ========= */
+const faqData = [
+  {
+    category: "Vehicle Information",
+    questions: [
+      {
+        q: "What types of vehicles does CarX offer?",
+        a: "CarX offers a comprehensive range of vehicles including sedans, SUVs, electric vehicles, sports cars, trucks, hybrids, luxury vehicles, convertibles, minivans, crossovers, and coupes to meet diverse customer needs and preferences."
+      },
+      {
+        q: "Are CarX vehicles fuel efficient?",
+        a: "Yes, CarX prioritizes fuel efficiency across our lineup. Our hybrid and electric models offer exceptional efficiency, while our gasoline vehicles are engineered with advanced fuel-saving technologies. Specific MPG ratings vary by model and are available on our website."
+      },
+      {
+        q: "What safety features are included in CarX vehicles?",
+        a: "All CarX vehicles come equipped with advanced safety features including multiple airbags, anti-lock braking system (ABS), electronic stability control, lane departure warning, forward collision warning, automatic emergency braking, and rearview cameras. Higher trims offer additional safety technologies."
+      }
+    ]
+  },
+  {
+    category: "Purchasing & Financing",
+    questions: [
+      {
+        q: "What financing options are available?",
+        a: "CarX offers multiple financing options including traditional loans, leasing programs, and special financing promotions. We work with various financial institutions to provide competitive rates and flexible terms tailored to your budget and credit profile."
+      },
+      {
+        q: "Can I trade in my current vehicle?",
+        a: "Yes, CarX accepts trade-ins. Our team will evaluate your current vehicle's condition, mileage, and market value to provide a fair trade-in offer that can be applied toward your new CarX vehicle purchase."
+      },
+      {
+        q: "Do you offer any special promotions or discounts?",
+        a: "CarX regularly offers special promotions, seasonal discounts, and incentives for various customer groups including military personnel, first responders, recent graduates, and loyal customers. Check our website or ask your dealership representative about current offers."
+      }
+    ]
+  },
+  {
+    category: "Test Drives & Dealerships",
+    questions: [
+      {
+        q: "How do I schedule a test drive?",
+        a: "You can schedule a test drive by contacting your nearest CarX dealership directly, using our website's scheduling tool, or by chatting with us here. We recommend scheduling in advance to ensure your preferred model is available."
+      },
+      {
+        q: "How long does a test drive last?",
+        a: "Standard test drives typically last 30-45 minutes, allowing you to experience the vehicle in various driving conditions. Extended test drives may be available for serious buyers who need more time with the vehicle."
+      },
+      {
+        q: "Where can I find a CarX dealership?",
+        a: "CarX has dealerships located nationwide. You can find your nearest dealership by using the locator tool on our website, contacting our customer service, or asking in this chat for assistance based on your location."
+      }
+    ]
+  },
+  {
+    category: "Warranty & Service",
+    questions: [
+      {
+        q: "What warranty coverage comes with CarX vehicles?",
+        a: "All new CarX vehicles come with a comprehensive warranty package including a 5-year/60,000-mile basic warranty, a 10-year/100,000-mile powertrain warranty, and corrosion coverage. Extended warranty options are available for additional protection."
+      },
+      {
+        q: "Where can I get my CarX vehicle serviced?",
+        a: "CarX vehicles can be serviced at any authorized CarX service center nationwide. Our certified technicians use genuine CarX parts and the latest diagnostic equipment to maintain your vehicle's performance and warranty coverage."
+      },
+      {
+        q: "How often should I service my CarX vehicle?",
+        a: "Service intervals vary by model and driving conditions, but generally we recommend oil changes every 5,000-7,500 miles and comprehensive maintenance every 15,000 miles. Your vehicle's specific maintenance schedule is detailed in the owner's manual."
+      }
+    ]
+  },
+  {
+    category: "Technology & Features",
+    questions: [
+      {
+        q: "What infotainment systems are available?",
+        a: "CarX vehicles feature our advanced CarX Connect infotainment system with touchscreen displays, smartphone integration (Apple CarPlay and Android Auto), navigation, voice commands, Bluetooth connectivity, and available premium audio systems. Higher trims offer larger screens and additional features."
+      },
+      {
+        q: "Do CarX vehicles have autonomous driving capabilities?",
+        a: "CarX vehicles are equipped with advanced driver assistance systems (ADAS) that include features like adaptive cruise control, lane keeping assist, and automated parking. While these systems provide significant automation, they require driver supervision and are not fully autonomous."
+      },
+      {
+        q: "Can I connect my smartphone to my CarX vehicle?",
+        a: "Yes, all CarX vehicles support smartphone integration through Apple CarPlay and Android Auto, allowing you to access your apps, navigation, music, and messaging through the vehicle's infotainment system. Many models also offer wireless connectivity."
+      }
+    ]
+  }
+];
+/* ========= FAQ Rendering ========= */
+function renderFAQ(){
+chatBody.innerHTML = '';
+const wrap = document.createElement('div');
+wrap.className = 'faq-wrap';
+// Search bar
+const search = document.createElement('div');
+search.className = 'faq-search';
+search.innerHTML = `<i class="bi bi-search"></i>
+<input id="faqSearchInput" type="text" placeholder="Search FAQs...">`;
+wrap.appendChild(search);
+// Category blocks
+faqData.forEach((cat, idx)=>{
+const catEl = document.createElement('div');
+catEl.className = 'faq-category';
+catEl.innerHTML = `<div class="left"><span>${cat.category}</span></div>
+<small><i class="bi bi-caret-down"></i></small>`;
+wrap.appendChild(catEl);
+const acc = document.createElement('div');
+acc.className = 'faq-accordion';
+cat.questions.forEach(item=>{
+const q = document.createElement('div');
+q.className = 'faq-question';
+q.textContent = item.q;
+q.addEventListener('click', ()=>{
+addMessage(item.q, 'user');
+botReply(item.a);
+});
+acc.appendChild(q);
+});
+wrap.appendChild(acc);
+catEl.addEventListener('click', ()=>{
+const opened = acc.classList.toggle('open');
+catEl.querySelector('small').innerHTML = opened
+? `<i class="bi bi-caret-up"></i>`
+: `<i class="bi bi-caret-down"></i>`;
+});
+});
+chatBody.appendChild(wrap);
+// Search filter
+const input = wrap.querySelector('#faqSearchInput');
+input.addEventListener('input', ()=>{
+const term = input.value.trim().toLowerCase();
+const blocks = wrap.querySelectorAll('.faq-category');
+const accordions = wrap.querySelectorAll('.faq-accordion');
+faqData.forEach((cat, i)=>{
+const showCat = cat.category.toLowerCase().includes(term) ||
+cat.questions.some(q=> q.q.toLowerCase().includes(term));
+blocks[i].style.display = showCat ? '' : 'none';
+accordions[i].classList.toggle('open', term && showCat); // auto-open when search
+});
+});
+}
+/* ========= Modern Date/Time Picker ========= */
+function renderDateTimePicker() {
+  const pickerHTML = `
+    <div class="datetime-picker-modern">
+      <h5>Schedule Your Test Drive</h5>
+      <div class="datetime-row">
+        <div class="datetime-input-group">
+          <div class="datetime-input-label">
+            <i class="bi bi-calendar3"></i> Date
+          </div>
+          <input type="date" id="test-drive-date" class="datetime-input-field" min="${new Date().toISOString().split('T')[0]}">
+        </div>
+        <div class="datetime-input-group">
+          <div class="datetime-input-label">
+            <i class="bi bi-clock"></i> Time
+          </div>
+          <input type="time" id="test-drive-time" class="datetime-input-field">
+        </div>
+      </div>
+      <button class="datetime-schedule-btn" id="schedule-test-drive-btn">Schedule Test Drive</button>
+    </div>
+  `;
+  
+  // Add the picker as a bot message
+  const msgDiv = document.createElement('div');
+  msgDiv.className = 'msg bot';
+  const bubble = document.createElement('div');
+  bubble.className = 'message-bubble';
+  bubble.innerHTML = pickerHTML;
+  const time = document.createElement('div');
+  time.className = 'message-time';
+  time.textContent = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+  msgDiv.appendChild(bubble);
+  msgDiv.appendChild(time);
+  chatBody.appendChild(msgDiv);
+  chatBody.scrollTop = chatBody.scrollHeight;
+  
+  // Add event listeners after the picker is rendered
+  setTimeout(() => {
+    const scheduleBtn = document.getElementById('schedule-test-drive-btn');
+    const dateInput = document.getElementById('test-drive-date');
+    const timeInput = document.getElementById('test-drive-time');
+    
+    scheduleBtn.addEventListener('click', function() {
+      if (dateInput.value && timeInput.value) {
+        const selectedDateTime = new Date(`${dateInput.value}T${timeInput.value}`);
+        const formattedDateTime = selectedDateTime.toLocaleString();
+        
+        let vehicleName = "a vehicle";
+        if (currentTestDriveVehicle) {
+          vehicleName = currentTestDriveVehicle;
+          currentTestDriveVehicle = null; // Reset after use
+        }
+        
+        addMessage(`Test drive scheduled for ${vehicleName} on ${formattedDateTime}`, 'user');
+        botReply(`Perfect! Your test drive for ${vehicleName} has been scheduled for ${formattedDateTime}. Our team will send you a confirmation shortly. Is there anything else you'd like to know?`);
+      } else {
+        botReply("Please select both date and time to schedule your test drive.");
+      }
+    });
+  }, 100);
+}
+/* ========= Utilities ========= */
+function clearChatSafe(){
+  if (!confirm('Clear conversation? This will reset the chat history.')) return;
+  
+  // Clear chat history
+  chatHistory = [];
+  localStorage.setItem(LS.history, JSON.stringify(chatHistory));
+  
+  // Switch to chat tab
+  currentView = 'chat';
+  localStorage.setItem(LS.view, 'chat');
+  tabButtons.forEach(b => b.classList.toggle('active', b.dataset.tab === 'chat'));
+  
+  // Show welcome message
+  renderChatFromHistory();
+  botReply("Chat history cleared. How can I assist you today?");
+}
+function toggleTheme(){
+const now = chatWidget.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+chatWidget.setAttribute('data-theme', now);
+localStorage.setItem(LS.theme, now);
+themeToggleBtn.innerHTML = now === 'dark' ? '<i class="bi bi-brightness-high"></i>' : '<i class="bi bi-moon-stars"></i>';
+}
+function escapeHTML(s){
+return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+/* ========= Start ========= */
+initChat();
+</script>
+</body>
+</html>

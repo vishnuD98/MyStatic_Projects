@@ -1,0 +1,4415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CarX Commerce - Premium Car Parts & Accessories</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="./images/car-icon.jpg">
+	<link rel="stylesheet" href="./carX.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet">
+</head>
+
+<body>
+	<div class="promo-bar">
+		🚗 Free Car Accessories on Orders above ₹5,000 | Use
+		<strong>CARX10</strong> for 10% OFF
+		<button id="closePromo">&times;</button>
+	</div>
+	<nav class="navbar navbar-expand-lg">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">
+				<i class="bi bi-car-front-fill" style="height: 30px; color: #e63946;"></i>
+				CarX
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="./shop.html" data-bs-toggle="dropdown"> Shop </a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="./shop.html">Engines</a></li>
+							<li><a class="dropdown-item" href="./shop.html">Tyres</a></li>
+							<li><a class="dropdown-item" href="./shop.html">Interior</a></li>
+							<li><a class="dropdown-item" href="./shop.html">Exterior</a></li>
+							<li><a class="dropdown-item" href="./shop.html">Accessories</a></li>
+						</ul>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="./Installation Services.html"> Services </a></li>
+					<li class="nav-item"><a class="nav-link" href="./cart.html"> Cart
+						</a></li>
+					<li class="nav-item"><a class="nav-link" href="./contact.html"> <i class="bi bi-person"></i> Contact
+						</a></li>
+				</ul>
+				<form class="d-flex search-box">
+					<input class="form-control" type="search" placeholder="Search car parts..." id="searchInput">
+				</form>
+				<div class="icons">
+					<div class="icon" id="cartIcon">
+						<i class="fas fa-shopping-cart"></i>
+						<span id="cartCount" class="count-badge">0</span>
+					</div>
+					<div class="icon" id="wishlistIcon">
+						<i class="fas fa-heart"></i>
+						<span id="wishlistCount" class="count-badge">0</span>
+					</div>
+					<div class="icon" id="compareIcon">
+						<i class="fas fa-balance-scale"></i>
+						<span id="compareCount" class="count-badge">0</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- Carousel -->
+	<div class="enhanced-carousel">
+		<div class="list">
+			<div class="item"
+				style="background-image: url(https://images.unsplash.com/photo-1532581140115-3e355d1ed1de?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+				<div class="content">
+					<div class="title">Premium</div>
+					<div class="name">Car Care</div>
+					<div class="des">Keep your car looking brand new with our premium
+						care products.</div>
+					<div class="btn">
+						<a href="./shop.html"> <button>Shop Now</button> </a>
+						<a href="./learn.html"> <button>Learn More CX </button> </a>
+					</div>
+				</div>
+			</div>
+			<div class="item"
+				style="background-image: url(https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+				<div class="content">
+					<div class="title">Interior</div>
+					<div class="name">Accessories</div>
+					<div class="des">Upgrade your car's interior with our luxury
+						accessories.</div>
+					<div class="btn">
+						<a href="./shop.html"> <button>Shop Now</button> </a>
+						<a href="./learn.html"> <button>Learn More CX </button> </a>
+					</div>
+				</div>
+			</div>
+			<div class="item"
+				style="background-image: url(https://images.unsplash.com/photo-1689826493949-5e5824a5474e?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+				<div class="content">
+					<div class="title">Performance</div>
+					<div class="name">Upgrades</div>
+					<div class="des">Enhance your car's performance with our premium
+						parts.</div>
+					<div class="btn">
+						<a href="./shop.html"> <button>Shop Now</button> </a>
+						<a href="./learn.html"> <button>Learn More CX </button> </a>
+					</div>
+				</div>
+			</div>
+			<div class="item"
+				style="background-image: url(https://images.unsplash.com/photo-1626419836588-540d7fadacbd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+				<div class="content">
+					<div class="title">Exterior</div>
+					<div class="name">Styling</div>
+					<div class="des">Make your car stand out with our exterior styling
+						parts.</div>
+					<div class="btn">
+						<a href="./shop.html"> <button>Shop Now</button> </a>
+						<a href="./learn.html"> <button>Learn More CX </button> </a>
+					</div>
+				</div>
+			</div>
+			<div class="item"
+				style="background-image: url(https://images.unsplash.com/photo-1566008885218-90abf9200ddb?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+				<div class="content">
+					<div class="title">Wheels</div>
+					<div class="name">& Tires</div>
+					<div class="des">Complete your look with our premium wheels and
+						tires.</div>
+					<div class="btn">
+						<a href="./shop.html"> <button>Shop Now</button> </a>
+						<a href="./learn.html"> <button>Learn More CX </button> </a>
+					</div>
+				</div>
+			</div>
+			<div class="item"
+				style="background-image: url(https://images.unsplash.com/photo-1584809394311-364392a5011b?q=80&w=1247&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+				<div class="content">
+					<div class="title">Luxury</div>
+					<div class="name">Accessories</div>
+					<div class="des">Elevate your driving experience with our luxury
+						accessories.</div>
+					<div class="btn">
+						<a href="./shop.html"> <button>Shop Now</button> </a>
+						<a href="./learn.html"> <button>Learn More CX </button> </a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--next prev button-->
+		<div class="arrows">
+			<button class="prev"><i class="bi bi-chevron-left"></i></button>
+			<button class="next"><i class="bi bi-chevron-right"></i></button>
+		</div>
+		<!-- time running -->
+		<div class="timeRunning"></div>
+	</div>
+
+	<!-- Floating Button -->
+	<button id="chatBtn" aria-label="Open CarX support" title="CarX Support Hub">
+		<i class="bi bi-car-front-fill"></i>
+	</button>
+
+	<!-- Chat Widget -->
+	<div id="chatWidget" aria-live="polite">
+		<div id="chatHeader">
+			<div class="header-left">
+				<div class="brand-dot"><i class="bi bi-car-front-fill"></i></div>
+				<div class="title-wrap">
+					<div class="h">CarX Support Hub</div>
+					<div class="s">Vehicles • Services • Financing</div>
+				</div>
+			</div>
+			<div class="header-actions">
+				<button class="icon-btn" id="clearChatBtn" title="Clear chat" aria-label="Clear chat"><i
+						class="bi bi-trash"></i></button>
+				<button class="icon-btn" id="themeToggleBtn" title="Toggle theme" aria-label="Toggle theme"><i
+						class="bi bi-moon-stars"></i></button>
+				<button class="icon-btn" id="expandWidgetBtn" title="Expand widget" aria-label="Expand widget"><i
+						class="bi bi-arrows-angle-expand"></i></button>
+				<button class="icon-btn" id="topicsMenuBtn" title="Topics menu" aria-label="Topics menu"><i
+						class="bi bi-list-ul"></i></button>
+				<button class="icon-btn" id="closeWidgetBtn" title="Minimize" aria-label="Minimize"><i
+						class="bi bi-dash-lg"></i></button>
+
+				<!-- Topics Menu -->
+				<div class="topics-menu" id="topicsMenu">
+					<div class="topics-menu-item" data-value="chat">
+						<i class="bi bi-chat-dots"></i> Chat Support
+					</div>
+					<div class="topics-menu-item" data-value="vehicles">
+						<i class="bi bi-car-front"></i> Browse Vehicles
+					</div>
+					<div class="topics-menu-item" data-value="services">
+						<i class="bi bi-tools"></i> Book Service
+					</div>
+					<div class="topics-menu-item" data-value="finance">
+						<i class="bi bi-calculator"></i> Finance Calculator
+					</div>
+					<div class="topics-menu-item" data-value="dealership">
+						<i class="bi bi-geo-alt"></i> Find Dealership
+					</div>
+					<div class="topics-menu-item" data-value="faq">
+						<i class="bi bi-question-circle"></i> FAQ
+					</div>
+					<div class="topics-menu-divider"></div>
+					<div class="topics-menu-item" data-value="Models">
+						<i class="bi bi-car-front"></i> Vehicle Models
+					</div>
+					<div class="topics-menu-item" data-value="Pricing">
+						<i class="bi bi-currency-dollar"></i> Pricing & Deals
+					</div>
+					<div class="topics-menu-item" data-value="Test Drive">
+						<i class="bi bi-calendar-event"></i> Schedule Test Drive
+					</div>
+					<div class="topics-menu-item" data-value="Warranty">
+						<i class="bi bi-shield-check"></i> Warranty Info
+					</div>
+					<div class="topics-menu-item" data-value="Parts">
+						<i class="bi bi-puzzle"></i> Parts & Accessories
+					</div>
+					<div class="topics-menu-item" data-value="Contact">
+						<i class="bi bi-telephone"></i> Contact Us
+					</div>
+				</div>
+			</div>
+			<div class="tabs" id="tabsContainer">
+				<div class="tab-btn active" data-tab="chat">💬 Chat</div>
+				<div class="tab-btn" data-tab="vehicles">🚗 Vehicles</div>
+				<div class="tab-btn" data-tab="services">🔧 Service</div>
+				<div class="tab-btn" data-tab="finance">💰 Finance</div>
+				<div class="tab-btn" data-tab="dealership">📍 Dealers</div>
+				<div class="tab-btn" data-tab="faq">📖 FAQ</div>
+			</div>
+		</div>
+		<div id="chatBody"></div>
+		<div class="quick-replies" id="quickReplies">
+			<div class="quick-reply" data-message="Show me your vehicles">Show me
+				your vehicles</div>
+			<div class="quick-reply" data-message="Schedule a test drive">Schedule a
+				test drive</div>
+			<div class="quick-reply" data-message="Book a service appointment">Book
+				a service</div>
+			<div class="quick-reply" data-message="Calculate financing options">Calculate financing</div>
+		</div>
+		<div id="chatInputArea">
+			<div id="chatInputWrapper">
+				<input type="text" id="chatInput" placeholder="Type a message..." />
+			</div>
+			<div class="input-actions">
+				<button class="action-btn" id="emojiBtn" title="Add emoji"><i class="far fa-smile"></i></button>
+				<button class="action-btn" id="attachBtn" title="Attach file"><i class="fas fa-paperclip"></i></button>
+			</div>
+			<button id="sendBtn" title="Send">➤</button>
+		</div>
+		<!-- Emoji Picker -->
+		<div class="emoji-picker" id="emojiPicker">
+			<div class="emoji-category">
+				<div class="emoji-category-title">Smileys</div>
+				<div class="emoji-list">
+					<div class="emoji-item">😀</div>
+					<div class="emoji-item">😃</div>
+					<div class="emoji-item">😄</div>
+					<div class="emoji-item">😁</div>
+					<div class="emoji-item">😅</div>
+					<div class="emoji-item">😂</div>
+					<div class="emoji-item">🤣</div>
+					<div class="emoji-item">😊</div>
+					<div class="emoji-item">😇</div>
+					<div class="emoji-item">🙂</div>
+					<div class="emoji-item">😉</div>
+					<div class="emoji-item">😌</div>
+					<div class="emoji-item">😍</div>
+					<div class="emoji-item">🥰</div>
+					<div class="emoji-item">😘</div>
+					<div class="emoji-item">😗</div>
+					<div class="emoji-item">😙</div>
+					<div class="emoji-item">😚</div>
+					<div class="emoji-item">😋</div>
+					<div class="emoji-item">😛</div>
+				</div>
+			</div>
+			<div class="emoji-category">
+				<div class="emoji-category-title">Vehicles</div>
+				<div class="emoji-list">
+					<div class="emoji-item">🚗</div>
+					<div class="emoji-item">🚙</div>
+					<div class="emoji-item">🚕</div>
+					<div class="emoji-item">🚐</div>
+					<div class="emoji-item">🚎</div>
+					<div class="emoji-item">🏎️</div>
+					<div class="emoji-item">🚓</div>
+					<div class="emoji-item">🚑</div>
+					<div class="emoji-item">🚒</div>
+					<div class="emoji-item">🚚</div>
+					<div class="emoji-item">🚛</div>
+					<div class="emoji-item">🚜</div>
+					<div class="emoji-item">🦯</div>
+					<div class="emoji-item">🦽</div>
+					<div class="emoji-item">🦼</div>
+					<div class="emoji-item">🛴</div>
+					<div class="emoji-item">🚲</div>
+					<div class="emoji-item">🛵</div>
+					<div class="emoji-item">🏍️</div>
+					<div class="emoji-item">🛺</div>
+				</div>
+			</div>
+			<div class="emoji-category">
+				<div class="emoji-category-title">Tools & Tech</div>
+				<div class="emoji-list">
+					<div class="emoji-item">🔧</div>
+					<div class="emoji-item">⚙️</div>
+					<div class="emoji-item">🔩</div>
+					<div class="emoji-item">⛽</div>
+					<div class="emoji-item">🛢️</div>
+					<div class="emoji-item">🔋</div>
+					<div class="emoji-item">💡</div>
+					<div class="emoji-item">🧰</div>
+					<div class="emoji-item">🛠️</div>
+					<div class="emoji-item">⚡</div>
+					<div class="emoji-item">🔌</div>
+					<div class="emoji-item">💻</div>
+					<div class="emoji-item">📱</div>
+					<div class="emoji-item">📟</div>
+					<div class="emoji-item">📠</div>
+					<div class="emoji-item">📡</div>
+					<div class="emoji-item">🔦</div>
+					<div class="emoji-item">🕯️</div>
+					<div class="emoji-item">🧯</div>
+					<div class="emoji-item">🛡️</div>
+				</div>
+			</div>
+		</div>
+		<!-- File Upload -->
+		<div class="file-upload" id="fileUpload">
+			<div class="file-upload-area" id="fileUploadArea">
+				<i class="fas fa-cloud-upload-alt"></i>
+				<p>Drag & drop files here or click to browse</p>
+				<input type="file" id="fileInput" multiple>
+			</div>
+			<div class="file-list" id="fileList"></div>
+		</div>
+	</div>
+
+	<!-- New Features Section -->
+	<section class="features-section">
+		<div class="container">
+			<h2 class="text-center mb-5">Why Choose CarX?</h2>
+			<div class="row">
+				<div class="col-md-4 mb-4">
+					<div class="feature-box">
+						<div class="feature-icon">
+							<i class="bi bi-truck"></i>
+						</div>
+						<h4>Free Shipping</h4>
+						<p>Free shipping on all orders over ₹5,000. Fast delivery across
+							India.</p>
+					</div>
+				</div>
+				<div class="col-md-4 mb-4">
+					<div class="feature-box">
+						<div class="feature-icon">
+							<i class="bi bi-shield-check"></i>
+						</div>
+						<h4>Quality Guarantee</h4>
+						<p>All our products are quality tested and come with warranty.</p>
+					</div>
+				</div>
+				<div class="col-md-4 mb-4">
+					<div class="feature-box">
+						<div class="feature-icon">
+							<i class="bi bi-headset"></i>
+						</div>
+						<h4>24/7 Support</h4>
+						<p>Our expert team is available round the clock to assist you.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Brands Section -->
+	<section class="brands-section">
+		<div class="container">
+			<h2 class="text-center mb-5">Trusted by Top Brands</h2>
+			<div class="row align-items-center">
+				<div class="col-6 col-md-2 text-center mb-4">
+					<img src="https://images.unsplash.com/photo-1598771591167-9f514f437dc3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+						alt="Brand 1" class="img-fluid brand-logo">
+				</div>
+				<div class="col-6 col-md-2 text-center mb-4">
+					<img src="https://images.unsplash.com/photo-1649583747340-e1b026c71e59?q=80&w=1232&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+						alt="Brand 2" class="img-fluid brand-logo">
+				</div>
+				<div class="col-6 col-md-2 text-center mb-4">
+					<img src="https://images.unsplash.com/photo-1508009538239-61de28eeeab0?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+						alt="Brand 3" class="img-fluid brand-logo">
+				</div>
+				<div class="col-6 col-md-2 text-center mb-4">
+					<img src="https://images.unsplash.com/photo-1738747216294-b0b924a4be47?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+						alt="Brand 4" class="img-fluid brand-logo">
+				</div>
+				<div class="col-6 col-md-2 text-center mb-4">
+					<img src="https://images.unsplash.com/photo-1530410242970-d7132d26ec69?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+						alt="Brand 5" class="img-fluid brand-logo">
+				</div>
+				<div class="col-6 col-md-2 text-center mb-4">
+					<img src="https://images.unsplash.com/photo-1562823144-6ad5f99635f2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+						alt="Brand 6" class="img-fluid brand-logo">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Stats Section -->
+	<section class="container my-5">
+		<div class="row">
+			<div class="col-md-3 col-6 mb-4">
+				<div class="stats-box">
+					<div class="stats-number" id="customers">5000+</div>
+					<div class="stats-text">Happy Customers</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-6 mb-4">
+				<div class="stats-box">
+					<div class="stats-number" id="products">1200+</div>
+					<div class="stats-text">Products</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-6 mb-4">
+				<div class="stats-box">
+					<div class="stats-number" id="orders">15000+</div>
+					<div class="stats-text">Orders Delivered</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-6 mb-4">
+				<div class="stats-box">
+					<div class="stats-number" id="years">5+</div>
+					<div class="stats-text">Years Experience</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="container">
+		<h2 class="section-title">Premium Car Accessories</h2>
+		<div class="category-filters">
+			<div class="category-filter active" data-category="all">All
+				Products</div>
+			<div class="category-filter" data-category="performance">Performance</div>
+			<div class="category-filter" data-category="exterior">Exterior</div>
+			<div class="category-filter" data-category="interior">Interior</div>
+			<div class="category-filter" data-category="electronics">Electronics</div>
+		</div>
+		<div class="products" id="productList"></div>
+	</div>
+
+	<!-- 3D Flip Carousel Section with Auto-slide -->
+	<section class="flip-carousel-container">
+		<div class="container">
+			<div class="flip-carousel-title">
+				<h2>Premium Collection</h2>
+			</div>
+			<div class="flip-carousel">
+				<div class="flip-carousel-inner">
+					<!-- Car 1 -->
+					<div class="flip-carousel-item flip-active">
+						<div class="flip-carousel-card">
+							<div class="flip-carousel-front">
+								<div class="flip-carousel-img">
+									<img src="https://images.unsplash.com/photo-1708389683924-1685acff381f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+										alt="Aetherium Spectre">
+								</div>
+								<div class="flip-carousel-content">
+									<h3>Aetherium Spectre</h3>
+									<p>Ultra-luxury electric sedan with autonomous driving
+										capabilities.</p>
+									<div class="flip-carousel-price">$189,000</div>
+								</div>
+							</div>
+							<div class="flip-carousel-back">
+								<h3>Aetherium Spectre</h3>
+								<p>The future of luxury mobility with zero emissions and
+									unparalleled comfort.</p>
+								<ul>
+									<li>620-mile range on single charge</li>
+									<li>0-60 mph in 2.8 seconds</li>
+									<li>AI-powered autonomous driving</li>
+									<li>Handcrafted interior with sustainable materials</li>
+								</ul>
+								<button class="btn">Schedule Test Drive</button>
+							</div>
+						</div>
+					</div>
+					<!-- Car 2 -->
+					<div class="flip-carousel-item flip-next">
+						<div class="flip-carousel-card">
+							<div class="flip-carousel-front">
+								<div class="flip-carousel-img">
+									<img src="https://images.unsplash.com/photo-1614393889816-89c1570ff1e1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+										alt="Vortex GT">
+								</div>
+								<div class="flip-carousel-content">
+									<h3>Vortex GT</h3>
+									<p>High-performance sports car with track-inspired
+										engineering.</p>
+									<div class="flip-carousel-price">$245,000</div>
+								</div>
+							</div>
+							<div class="flip-carousel-back">
+								<h3>Vortex GT</h3>
+								<p>Experience adrenaline-pumping performance with precision
+									handling.</p>
+								<ul>
+									<li>Twin-turbo V8 engine with 720 HP</li>
+									<li>Carbon fiber body construction</li>
+									<li>Advanced aerodynamics package</li>
+									<li>Race-derived suspension system</li>
+								</ul>
+								<button class="btn">Schedule Test Drive</button>
+							</div>
+						</div>
+					</div>
+					<!-- Car 3 -->
+					<div class="flip-carousel-item flip-far-next">
+						<div class="flip-carousel-card">
+							<div class="flip-carousel-front">
+								<div class="flip-carousel-img">
+									<img src="https://images.unsplash.com/photo-1649583747340-e1b026c71e59?q=80&w=1228&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+										alt="Pinnacle SUV">
+								</div>
+								<div class="flip-carousel-content">
+									<h3>Pinnacle SUV</h3>
+									<p>Luxury SUV with exceptional off-road capabilities and
+										premium comfort.</p>
+									<div class="flip-carousel-price">$132,000</div>
+								</div>
+							</div>
+							<div class="flip-carousel-back">
+								<h3>Pinnacle SUV</h3>
+								<p>Conquer any terrain without compromising on luxury and
+									technology.</p>
+								<ul>
+									<li>Adaptive air suspension with terrain response</li>
+									<li>Hand-stitched leather interior</li>
+									<li>23-speaker premium audio system</li>
+									<li>Advanced driver assistance systems</li>
+								</ul>
+								<button class="btn">Schedule Test Drive</button>
+							</div>
+						</div>
+					</div>
+					<!-- Car 4 -->
+					<div class="flip-carousel-item flip-hidden">
+						<div class="flip-carousel-card">
+							<div class="flip-carousel-front">
+								<div class="flip-carousel-img">
+									<img src="https://images.unsplash.com/photo-1614393889816-89c1570ff1e1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+										alt="Nexus E1">
+								</div>
+								<div class="flip-carousel-content">
+									<h3>Nexus E1</h3>
+									<p>All-electric hypercar with revolutionary performance and
+										technology.</p>
+									<div class="flip-carousel-price">$325,000</div>
+								</div>
+							</div>
+							<div class="flip-carousel-back">
+								<h3>Nexus E1</h3>
+								<p>The pinnacle of electric performance with track-focused
+									engineering.</p>
+								<ul>
+									<li>1,100 HP quad-motor setup</li>
+									<li>0-60 mph in 1.9 seconds</li>
+									<li>Carbon-titanium monocoque chassis</li>
+									<li>Advanced torque vectoring system</li>
+								</ul>
+								<button class="btn">Schedule Test Drive</button>
+							</div>
+						</div>
+					</div>
+					<!-- Car 5 -->
+					<div class="flip-carousel-item flip-hidden">
+						<div class="flip-carousel-card">
+							<div class="flip-carousel-front">
+								<div class="flip-carousel-img">
+									<img src="https://plus.unsplash.com/premium_photo-1694707175420-0b2b2cf628c0?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+										alt="Celestial Coupe">
+								</div>
+								<div class="flip-carousel-content">
+									<h3>Celestial Coupe</h3>
+									<p>Grand tourer combining luxury, performance, and
+										cutting-edge technology.</p>
+									<div class="flip-carousel-price">$215,000</div>
+								</div>
+							</div>
+							<div class="flip-carousel-back">
+								<h3>Celestial Coupe</h3>
+								<p>Experience the perfect balance of exhilarating performance
+									and refined comfort.</p>
+								<ul>
+									<li>Biturbo V12 engine with 680 HP</li>
+									<li>Active rear-wheel steering</li>
+									<li>Executive rear seating package</li>
+									<li>Night vision with animal detection</li>
+								</ul>
+								<button class="btn">Schedule Test Drive</button>
+							</div>
+						</div>
+					</div>
+					<!-- Car 6 -->
+					<div class="flip-carousel-item flip-prev">
+						<div class="flip-carousel-card">
+							<div class="flip-carousel-front">
+								<div class="flip-carousel-img">
+									<img src="https://plus.unsplash.com/premium_photo-1693828619654-b0b924a4be47?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+										alt="Quantum X">
+								</div>
+								<div class="flip-carousel-content">
+									<h3>Quantum X</h3>
+									<p>Futuristic concept car with autonomous capabilities and
+										AI integration.</p>
+									<div class="flip-carousel-price">$399,000</div>
+								</div>
+							</div>
+							<div class="flip-carousel-back">
+								<h3>Quantum X</h3>
+								<p>The next generation of mobility, redefining the
+									relationship between car and driver.</p>
+								<ul>
+									<li>Level 4 autonomous driving</li>
+									<li>Biometric access and personalization</li>
+									<li>Self-healing exterior surface</li>
+									<li>Holographic augmented reality display</li>
+								</ul>
+								<button class="btn">Schedule Test Drive</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="flip-carousel-controls">
+				<button class="flip-carousel-control flip-prev-btn">
+					<i class="bi bi-chevron-left"></i>
+				</button>
+				<button class="flip-carousel-control flip-next-btn">
+					<i class="bi bi-chevron-right"></i>
+				</button>
+			</div>
+			<div class="flip-carousel-indicators">
+				<div class="flip-carousel-indicator active" data-index="0"></div>
+				<div class="flip-carousel-indicator" data-index="1"></div>
+				<div class="flip-carousel-indicator" data-index="2"></div>
+				<div class="flip-carousel-indicator" data-index="3"></div>
+				<div class="flip-carousel-indicator" data-index="4"></div>
+				<div class="flip-carousel-indicator" data-index="5"></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="container my-5">
+		<h2 class="text-center mb-4 header">Featured Video <span class="status-indicator"></span></h2>
+		<div class="row justify-content-center">
+			<div class="col-md-10 col-lg-8">
+				<div class="ratio ratio-16x9 video-container">
+					<!-- YouTube embed URL - Fixed -->
+					<iframe
+						src="https://www.youtube.com/embed/NMThdHhrLoM?autoplay=1&mute=1&loop=1&playlist=NMThdHhrLoM&rel=0"
+						title="YouTube video player" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
+				</div>
+
+
+			</div>
+		</div>
+	</section>
+
+	<!-- Modern Landscape Modal -->
+	<div class="modern-modal" id="modernModal">
+		<div class="modal-landscape">
+			<div class="modal-landscape-header">
+				<img id="modalImage" class="modal-landscape-img" src alt="Product Image">
+				<div id="modalBadge" class="modal-landscape-badge"></div>
+				<button class="modal-close" onclick="closeModernModal()">
+					<i class="fas fa-times"></i>
+				</button>
+			</div>
+			<div class="modal-landscape-body">
+				<div id="modalCategory" class="modal-landscape-category"></div>
+				<h2 id="modalTitle" class="modal-landscape-title"></h2>
+				<div id="modalPrice" class="modal-landscape-price"></div>
+				<p id="modalDescription" class="modal-landscape-desc"></p>
+				<div class="modal-landscape-specs">
+					<h3>Specifications</h3>
+					<div class="modal-specs-grid" id="modalSpecs"></div>
+				</div>
+				<div class="modal-landscape-actions">
+					<button class="modal-btn modal-btn-primary" onclick="addToCartFromModal()">
+						<i class="fas fa-shopping-cart"></i> Add to Cart
+					</button>
+					<button class="modal-btn modal-btn-danger" onclick="addToWishlistFromModal()">
+						<i class="fas fa-heart btn-danger"></i> Add to Wishlist
+					</button>
+					<button class="modal-btn modal-btn-tertiary" onclick="addToCompareFromModal()">
+						<i class="fas fa-balance-scale"></i> Compare
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Car Collection Modal -->
+	<div class="car-modal" id="carModal">
+		<div class="car-modal-landscape">
+			<div class="car-modal-landscape-header">
+				<img id="carModalImage" class="car-modal-landscape-img" src alt="Car Image">
+				<div id="carModalBadge" class="car-modal-landscape-badge"></div>
+				<button class="car-modal-close" onclick="closeCarModal()">
+					<i class="fas fa-times"></i>
+				</button>
+			</div>
+			<div class="car-modal-landscape-body">
+				<div id="carModalCategory" class="car-modal-landscape-category"></div>
+				<h2 id="carModalTitle" class="car-modal-landscape-title"></h2>
+				<div id="carModalPrice" class="car-modal-landscape-price"></div>
+				<p id="carModalDescription" class="car-modal-landscape-desc"></p>
+				<div class="car-modal-landscape-specs">
+					<h3>Specifications</h3>
+					<div class="car-modal-specs-grid" id="carModalSpecs"></div>
+				</div>
+				<div class="car-modal-landscape-specs">
+					<h3>Features</h3>
+					<div class="car-modal-specs-grid" id="carModalFeatures"></div>
+				</div>
+				<div class="car-modal-landscape-actions">
+					<button class="car-modal-btn car-modal-btn-primary" onclick="addCarToCartFromModal()">
+						<i class="fas fa-shopping-cart"></i> Add to Cart
+					</button>
+					<button class="car-modal-btn car-modal-btn-danger" onclick="addCarToWishlistFromModal()">
+						<i class="fas fa-heart"></i> Add to Wishlist
+					</button>
+					<button class="car-modal-btn car-modal-btn-tertiary" onclick="addCarToCompareFromModal()">
+						<i class="fas fa-balance-scale"></i> Compare
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Payment Modal -->
+	<div class="payment-modal" id="paymentModal">
+		<div class="payment-container">
+			<div class="payment-header">
+				<h2>Complete Your Purchase</h2>
+				<p>Secure payment processing</p>
+			</div>
+			<div class="payment-body">
+				<div class="payment-left">
+					<div class="payment-section">
+						<h3>Payment Method</h3>
+						<div class="payment-methods">
+							<div class="payment-method active" data-method="card">
+								<i class="fas fa-credit-card"></i>
+								<div>Credit/Debit Card</div>
+							</div>
+							<div class="payment-method" data-method="paypal">
+								<i class="fab fa-paypal"></i>
+								<div>PayPal</div>
+							</div>
+							<div class="payment-method" data-method="upi">
+								<i class="fas fa-mobile-alt"></i>
+								<div>UPI</div>
+							</div>
+						</div>
+					</div>
+					<div class="payment-section">
+						<h3>Card Details</h3>
+						<div class="form-group">
+							<label class="form-label">Card Number</label>
+							<input type="text" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19"
+								id="cardNumber">
+						</div>
+						<div class="form-row">
+							<div class="form-group">
+								<label class="form-label">Expiry Date</label>
+								<input type="text" class="form-control" placeholder="MM/YY" maxlength="5"
+									id="expiryDate">
+							</div>
+							<div class="form-group">
+								<label class="form-label">CVV</label>
+								<input type="text" class="form-control" placeholder="123" maxlength="3" id="cvv">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Cardholder Name</label>
+							<input type="text" class="form-control" placeholder="John Doe" id="cardName">
+						</div>
+					</div>
+					<div class="payment-section">
+						<h3>Billing Address</h3>
+						<div class="form-group">
+							<label class="form-label">Full Name</label>
+							<input type="text" class="form-control" placeholder="John Doe" id="fullName">
+						</div>
+						<div class="form-group">
+							<label class="form-label">Address</label>
+							<input type="text" class="form-control" placeholder="123 Main Street" id="address">
+						</div>
+						<div class="form-row">
+							<div class="form-group">
+								<label class="form-label">City</label>
+								<input type="text" class="form-control" placeholder="Mumbai" id="city">
+							</div>
+							<div class="form-group">
+								<label class="form-label">Postal Code</label>
+								<input type="text" class="form-control" placeholder="400001" id="postalCode">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="payment-right">
+					<div class="payment-section">
+						<h3>Order Summary</h3>
+						<div class="order-summary" id="orderSummary">
+							<!-- Order items will be added here -->
+						</div>
+					</div>
+					<div class="payment-actions">
+						<button class="payment-btn payment-btn-secondary" onclick="closePaymentModal()">Cancel</button>
+						<button class="payment-btn payment-btn-primary" onclick="processPayment()">
+							<i class="fas fa-lock"></i> Pay Now
+						</button>
+					</div>
+					<div class="payment-security b">
+						<i class="fas fa-lock"></i>
+						<span>Your payment information is secure and encrypted</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Comparison Modal -->
+	<div class="modern-modal" id="compareModal">
+		<div class="modal-landscape" style="max-width: 70%; width: 100%; height: 100%;">
+			<div class="modal-landscape-body" style="width: 100%;">
+				<button class="modal-close" onclick="closeComparisonModal()">
+					<i class="fas fa-times"></i>
+				</button>
+				<h2 class="modal-landscape-title">Product Comparison</h2>
+				<div class="table-responsive">
+					<table class="table table-striped comparison-table">
+						<thead>
+							<tr>
+								<th>Feature</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Image</td>
+							</tr>
+							<tr>
+								<td>Title</td>
+							</tr>
+							<tr>
+								<td>Price</td>
+							</tr>
+							<tr>
+								<td>Description</td>
+							</tr>
+							<tr>
+								<td>Specifications</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Quick View Modal -->
+	<div class="quick-view-modal" id="quickViewModal">
+		<div class="quick-view-content">
+			<div class="quick-view-image">
+				<img id="quickViewImage" src alt>
+				<button class="modal-close" onclick="closeQuickViewModal()">
+					<i class="fas fa-times"></i>
+				</button>
+			</div>
+			<div class="quick-view-details">
+				<div id="quickViewCategory" class="modal-landscape-category"></div>
+				<h2 id="quickViewTitle" class="quick-view-title"></h2>
+				<div id="quickViewPrice" class="quick-view-price"></div>
+				<p id="quickViewDesc" class="quick-view-desc"></p>
+				<div class="quick-view-actions">
+					<button class="modal-btn modal-btn-primary" onclick="addToCartFromQuickView()">
+						<i class="fas fa-shopping-cart"></i> Add to Cart
+					</button>
+					<button class="modal-btn modal-btn-danger" onclick="addToWishlistFromQuickView()">
+						<i class="fas fa-heart"></i> Wishlist
+					</button>
+					<button class="modal-btn modal-btn-tertiary" onclick="showModernModalFromQuickView()">
+						<i class="fas fa-eye"></i> View Details
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Overlay -->
+	<div class="overlay" id="overlay" onclick="closePanels()"> </div>
+
+	<!-- Cart Panel -->
+	<div class="side-panel" id="cartPanel">
+		<div class="panel-header"> </div>
+		<div class="panel-body" id="cartItems">
+			<!-- Cart items will be added here -->
+		</div>
+		<div class="panel-footer">
+			<div class="panel-total">
+				<span>Total:</span>
+				<span id="cartTotal">₹0</span>
+			</div>
+			<button class="btn btn-secondary" onclick="continueShopping()" style="margin-bottom: 10px; width: 100%;">
+				<i class="fas fa-arrow-left"></i> Continue Shopping
+			</button>
+			<button class="btn btn-secondary" onclick="clearCart()" style="margin-bottom: 10px; width: 100%;">
+				<i class="fas fa-trash"></i> Clear All
+			</button>
+			<button class="btn btn-checkout" onclick="showPaymentModal()">
+				<i class="fas fa-credit-card"></i> Checkout
+			</button>
+		</div>
+	</div>
+
+	<!-- Wishlist Panel -->
+	<div class="side-panel" id="wishlistPanel">
+		<div class="panel-header"> </div>
+		<div class="panel-body" id="wishlistItems">
+			<!-- Wishlist items will be added here -->
+		</div>
+		<div class="panel-footer">
+			<button class="btn btn-secondary" onclick="clearWishlist()" style="margin-bottom: 10px; width: 100%;">
+				<i class="fas fa-trash"></i> Clear All
+			</button>
+			<button class="btn btn-primary" style="width: 100%;" onclick="addAllWishlistToCart()">
+				<i class="fas fa-shopping-cart"></i> Add All to Cart
+			</button>
+		</div>
+	</div>
+
+	<!-- Compare Panel -->
+	<div class="side-panel" id="comparePanel">
+		<div class="panel-header"> </div>
+		<div class="panel-body" id="compareItems">
+			<!-- Compare items will be added here -->
+		</div>
+		<div class="panel-footer">
+			<button class="btn btn-primary" onclick="showComparison()">
+				Compare Now
+			</button>
+			<button class="btn btn-secondary" onclick="clearComparison()">
+				Clear All
+			</button>
+		</div>
+	</div>
+
+	<!-- Testimonials Section -->
+	<section class="testimonials">
+		<div class="container">
+			<h2 class="text-center mb-5">What Our Customers Say</h2>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="testimonial-card">
+						<div class="d-flex align-items-center mb-3">
+							<img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer"
+								class="testimonial-img">
+							<div>
+								<h5 class="mb-0">Rajesh Kumar</h5>
+								<p class="text-muted mb-0">Delhi</p>
+							</div>
+						</div>
+						<p class="mb-0">"The quality of parts I received was exceptional. My car has never run better!"
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="testimonial-card">
+						<div class="d-flex align-items-center mb-3">
+							<img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer"
+								class="testimonial-img">
+							<div>
+								<h5 class="mb-0">Priya Sharma</h5>
+								<p class="text-muted mb-0">Mumbai</p>
+							</div>
+						</div>
+						<p class="mb-0">"Fast delivery and excellent customer service. Will definitely shop again!"</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="testimonial-card">
+						<div class="d-flex align-items-center mb-3">
+							<img src="https://randomuser.me/api/portraits/men/62.jpg" alt="Customer"
+								class="testimonial-img">
+							<div>
+								<h5 class="mb-0">Vikram Singh</h5>
+								<p class="text-muted mb-0">Bangalore</p>
+							</div>
+						</div>
+						<p class="mb-0">"The premium alloy wheels I bought have completely transformed my car's look."
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Car Collections / E-Commerce Section -->
+	<section class="commerce-section py-5 bg-light">
+		<div class="container">
+			<h2 class="text-center mb-4">Our Car Collections</h2>
+			<div class="row g-4" id="carCollections">
+				<div class="col-md-4">
+					<div class="card h-100 car-collection-card">
+						<img src="https://images.unsplash.com/photo-1584449968493-2a32fac3af86?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+							class="card-img-top" alt="Sporty Sedan">
+						<div class="card-body">
+							<h5 class="card-title">Sporty Sedan</h5>
+							<p class="card-text">Premium performance, sleek design, and
+								unmatched comfort for your daily drive.</p>
+						</div>
+						<div class="card-footer d-flex justify-content-center">
+							<div>
+								<button class="btn btn-outline-info rounded-5" style="border: 2px solid rgb(125, 78, 255);" onclick="quickViewCar(1)">
+									Quick View
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card h-100 car-collection-card">
+						<img src="https://images.unsplash.com/photo-1714581067729-14088f1068686?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+							class="card-img-top" alt="Luxury SUV">
+						<div class="card-body">
+							<h5 class="card-title">Luxury SUV</h5>
+							<p class="card-text">Spacious interiors, off-road capability,
+								and cutting-edge technology.</p>
+						</div>
+						<div class="card-footer d-flex justify-content-center">
+							
+							<div>
+								<button class="btn btn-outline-info rounded-5" style="border: 2px solid rgb(125, 78, 255);" onclick="quickViewCar(2)">
+									Quick View
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card h-100 car-collection-card">
+						<img src="https://images.unsplash.com/photo-1714581068686-6ec6cf804068?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+							class="card-img-top" alt="Electric Hatchback">
+						<div class="card-body">
+							<h5 class="card-title">Electric Hatchback</h5>
+							<p class="card-text">Eco-friendly, compact, and smart features
+								for city commuting.</p>
+						</div>
+						<div class="card-footer d-flex justify-content-center">
+							<div>
+								<button class="btn btn-outline-info rounded-5" style="border: 2px solid rgb(125, 78, 255);" onclick="quickViewCar(3)">
+									Quick View</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card h-100 car-collection-card">
+						<img src="https://images.unsplash.com/photo-1680530943234-5a228d5feacd?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+							class="card-img-top" alt="Sporty Sedan">
+						<div class="card-body">
+							<h5 class="card-title">Sporty Sedan</h5>
+							<p class="card-text">Premium performance, sleek design, and
+								unmatched comfort for your daily drive.</p>
+						</div>
+						<div class="card-footer d-flex justify-content-center">
+							<div>
+								<button class="btn btn-outline-info rounded-5" style="border: 2px solid rgb(125, 78, 255);" onclick="quickViewCar(4)"> 
+									QuickView
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card h-100 car-collection-card">
+						<img src="https://images.unsplash.com/photo-1665713992516-9a116889067a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+							class="card-img-top" alt="Luxury SUV">
+						<div class="card-body">
+							<h5 class="card-title">Luxury SUV</h5>
+							<p class="card-text">Spacious interiors, off-road capability,
+								and cutting-edge technology.</p>
+						</div>
+						<div class="card-footer d-flex justify-content-center">
+							<div>
+								<button class="btn btn-outline-info rounded-5" style="border: 2px solid rgb(125, 78, 255);" onclick="quickViewCar(5)">
+									Quick View
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card h-100 car-collection-card">
+						<img src="https://images.unsplash.com/photo-1583425583779-27e82172cf05?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+							class="card-img-top" alt="Electric Hatchback">
+						<div class="card-body">
+							<h5 class="card-title">Electric Hatchback</h5>
+							<p class="card-text">Eco-friendly, compact, and smart features
+								for city commuting.</p>
+						</div>
+						<div class="card-footer d-flex justify-content-center">
+							<div class="">
+								<button class="btn btn-outline-info rounded-5" style="border: 2px solid rgb(125, 78, 255);" onclick="quickViewCar(6)">
+									Quick View
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Newsletter Section -->
+	<section class="newsletter">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-8 text-center">
+					<h2 class="mb-3">Subscribe to Our Newsletter</h2>
+					<p class="mb-4">Get the latest updates on new products, special
+						offers, and car maintenance tips.</p>
+					<form class="d-flex justify-content-center">
+						<input type="email" class="form-control me-2" placeholder="Your email address"
+							style="max-width: 300px;">
+						<button type="submit" class="btn btn-light">Subscribe</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<div class="footer-content">
+			<div class="footer-grid">
+				<!-- Brand Section -->
+				<div class="footer-brand">
+					<div class="footer-logo">
+						<i class="fas fa-car"></i>
+						<h2>CarX</h2>
+					</div>
+					<p class="footer-description">Premium car parts and accessories for enthusiasts and professionals
+						alike. Your trusted partner for all automotive needs.</p>
+
+					<div class="footer-social">
+						<a href="https://facebook.com" target="_blank" title="Facebook" aria-label="Facebook">
+							<i class="fab fa-facebook-f"></i>
+						</a>
+						<a href="https://twitter.com" target="_blank" title="Twitter" aria-label="Twitter">
+							<i class="fab fa-twitter"></i>
+						</a>
+						<a href="https://instagram.com" target="_blank" title="Instagram" aria-label="Instagram">
+							<i class="fab fa-instagram"></i>
+						</a>
+						<a href="https://linkedin.com" target="_blank" title="LinkedIn" aria-label="LinkedIn">
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+						<a href="https://youtube.com" target="_blank" title="YouTube" aria-label="YouTube">
+							<i class="fab fa-youtube"></i>
+						</a>
+					</div>
+
+					<div class="footer-newsletter">
+						<h5>Subscribe to Newsletter</h5>
+						<p>Get exclusive offers and updates delivered to your inbox</p>
+						<form class="footer-newsletter-form" id="newsletterForm">
+							<input type="email" placeholder="Your email address" required id="newsletterEmail">
+							<button type="submit" id="subscribeBtn">Subscribe</button>
+						</form>
+						<div class="newsletter-message" id="newsletterMessage"></div>
+					</div>
+				</div>
+
+				<!-- Quick Links Section -->
+				<div class="footer-section">
+					<h5>Quick Links</h5>
+					<ul>
+						<li><a href="#home">Home</a></li>
+						<li><a href="#shop">Shop</a></li>
+						<li><a href="#about">About Us</a></li>
+						<li><a href="#services">Services</a></li>
+						<li><a href="#contact">Contact</a></li>
+						<li><a href="#blog">Blog</a></li>
+					</ul>
+				</div>
+
+				<!-- Categories Section -->
+				<div class="footer-section">
+					<h5>Categories</h5>
+					<ul>
+						<li><a href="#engines">Engines</a></li>
+						<li><a href="#tyres">Tyres</a></li>
+						<li><a href="#interior">Interior</a></li>
+						<li><a href="#exterior">Exterior</a></li>
+						<li><a href="#electronics">Electronics</a></li>
+						<li><a href="#accessories">Accessories</a></li>
+						<li><a href="#performance">Performance</a></li>
+					</ul>
+				</div>
+
+				<!-- Contact Section -->
+				<div class="footer-section">
+					<h5>Contact Us</h5>
+					<div class="footer-contact-item">
+						<i class="fas fa-map-marker-alt"></i>
+						<span>123 Auto Street, Mumbai, Maharashtra 400001</span>
+					</div>
+					<div class="footer-contact-item">
+						<i class="fas fa-phone"></i>
+						<span>+91 9876543210</span>
+					</div>
+					<div class="footer-contact-item">
+						<i class="fas fa-envelope"></i>
+						<span>info@carX.com</span>
+					</div>
+					<div class="footer-contact-item">
+						<i class="fas fa-clock"></i>
+						<span>Mon-Sat: 9AM-8PM, Sun: 10AM-6PM</span>
+					</div>
+
+					<div class="footer-payment">
+						<h5>Payment Methods</h5>
+						<div class="footer-payment-methods">
+							<i class="fab fa-cc-visa" title="Visa"></i>
+							<i class="fab fa-cc-mastercard" title="Mastercard"></i>
+							<i class="fab fa-cc-paypal" title="PayPal"></i>
+							<i class="fab fa-cc-amex" title="American Express"></i>
+							<i class="fas fa-university" title="Net Banking"></i>
+							<i class="fas fa-money-bill-wave" title="UPI"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="footer-bottom">
+				<div class="footer-bottom-links">
+					<a href="#privacy">Privacy Policy</a>
+					<a href="#terms">Terms of Service</a>
+					<a href="#refund">Refund Policy</a>
+					<a href="#shipping">Shipping Policy</a>
+					<a href="#faq">FAQ</a>
+				</div>
+				<div class="footer-copyright">
+					&copy; <span id="currentYear"></span> CarX eCommerce. All rights reserved. | Designed with <i
+						class="fas fa-heart"></i> by CarX Team
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Floating Toggle Button -->
+	<div class="floating-toggle" id="floatingToggle">
+		<i class="bi bi-chevron-left" id="toggleIcon"></i>
+	</div>
+
+	<!-- Floating Widget -->
+	<div class="floating-widget" id="floatingWidget">
+		<button id="searchBtn"><i class="bi bi-search"></i></button>
+		<button id="cartBtn"><i class="bi bi-cart"></i></button>
+		<button id="backToTop"><i class="bi bi-arrow-up"></i></button>
+	</div>
+
+	<!-- Scripts -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+
+		// Initialize variables
+		const nav = document.querySelector(".navbar");
+		const backToTop = document.getElementById("backToTop");
+		const closePromo = document.getElementById("closePromo");
+		const promoBar = document.querySelector(".promo-bar");
+		const floatingWidget = document.getElementById("floatingWidget");
+		const floatingToggle = document.getElementById("floatingToggle");
+		const toggleIcon = document.getElementById("toggleIcon");
+		const searchBtn = document.getElementById("searchBtn");
+		const cartBtn = document.getElementById("cartBtn");
+		const searchInput = document.getElementById("searchInput");
+		const cartIcon = document.getElementById("cartIcon");
+		const wishlistIcon = document.getElementById("wishlistIcon");
+		const compareIcon = document.getElementById("compareIcon");
+		const categoryFilters = document.querySelectorAll(".category-filter");
+
+		// Initialize floating widget as hidden
+		floatingWidget.classList.add("hidden");
+		toggleIcon.classList.remove("bi-chevron-left");
+		toggleIcon.classList.add("bi-chevron-right");
+
+		// Scroll Effects
+		window.addEventListener("scroll", () => {
+			nav.classList.toggle("scrolled", window.scrollY > 50);
+			if (window.scrollY > 300) {
+				backToTop.classList.add("show");
+			} else {
+				backToTop.classList.remove("show");
+			}
+		});
+
+		// Back to Top
+		backToTop.addEventListener("click", () => {
+			window.scrollTo({ top: 0, behavior: "smooth" });
+		});
+
+		// Close Promo
+		closePromo.addEventListener("click", () => {
+			promoBar.style.display = "none";
+		});
+
+		// Floating widget toggle
+		floatingToggle.addEventListener("click", () => {
+			floatingWidget.classList.toggle("hidden");
+			if (floatingWidget.classList.contains("hidden")) {
+				toggleIcon.classList.remove("bi-chevron-left");
+				toggleIcon.classList.add("bi-chevron-right");
+			} else {
+				toggleIcon.classList.remove("bi-chevron-right");
+				toggleIcon.classList.add("bi-chevron-left");
+			}
+		});
+
+		// Search button functionality
+		searchBtn.addEventListener("click", () => {
+			searchInput.focus();
+		});
+
+		// Cart button functionality
+		cartBtn.addEventListener("click", () => {
+			togglePanel('cartPanel');
+		});
+
+		// Cart icon functionality
+		cartIcon.addEventListener("click", () => {
+			togglePanel('cartPanel');
+		});
+
+		// Wishlist icon functionality
+		wishlistIcon.addEventListener("click", () => {
+			togglePanel('wishlistPanel');
+		});
+
+		// Compare icon functionality
+		compareIcon.addEventListener("click", () => {
+			togglePanel('comparePanel');
+		});
+
+		// Enhanced Carousel Functionality
+		const nextBtn = document.querySelector('.enhanced-carousel .next');
+		const prevBtn = document.querySelector('.enhanced-carousel .prev');
+		const carousel = document.querySelector('.enhanced-carousel');
+		const list = document.querySelector('.enhanced-carousel .list');
+		const runningTime = document.querySelector('.enhanced-carousel .timeRunning');
+		let timeRunning = 3000;
+		let timeAutoNext = 7000;
+
+		if (nextBtn && prevBtn) {
+			nextBtn.onclick = function () {
+				showSlider('next');
+			}
+			prevBtn.onclick = function () {
+				showSlider('prev');
+			}
+		}
+
+		let runTimeOut;
+		let runNextAuto = setTimeout(() => {
+			if (nextBtn) nextBtn.click();
+		}, timeAutoNext);
+
+		function resetTimeAnimation() {
+			if (runningTime) {
+				runningTime.style.animation = 'none';
+				runningTime.offsetHeight; /* trigger reflow */
+				runningTime.style.animation = null;
+				runningTime.style.animation = 'runningTime 7s linear 1 forwards';
+			}
+		}
+
+		function showSlider(type) {
+			if (!list) return;
+			let sliderItemsDom = list.querySelectorAll('.enhanced-carousel .list .item');
+			if (type === 'next') {
+				list.appendChild(sliderItemsDom[0]);
+				carousel.classList.add('next');
+			} else {
+				list.prepend(sliderItemsDom[sliderItemsDom.length - 1]);
+				carousel.classList.add('prev');
+			}
+			clearTimeout(runTimeOut);
+			runTimeOut = setTimeout(() => {
+				carousel.classList.remove('next');
+				carousel.classList.remove('prev');
+			}, timeRunning);
+			clearTimeout(runNextAuto);
+			runNextAuto = setTimeout(() => {
+				if (nextBtn) nextBtn.click();
+			}, timeAutoNext);
+			resetTimeAnimation(); // Reset the running time animation
+		}
+
+		// Start the initial animation
+		resetTimeAnimation();
+
+		// Animate stats counter
+		function animateValue(id, start, end, duration) {
+			let obj = document.getElementById(id);
+			if (!obj) return;
+			let range = end - start;
+			let current = start;
+			let increment = end > start ? 1 : -1;
+			let stepTime = Math.abs(Math.floor(duration / range));
+			let timer = setInterval(() => {
+				current += increment;
+				obj.innerHTML = current + "+";
+				if (current == end) {
+					clearInterval(timer);
+				}
+			}, stepTime);
+		}
+
+		// Start counter animation when stats section is in view
+		window.addEventListener('scroll', function () {
+			const statsSection = document.querySelector('.stats-box');
+			if (statsSection) {
+				const position = statsSection.getBoundingClientRect();
+				if (position.top < window.innerHeight && position.bottom >= 0) {
+					animateValue("customers", 0, 5000, 2000);
+					animateValue("products", 0, 1200, 2000);
+					animateValue("orders", 0, 15000, 2000);
+					animateValue("years", 0, 5, 2000);
+				}
+			}
+		});
+
+		// 3D Flip Carousel Functionality with Auto-slide
+		document.addEventListener('DOMContentLoaded', function () {
+			const carouselItems = document.querySelectorAll('.flip-carousel-item');
+			const prevBtn = document.querySelector('.flip-prev-btn');
+			const nextBtn = document.querySelector('.flip-next-btn');
+			const indicators = document.querySelectorAll('.flip-carousel-indicator');
+			let currentIndex = 0;
+			const totalItems = carouselItems.length;
+
+			if (carouselItems.length === 0) return;
+
+			// Function to update carousel positions
+			function updateCarousel() {
+				carouselItems.forEach((item, index) => {
+					item.classList.remove('flip-active', 'flip-prev', 'flip-next', 'flip-far-prev', 'flip-far-next', 'flip-hidden');
+					if (index === currentIndex) {
+						item.classList.add('flip-active');
+					} else if (index === (currentIndex + 1) % totalItems) {
+						item.classList.add('flip-next');
+					} else if (index === (currentIndex + 2) % totalItems) {
+						item.classList.add('flip-far-next');
+					} else if (index === (currentIndex - 1 + totalItems) % totalItems) {
+						item.classList.add('flip-prev');
+					} else if (index === (currentIndex - 2 + totalItems) % totalItems) {
+						item.classList.add('flip-far-prev');
+					} else {
+						item.classList.add('flip-hidden');
+					}
+				});
+
+				// Update indicators
+				indicators.forEach((indicator, index) => {
+					if (index === currentIndex) {
+						indicator.classList.add('active');
+					} else {
+						indicator.classList.remove('active');
+					}
+				});
+			}
+
+			// Next button click event
+			if (nextBtn) {
+				nextBtn.addEventListener('click', function () {
+					currentIndex = (currentIndex + 1) % totalItems;
+					updateCarousel();
+				});
+			}
+
+			// Previous button click event
+			if (prevBtn) {
+				prevBtn.addEventListener('click', function () {
+					currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+					updateCarousel();
+				});
+			}
+
+			// Indicator click events
+			indicators.forEach((indicator, index) => {
+				indicator.addEventListener('click', function () {
+					currentIndex = index;
+					updateCarousel();
+				});
+			});
+
+			// Auto-rotate carousel
+			let autoRotate = setInterval(() => {
+				currentIndex = (currentIndex + 1) % totalItems;
+				updateCarousel();
+			}, 5000);
+
+			// Pause auto-rotation on hover
+			const carouselContainer = document.querySelector('.flip-carousel');
+			if (carouselContainer) {
+				carouselContainer.addEventListener('mouseenter', () => {
+					clearInterval(autoRotate);
+				});
+				carouselContainer.addEventListener('mouseleave', () => {
+					autoRotate = setInterval(() => {
+						currentIndex = (currentIndex + 1) % totalItems;
+						updateCarousel();
+					}, 5000);
+				});
+			}
+
+			// Initialize carousel
+			updateCarousel();
+		});
+
+		// Product data
+		const products = [
+			{
+				id: 1,
+				title: "Premium Engine Oil",
+				description: "High-performance synthetic engine oil that provides superior protection for your engine, reduces friction, and improves fuel efficiency. Designed for extreme temperature conditions.",
+				price: 1200,
+				image: "https://images.unsplash.com/photo-1635437536607-b8572f443763?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				specs: [
+					"Viscosity: 5W-30",
+					"Fully synthetic formula",
+					"Enhanced wear protection",
+					"Improved fuel economy",
+					"Suitable for petrol & diesel engines",
+					"API SP, ILSAC GF-6 certified"
+				],
+				badge: "BEST SELLER",
+				category: "performance"
+			},
+			{
+				id: 2,
+				title: "Alloy Wheels Set",
+				description: "Stylish and durable alloy wheels that enhance your vehicle's appearance while providing better heat conduction and improved performance.",
+				price: 15000,
+				image: "https://images.unsplash.com/photo-1707926431952-f8b2cd370e9e?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				specs: [
+					"Size: 17-inch diameter",
+					"Material: Aerospace-grade aluminum",
+					"Load rating: 700 kg per wheel",
+					"Multi-spoke design",
+					"Glossy black finish with machined edges",
+					"Includes center caps and valves"
+				],
+				badge: "NEW",
+				category: "exterior"
+			},
+			{
+				id: 3,
+				title: "Leather Seat Covers",
+				description: "Premium leather seat covers that provide exceptional comfort, protection for your original upholstery, and a luxurious look to your vehicle's interior.",
+				price: 8000,
+				image: "https://images.unsplash.com/photo-1717406002768-a39613b0c7c1?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				specs: [
+					"Material: Premium PU Leather",
+					"Water and stain resistant",
+					"Universal fit with adjustable straps",
+					"Breathable perforated sections",
+					"Easy to install and clean",
+					"Available in black, brown, and beige"
+				],
+				category: "interior"
+			},
+			{
+				id: 4,
+				title: "Car Phone Holder",
+				description: "Advanced phone mount with wireless charging capability, sturdy grip, and flexible positioning for optimal visibility while driving.",
+				price: 2500,
+				image: "https://plus.unsplash.com/premium_photo-1693879433505-ef9320db8b55?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				specs: [
+					"Qi wireless charging (15W max)",
+					"Auto-clamping mechanism",
+					"360-degree rotation",
+					"Dashboard and vent mounting options",
+					"Fast-charge compatible",
+					"Built-in cable management"
+				],
+				badge: "SALE",
+				category: "electronics"
+			},
+			{
+				id: 5,
+				title: "LED Headlight Kit",
+				description: "Ultra-bright LED headlight conversion kit that dramatically improves nighttime visibility with a clean, modern look and energy efficiency.",
+				price: 4500,
+				image: "https://images.unsplash.com/photo-1554780632-511142996491?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				specs: [
+					"6000K cool white light",
+					"10000 lumens per pair",
+					"Canbus-ready without error codes",
+					"IP67 waterproof rating",
+					"50,000+ hours lifespan",
+					"Plug-and-play installation"
+				],
+				category: "exterior"
+			},
+			{
+				id: 6,
+				title: "Car Roof Rack",
+				description: "Durable roof rack system with enhanced load capacity, aerodynamic design, and universal compatibility with most vehicle roof types.",
+				price: 12000,
+				image: "https://images.unsplash.com/photo-1682310917618-321949b5bba1?q=80&w=1051&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				specs: [
+					"Load capacity: 75 kg",
+					"Aerodynamic bar design",
+					"Black powder-coated finish",
+					"Universal fitment system",
+					"Includes lockable cores",
+					"Tool-free adjustment"
+				],
+				badge: "PREMIUM",
+				category: "exterior"
+			}
+		];
+
+		// Car collections data
+		const carCollections = [
+			{
+				id: 1,
+				title: "Sporty Sedan",
+				description: "Premium performance, sleek design, and unmatched comfort for your daily drive.",
+				price: 2500000,
+				image: "https://images.unsplash.com/photo-1621135802920-133df287f89c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				specs: [
+					"Engine: 2.0L Turbocharged",
+					"Horsepower: 300 HP",
+					"Transmission: 8-Speed Automatic",
+					"Fuel Economy: 12 km/l city, 16 km/l highway"
+				],
+				features: [
+					"Leather upholstery with heated seats",
+					"Panoramic sunroof",
+					"Wireless Apple CarPlay & Android Auto",
+					"12.3-inch digital instrument cluster"
+				],
+				badge: "BEST SELLER"
+			},
+			{
+				id: 2,
+				title: "Luxury SUV",
+				description: "Spacious interiors, off-road capability, and cutting-edge technology.",
+				price: 4800000,
+				image: "https://images.unsplash.com/photo-1694700099822-11a20801e34e?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				specs: [
+					"Engine: 3.0L V6 Turbocharged",
+					"Horsepower: 400 HP",
+					"Transmission: 9-Speed Automatic",
+					"Fuel Economy: 9 km/l city, 12 km/l highway"
+				],
+				features: [
+					"Premium Nappa leather seats with ventilation",
+					"Four-zone automatic climate control",
+					"Heads-up display with augmented reality",
+					"21-inch alloy wheels with all-terrain tires"
+				],
+				badge: "PREMIUM"
+			},
+			{
+				id: 3,
+				title: "Electric Hatchback",
+				description: "Eco-friendly, compact, and smart features for city commuting.",
+				price: 1200000,
+				image: "https://images.unsplash.com/photo-1603117682462-fc0fa5046a9d?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				specs: [
+					"Motor: Electric",
+					"Power: 150 kW (201 HP)",
+					"Transmission: Single-Speed Automatic",
+					"Range: 400 km on single charge"
+				],
+				features: [
+					"Fast charging capability (0-80% in 30 minutes)",
+					"Regenerative braking system",
+					"10.25-inch touchscreen infotainment",
+					"Wireless smartphone charging"
+				],
+				badge: "ECO-FRIENDLY"
+			},
+			{
+				id: 4,
+				title: "Performance Coupe",
+				description: "Track-inspired engineering with exhilarating performance and precision handling.",
+				price: 3500000,
+				image: "https://images.unsplash.com/photo-1603569990495-a45b6663339d?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				specs: [
+					"Engine: 4.0L Twin-Turbo V8",
+					"Horsepower: 650 HP",
+					"Transmission: 7-Speed Dual-Clutch",
+					"Fuel Economy: 7 km/l city, 10 km/l highway"
+				],
+				features: [
+					"Carbon-ceramic brakes with high-performance calipers",
+					"Adaptive suspension with track mode",
+					"Sport-tuned exhaust system",
+					"Carbon fiber aerodynamic package"
+				],
+				badge: "HIGH PERFORMANCE"
+			},
+			{
+				id: 5,
+				title: "Executive Sedan",
+				description: "Ultimate luxury and comfort with advanced technology for the discerning driver.",
+				price: 5500000,
+				image: "https://images.unsplash.com/photo-1564622527056-737ba22ba7ac?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				specs: [
+					"Engine: 4.4L Twin-Turbo V8",
+					"Horsepower: 530 HP",
+					"Transmission: 8-Speed Automatic with Sport Mode",
+					"Fuel Economy: 8 km/l city, 12 km/l highway"
+				],
+				features: [
+					"Executive rear seating with massage function",
+					"Rear-seat entertainment system with dual screens",
+					"Night vision with pedestrian detection",
+					"Four-zone climate control with air purification"
+				],
+				badge: "LUXURY"
+			},
+			{
+				id: 6,
+				title: "Compact SUV",
+				description: "Versatile and efficient with modern styling and advanced safety features.",
+				price: 1800000,
+				image: "https://images.unsplash.com/photo-1611064731175-08c26fc763f7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+				specs: [
+					"Engine: 1.5L Turbocharged",
+					"Horsepower: 180 HP",
+					"Transmission: CVT Automatic",
+					"Fuel Economy: 14 km/l city, 18 km/l highway"	
+				],
+				features: [
+					"Spacious interior with flexible seating configuration",
+					"Advanced safety suite with automatic emergency braking",
+					"8-inch touchscreen with smartphone integration",
+					"Dual-zone automatic climate control"
+				],
+				badge: "FAMILY FRIENDLY"
+			}
+		];
+
+		// Initialize cart, wishlist, and compare from localStorage if available
+		let cart = JSON.parse(localStorage.getItem('cart')) || [];
+		let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+		let compare = JSON.parse(localStorage.getItem('compare')) || [];
+		let currentProduct = null;
+		let currentCar = null;
+		let currentCategory = 'all';
+
+		// DOM elements
+		const productList = document.getElementById("productList");
+
+		// Render products with clean design
+		function renderProducts(productsToRender = products) {
+			if (!productList) return;
+			productList.innerHTML = '';
+			productsToRender.forEach(product => {
+				const card = document.createElement("div");
+				card.className = "product-card";
+				card.innerHTML = `
+                ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                <div class="product-img-container">
+                <img src="${product.image}" alt="${product.title}" class="product-img">
+                <div class="product-overlay">
+                </div>
+                </div>
+                <div class="product-body">
+                <div class="product-category">${product.category}</div>
+                <h3 class="product-title">${product.title}</h3>
+                <div class="product-price">₹${product.price.toLocaleString()}</div>
+                <p class="product-desc">${product.description}</p>
+                <div class="product-actions">
+                <button class="btn-details" onclick="showModernModal(${product.id})">View Details</button>
+                <button class="btn-icon" onclick="addToCompare(${product.id})" title="Add to Compare">
+                <i class="fas fa-balance-scale"></i>
+                </button>
+                </div>
+                </div>
+                `;
+				productList.appendChild(card);
+			});
+		}
+
+		// Show modern modal
+		function showModernModal(id) {
+			currentProduct = products.find(p => p.id === id);
+			if (currentProduct) {
+				const modalImage = document.getElementById("modalImage");
+				const modalBadge = document.getElementById("modalBadge");
+				const modalCategory = document.getElementById("modalCategory");
+				const modalTitle = document.getElementById("modalTitle");
+				const modalDescription = document.getElementById("modalDescription");
+				const modalPrice = document.getElementById("modalPrice");
+				const modalSpecs = document.getElementById("modalSpecs");
+				const modernModal = document.getElementById("modernModal");
+
+				if (modalImage) modalImage.src = currentProduct.image;
+				if (modalBadge) {
+					if (currentProduct.badge) {
+						modalBadge.textContent = currentProduct.badge;
+						modalBadge.style.display = 'block';
+					} else {
+						modalBadge.style.display = 'none';
+					}
+				}
+				if (modalCategory) modalCategory.textContent = currentProduct.category.toUpperCase();
+				if (modalTitle) modalTitle.textContent = currentProduct.title;
+				if (modalDescription) modalDescription.textContent = currentProduct.description;
+				if (modalPrice) modalPrice.textContent = `₹${currentProduct.price.toLocaleString()}`;
+				if (modalSpecs) {
+					modalSpecs.innerHTML = '';
+					currentProduct.specs.forEach(spec => {
+						const specItem = document.createElement("div");
+						specItem.className = "modal-spec-item";
+						specItem.innerHTML = `
+                    <i class="fas fa-check-circle"></i>
+                    <div class="modal-spec-text">${spec}</div>
+                    `;
+						modalSpecs.appendChild(specItem);
+					});
+				}
+				if (modernModal) modernModal.classList.add("active");
+			}
+		}
+
+		// Close modern modal
+		function closeModernModal() {
+			const modernModal = document.getElementById("modernModal");
+			if (modernModal) modernModal.classList.remove("active");
+		}
+
+		// Show car modal
+		function showCarModal(id) {
+			currentCar = carCollections.find(c => c.id === id);
+			if (currentCar) {
+				const carModalImage = document.getElementById("carModalImage");
+				const carModalBadge = document.getElementById("carModalBadge");
+				const carModalCategory = document.getElementById("carModalCategory");
+				const carModalTitle = document.getElementById("carModalTitle");
+				const carModalDescription = document.getElementById("carModalDescription");
+				const carModalPrice = document.getElementById("carModalPrice");
+				const carModalSpecs = document.getElementById("carModalSpecs");
+				const carModalFeatures = document.getElementById("carModalFeatures");
+				const carModal = document.getElementById("carModal");
+
+				if (carModalImage) carModalImage.src = currentCar.image;
+				if (carModalBadge) {
+					if (currentCar.badge) {
+						carModalBadge.textContent = currentCar.badge;
+						carModalBadge.style.display = 'block';
+					} else {
+						carModalBadge.style.display = 'none';
+					}
+				}
+				if (carModalCategory) carModalCategory.textContent = "LUXURY VEHICLE";
+				if (carModalTitle) carModalTitle.textContent = currentCar.title;
+				if (carModalDescription) carModalDescription.textContent = currentCar.description;
+				if (carModalPrice) carModalPrice.textContent = `₹${currentCar.price.toLocaleString()}`;
+				if (carModalSpecs) {
+					carModalSpecs.innerHTML = '';
+					currentCar.specs.forEach(spec => {
+						const specItem = document.createElement("div");
+						specItem.className = "car-modal-spec-item";
+						specItem.innerHTML = `
+                        <i class="fas fa-cog"></i>
+                        <div class="car-modal-spec-text">${spec}</div>
+                        `;
+						carModalSpecs.appendChild(specItem);
+					});
+				}
+				if (carModalFeatures) {
+					carModalFeatures.innerHTML = '';
+					currentCar.features.forEach(feature => {
+						const featureItem = document.createElement("div");
+						featureItem.className = "car-modal-spec-item";
+						featureItem.innerHTML = `
+                        <i class="fas fa-star"></i>
+                        <div class="car-modal-spec-text">${feature}</div>
+                        `;
+						carModalFeatures.appendChild(featureItem);
+					});
+				}
+				if (carModal) carModal.classList.add("active");
+			}
+		}
+
+		// Close car modal
+		function closeCarModal() {
+			const carModal = document.getElementById("carModal");
+			if (carModal) carModal.classList.remove("active");
+		}
+
+		// Add to cart from modal
+		function addToCartFromModal() {
+			if (currentProduct) {
+				// Check if product already in cart
+				let existingItem = cart.find(item => String(item.id) === String(currentProduct.id));
+				if (existingItem) {
+					existingItem.quantity += 1;
+				} else {
+					cart.push({
+						...currentProduct,
+						quantity: 1
+					});
+				}
+				updateCart();
+				closeModernModal();
+				// Show notification
+				showNotification(`${currentProduct.title} added to cart!`, 'success', 'cart-panel');
+				// Animate cart icon
+				animateIcon('cartCount');
+			}
+		}
+
+		// Add to wishlist from modal
+		function addToWishlistFromModal() {
+			if (currentProduct) {
+				// Check if product already in wishlist
+				let existingItem = wishlist.find(item => String(item.id) === String(currentProduct.id));
+				if (!existingItem) {
+					wishlist.push({
+						...currentProduct,
+						quantity: 1
+					});
+					updateWishlist();
+					closeModernModal();
+					// Show notification
+					showNotification(`${currentProduct.title} added to wishlist!`, 'success', 'wishlist-panel');
+					// Animate wishlist icon
+					animateIcon('wishlistCount');
+				} else {
+					showNotification(`${currentProduct.title} is already in your wishlist!`, 'info', 'wishlist-panel');
+				}
+			}
+		}
+
+		// Add to compare from modal
+		function addToCompareFromModal() {
+			if (currentProduct) {
+				// Check if product already in compare
+				let existingItem = compare.find(item => String(item.id) === String(currentProduct.id));
+				if (!existingItem) {
+					// Limit to 4 items for comparison
+					if (compare.length >= 4) {
+						showNotification('You can compare up to 4 items at a time!', 'error', 'compare-panel');
+						return;
+					}
+					compare.push({
+						...currentProduct,
+						quantity: 1
+					});
+					updateCompare();
+					closeModernModal();
+					// Show notification
+					showNotification(`${currentProduct.title} added to comparison!`, 'success', 'compare-panel');
+					// Animate compare icon
+					animateIcon('compareCount');
+				} else {
+					showNotification(`${currentProduct.title} is already in your comparison list!`, 'info', 'compare-panel');
+				}
+			}
+		}
+
+		// Add to compare from product card
+		function addToCompare(productId) {
+			const product = products.find(p => p.id === productId);
+			if (product) {
+				// Check if product already in compare
+				let existingItem = compare.find(item => String(item.id) === String(productId));
+				if (!existingItem) {
+					// Limit to 4 items for comparison
+					if (compare.length >= 4) {
+						showNotification('You can compare up to 4 items at a time!', 'error', 'compare-panel');
+						return;
+					}
+					compare.push({
+						...product,
+						quantity: 1
+					});
+					updateCompare();
+					// Show notification
+					showNotification(`${product.title} added to comparison!`, 'success', 'compare-panel');
+					// Animate compare icon
+					animateIcon('compareCount');
+				} else {
+					showNotification(`${product.title} is already in your comparison list!`, 'info', 'compare-panel');
+				}
+			}
+		}
+
+		// Car collection functions
+		function addCarToCart(carId) {
+			const car = carCollections.find(c => c.id === carId);
+			if (car) {
+				// Check if car already in cart
+				const existingItem = cart.find(item => String(item.id) === `car-${carId}`);
+				if (existingItem) {
+					existingItem.quantity += 1;
+				} else {
+					cart.push({
+						...car,
+						id: `car-${carId}`, // Prefix to avoid conflicts with product IDs
+						quantity: 1,
+						type: 'car' // Add type to distinguish from products
+					});
+				}
+				updateCart();
+				showNotification(`${car.title} added to cart!`, 'success', 'cart-panel');
+				animateIcon('cartCount');
+			}
+		}
+
+		function addCarToWishlist(carId) {
+			const car = carCollections.find(c => c.id === carId);
+			if (car) {
+				// Check if car already in wishlist
+				const existingItem = wishlist.find(item => String(item.id) === `car-${carId}`);
+				if (!existingItem) {
+					wishlist.push({
+						...car,
+						id: `car-${carId}`, // Prefix to avoid conflicts with product IDs
+						quantity: 1,
+						type: 'car' // Add type to distinguish from products
+					});
+					updateWishlist();
+					showNotification(`${car.title} added to wishlist!`, 'success', 'wishlist-panel');
+					animateIcon('wishlistCount');
+				} else {
+					showNotification(`${car.title} is already in your wishlist!`, 'info', 'wishlist-panel');
+				}
+			}
+		}
+
+		function addCarToCompare(carId) {
+			const car = carCollections.find(c => c.id === carId);
+			if (car) {
+				// Check if car already in compare
+				const existingItem = compare.find(item => String(item.id) === `car-${carId}`);
+				if (!existingItem) {
+					// Limit to 4 items for comparison
+					if (compare.length >= 4) {
+						showNotification('You can compare up to 4 items at a time!', 'error', 'compare-panel');
+						return;
+					}
+					compare.push({
+						...car,
+						id: `car-${carId}`, // Prefix to avoid conflicts with product IDs
+						quantity: 1,
+						type: 'car' // Add type to distinguish from products
+					});
+					updateCompare();
+					showNotification(`${car.title} added to comparison!`, 'success', 'compare-panel');
+					animateIcon('compareCount');
+				} else {
+					showNotification(`${car.title} is already in your comparison list!`, 'info', 'compare-panel');
+				}
+			}
+		}
+
+		// Car modal functions
+		function addCarToCartFromModal() {
+			if (currentCar) {
+				// Check if car already in cart
+				const existingItem = cart.find(item => String(item.id) === `car-${currentCar.id}`);
+				if (existingItem) {
+					existingItem.quantity += 1;
+				} else {
+					cart.push({
+						...currentCar,
+						id: `car-${currentCar.id}`, // Prefix to avoid conflicts with product IDs
+						quantity: 1,
+						type: 'car' // Add type to distinguish from products
+					});
+				}
+				updateCart();
+				closeCarModal();
+				showNotification(`${currentCar.title} added to cart!`, 'success', 'cart-panel');
+				animateIcon('cartCount');
+			}
+		}
+
+		function addCarToWishlistFromModal() {
+			if (currentCar) {
+				// Check if car already in wishlist
+				const existingItem = wishlist.find(item => String(item.id) === `car-${currentCar.id}`);
+				if (!existingItem) {
+					wishlist.push({
+						...currentCar,
+						id: `car-${currentCar.id}`, // Prefix to avoid conflicts with product IDs
+						quantity: 1,
+						type: 'car' // Add type to distinguish from products
+					});
+					updateWishlist();
+					closeCarModal();
+					showNotification(`${currentCar.title} added to wishlist!`, 'success', 'wishlist-panel');
+					animateIcon('wishlistCount');
+				} else {
+					showNotification(`${currentCar.title} is already in your wishlist!`, 'info', 'wishlist-panel');
+				}
+			}
+		}
+
+		function addCarToCompareFromModal() {
+			if (currentCar) {
+				// Check if car already in compare
+				const existingItem = compare.find(item => String(item.id) === `car-${currentCar.id}`);
+				if (!existingItem) {
+					// Limit to 4 items for comparison
+					if (compare.length >= 4) {
+						showNotification('You can compare up to 4 items at a time!', 'error', 'compare-panel');
+						return;
+					}
+					compare.push({
+						...currentCar,
+						id: `car-${currentCar.id}`, // Prefix to avoid conflicts with product IDs
+						quantity: 1,
+						type: 'car' // Add type to distinguish from products
+					});
+					updateCompare();
+					closeCarModal();
+					showNotification(`${currentCar.title} added to comparison!`, 'success', 'compare-panel');
+					animateIcon('compareCount');
+				} else {
+					showNotification(`${currentCar.title} is already in your comparison list!`, 'info', 'compare-panel');
+				}
+			}
+		}
+
+		// Update cart UI
+		function updateCart() {
+			// Save to localStorage
+			localStorage.setItem('cart', JSON.stringify(cart));
+
+			// Update count badge
+			const cartCount = document.getElementById("cartCount");
+			const cartItems = document.getElementById("cartItems");
+			const cartTotal = document.getElementById("cartTotal");
+			const cartFooter = document.querySelector("#cartPanel .panel-footer");
+
+			if (cartCount) {
+				const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+				cartCount.textContent = totalItems;
+			}
+
+			if (cartItems && cartTotal) {
+				if (cart.length === 0) {
+					cartItems.innerHTML = '<div class="empty-message">Your cart is empty</div>';
+					cartTotal.textContent = '₹0';
+
+					// Update footer
+					if (cartFooter) {
+						cartFooter.innerHTML = `
+                            <div class="panel-total">
+                                <span>Total:</span>
+                                <span id="cartTotal">₹0</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="continueShopping()" style="margin-bottom: 10px; width: 100%;">
+                                <i class="fas fa-arrow-left"></i> Continue Shopping
+                            </button>
+                        `;
+					}
+					return;
+				}
+
+				cartItems.innerHTML = '';
+				let total = 0;
+				cart.forEach(item => {
+					const itemTotal = item.price * item.quantity;
+					total += itemTotal;
+					const cartItem = document.createElement("div");
+					cartItem.className = "panel-item";
+					cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="panel-item-img">
+                    <div class="panel-item-info">
+                    <div class="panel-item-title">${item.title}</div>
+                    <div class="panel-item-price">₹${item.price.toLocaleString()} each</div>
+                    <div class="quantity-control">
+                    <button class="btn-quantity minus" onclick="changeQuantity('${String(item.id)}', -1)">-</button>
+                    <span class="quantity">${item.quantity}</span>
+                    <button class="btn-quantity plus" onclick="changeQuantity('${String(item.id)}', 1)">+</button>
+                    </div>
+                    </div>
+                    <button class="panel-item-remove" onclick="removeFromCart('${String(item.id)}')">
+                    <i class="fas fa-trash"></i>
+                    </button>
+                    `;
+					cartItems.appendChild(cartItem);
+				});
+				cartTotal.textContent = `₹${total.toLocaleString()}`;
+
+				// Update footer
+				if (cartFooter) {
+					cartFooter.innerHTML = `
+                        <div class="panel-total">
+                            <span>Total:</span>
+                            <span id="cartTotal">₹${total.toLocaleString()}</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="continueShopping()" style="margin-bottom: 10px; width: 100%;">
+                            <i class="fas fa-arrow-left"></i> Continue Shopping
+                        </button>
+                        <button class="btn btn-secondary" onclick="clearCart()" style="margin-bottom: 10px; width: 100%;">
+                            <i class="fas fa-trash"></i> Clear All
+                        </button>
+                        <button class="btn btn-checkout" onclick="showPaymentModal()">
+                            <i class="fas fa-credit-card"></i> Checkout
+                        </button>
+                    `;
+				}
+			}
+		}
+
+		// Change quantity in cart
+		function changeQuantity(productId, change) {
+			const item = cart.find(item => String(item.id) === productId);
+			if (item) {
+				item.quantity += change;
+				if (item.quantity <= 0) {
+					removeFromCart(productId);
+				} else {
+					updateCart();
+				}
+			}
+		}
+
+		// Remove item from cart
+		function removeFromCart(productId) {
+			// Find the item in the cart to get the product info for the notification
+			const item = cart.find(item => String(item.id) === productId);
+			if (!item) {
+				showNotification('Item not found in cart!', 'error', 'cart-panel');
+				return;
+			}
+
+			// Remove the item
+			cart = cart.filter(item => String(item.id) !== productId);
+			updateCart();
+
+			// Find the product for the notification
+			let product;
+			if (item.type === 'car') {
+				const carId = parseInt(productId.replace('car-', ''), 10);
+				product = carCollections.find(c => c.id === carId);
+			} else {
+				product = products.find(p => String(p.id) === productId);
+			}
+
+			if (product) {
+				showNotification(`${product.title} removed from cart`, 'info', 'cart-panel');
+			}
+		}
+
+		// Update wishlist UI
+		function updateWishlist() {
+			// Save to localStorage
+			localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+			// Update count badge
+			const wishlistCount = document.getElementById("wishlistCount");
+			const wishlistItems = document.getElementById("wishlistItems");
+			const wishlistFooter = document.querySelector("#wishlistPanel .panel-footer");
+
+			if (wishlistCount) {
+				wishlistCount.textContent = wishlist.length;
+			}
+
+			if (wishlistItems) {
+				if (wishlist.length === 0) {
+					wishlistItems.innerHTML = '<div class="empty-message">Your wishlist is empty</div>';
+
+					// Update footer
+					if (wishlistFooter) {
+						wishlistFooter.innerHTML = '';
+					}
+					return;
+				}
+
+				wishlistItems.innerHTML = '';
+				wishlist.forEach(item => {
+					const wishlistItem = document.createElement("div");
+					wishlistItem.className = "panel-item";
+					wishlistItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="panel-item-img">
+                    <div class="panel-item-info">
+                    <div class="panel-item-title">${item.title}</div>
+                    <div class="panel-item-price">₹${item.price.toLocaleString()}</div>
+                    </div>
+                    <div class="wishlist-item-actions">
+                    <button class="btn btn-primary btn-sm" onclick="wishlistToCart('${String(item.id)}')">
+                    <i class="fas fa-cart-plus"></i>
+                    </button>
+                    <button class="panel-item-remove" onclick="removeFromWishlist('${String(item.id)}')">
+                    <i class="fas fa-trash"></i>
+                    </button>
+                    </div>
+                    `;
+					wishlistItems.appendChild(wishlistItem);
+				});
+
+				// Update footer
+				if (wishlistFooter) {
+					wishlistFooter.innerHTML = `
+                        <button class="btn btn-secondary" onclick="clearWishlist()" style="margin-bottom: 10px; width: 100%;">
+                            <i class="fas fa-trash"></i> Clear All
+                        </button>
+                        <button class="btn btn-primary" style="width: 100%;" onclick="addAllWishlistToCart()">
+                            <i class="fas fa-shopping-cart"></i> Add All to Cart
+                        </button>
+                    `;
+				}
+			}
+		}
+
+		// Remove item from wishlist
+		function removeFromWishlist(productId) {
+			// Find the item in the wishlist to get the product info for the notification
+			const item = wishlist.find(item => String(item.id) === productId);
+			if (!item) {
+				showNotification('Item not found in wishlist!', 'error', 'wishlist-panel');
+				return;
+			}
+
+			// Remove the item
+			wishlist = wishlist.filter(item => String(item.id) !== productId);
+			updateWishlist();
+
+			// Find the product for the notification
+			let product;
+			if (item.type === 'car') {
+				const carId = parseInt(productId.replace('car-', ''), 10);
+				product = carCollections.find(c => c.id === carId);
+			} else {
+				product = products.find(p => String(p.id) === productId);
+			}
+
+			if (product) {
+				showNotification(`${product.title} removed from wishlist`, 'info', 'wishlist-panel');
+			}
+		}
+
+		// Add item from wishlist to cart
+		function wishlistToCart(productId) {
+			// Find the item in the wishlist
+			const wishlistItem = wishlist.find(item => String(item.id) === productId);
+			if (!wishlistItem) {
+				showNotification('Item not found in wishlist!', 'error', 'wishlist-panel');
+				return;
+			}
+
+			// Check if product already in cart
+			let existingItem = cart.find(item => String(item.id) === productId);
+			if (existingItem) {
+				existingItem.quantity += 1;
+			} else {
+				cart.push({
+					...wishlistItem,
+					quantity: 1
+				});
+			}
+
+			updateCart();
+			// Show notification
+			showNotification(`${wishlistItem.title} added to cart from wishlist!`, 'success', 'wishlist-panel');
+			// Animate cart icon
+			animateIcon('cartCount');
+		}
+
+		// Add all wishlist items to cart
+		function addAllWishlistToCart() {
+			if (wishlist.length === 0) {
+				showNotification('Your wishlist is empty!', 'error', 'wishlist-panel');
+				return;
+			}
+
+			let addedCount = 0;
+			wishlist.forEach(wishlistItem => {
+				// Check if product already in cart
+				let existingItem = cart.find(item => String(item.id) === String(wishlistItem.id));
+				if (existingItem) {
+					existingItem.quantity += 1;
+					addedCount++;
+				} else {
+					cart.push({
+						...wishlistItem,
+						quantity: 1
+					});
+					addedCount++;
+				}
+			});
+
+			updateCart();
+
+			if (addedCount > 0) {
+				showNotification(`${addedCount} items added to cart from wishlist!`, 'success', 'wishlist-panel');
+				animateIcon('cartCount');
+			} else {
+				showNotification('No items were added to cart!', 'info', 'wishlist-panel');
+			}
+		}
+
+		// Update compare UI
+		function updateCompare() {
+			// Save to localStorage
+			localStorage.setItem('compare', JSON.stringify(compare));
+
+			// Update count badge
+			const compareCount = document.getElementById("compareCount");
+			const compareItems = document.getElementById("compareItems");
+
+			if (compareCount) {
+				compareCount.textContent = compare.length;
+			}
+
+			if (compareItems) {
+				if (compare.length === 0) {
+					compareItems.innerHTML = '<div class="empty-message">Add products to compare.</div>';
+					return;
+				}
+
+				compareItems.innerHTML = '';
+				compare.forEach(item => {
+					const compareItem = document.createElement("div");
+					compareItem.className = "panel-item";
+					compareItem.innerHTML = `
+                <img src="${item.image}" alt="${item.title}" class="panel-item-img">
+                <div class="panel-item-info">
+                <div class="panel-item-title">${item.title}</div>
+                <div class="panel-item-price">₹${item.price.toLocaleString()}</div>
+                </div>
+                <button class="panel-item-remove" onclick="removeFromCompare('${String(item.id)}')">
+                <i class="fas fa-trash"></i>
+                </button>
+                `;
+					compareItems.appendChild(compareItem);
+				});
+			}
+		}
+
+		// Remove item from compare
+		function removeFromCompare(productId) {
+			// Find the item in the compare to get the product info for the notification
+			const item = compare.find(item => String(item.id) === productId);
+			if (!item) {
+				showNotification('Item not found in compare!', 'error', 'compare-panel');
+				return;
+			}
+
+			// Remove the item
+			compare = compare.filter(item => String(item.id) !== productId);
+			updateCompare();
+
+			// Find the product for the notification
+			let product;
+			if (item.type === 'car') {
+				const carId = parseInt(productId.replace('car-', ''), 10);
+				product = carCollections.find(c => c.id === carId);
+			} else {
+				product = products.find(p => String(p.id) === productId);
+			}
+
+			if (product) {
+				showNotification(`${product.title} removed from comparison`, 'info', 'compare-panel');
+			}
+		}
+
+		// Show comparison
+		function showComparison() {
+			if (compare.length < 2) {
+				showNotification('Add at least 2 products to compare!', 'error', 'compare-panel');
+				return;
+			}
+
+			closePanels();
+
+			const compareModal = document.getElementById("compareModal");
+			const comparisonTable = document.querySelector('.comparison-table');
+			const tableHead = comparisonTable.querySelector('thead tr');
+			const tableBody = comparisonTable.querySelector('tbody');
+
+			// Clear existing content except first column
+			while (tableHead.children.length > 1) {
+				tableHead.removeChild(tableHead.lastChild);
+			}
+
+			// Add product headers
+			compare.forEach(item => {
+				const th = document.createElement('th');
+				th.textContent = item.title;
+				tableHead.appendChild(th);
+			});
+
+			// Clear existing rows
+			tableBody.innerHTML = '';
+
+			// Add image row
+			const imageRow = document.createElement('tr');
+			const imageLabel = document.createElement('td');
+			imageLabel.textContent = 'Image';
+			imageRow.appendChild(imageLabel);
+
+			compare.forEach(item => {
+				const td = document.createElement('td');
+				const img = document.createElement('img');
+				img.src = item.image;
+				img.alt = item.title;
+				td.appendChild(img);
+				imageRow.appendChild(td);
+			});
+			tableBody.appendChild(imageRow);
+
+			// Add title row
+			const titleRow = document.createElement('tr');
+			const titleLabel = document.createElement('td');
+			titleLabel.textContent = 'Title';
+			titleRow.appendChild(titleLabel);
+
+			compare.forEach(item => {
+				const td = document.createElement('td');
+				td.textContent = item.title;
+				titleRow.appendChild(td);
+			});
+			tableBody.appendChild(titleRow);
+
+			// Add price row
+			const priceRow = document.createElement('tr');
+			const priceLabel = document.createElement('td');
+			priceLabel.textContent = 'Price';
+			priceRow.appendChild(priceLabel);
+
+			compare.forEach(item => {
+				const td = document.createElement('td');
+				td.textContent = '₹' + item.price.toLocaleString();
+				priceRow.appendChild(td);
+			});
+			tableBody.appendChild(priceRow);
+
+			// Add description row
+			const descRow = document.createElement('tr');
+			const descLabel = document.createElement('td');
+			descLabel.textContent = 'Description';
+			descRow.appendChild(descLabel);
+
+			compare.forEach(item => {
+				const td = document.createElement('td');
+				td.textContent = item.description;
+				descRow.appendChild(td);
+			});
+			tableBody.appendChild(descRow);
+
+			// Add specifications row
+			const specsRow = document.createElement('tr');
+			const specsLabel = document.createElement('td');
+			specsLabel.textContent = 'Specifications';
+			specsRow.appendChild(specsLabel);
+
+			compare.forEach(item => {
+				const td = document.createElement('td');
+				const ul = document.createElement('ul');
+				item.specs.forEach(spec => {
+					const li = document.createElement('li');
+					li.textContent = spec;
+					ul.appendChild(li);
+				});
+				td.appendChild(ul);
+				specsRow.appendChild(td);
+			});
+			tableBody.appendChild(specsRow);
+
+			compareModal.classList.add('active');
+		}
+
+		// Close comparison modal
+		function closeComparisonModal() {
+			const compareModal = document.getElementById("compareModal");
+			if (compareModal) {
+				compareModal.classList.remove("active");
+			}
+		}
+
+		// Clear comparison
+		function clearComparison() {
+			compare = [];
+			updateCompare();
+			showNotification('Comparison list cleared', 'info', 'compare-panel');
+		}
+
+		// Clear cart
+		function clearCart() {
+			if (cart.length === 0) {
+				showNotification('Your cart is already empty!', 'info', 'cart-panel');
+				return;
+			}
+
+			if (confirm('Are you sure you want to clear all items from your cart?')) {
+				cart = [];
+				updateCart();
+				showNotification('Cart cleared successfully', 'success', 'cart-panel');
+			}
+		}
+
+		// Clear wishlist
+		function clearWishlist() {
+			if (wishlist.length === 0) {
+				showNotification('Your wishlist is already empty!', 'info', 'wishlist-panel');
+				return;
+			}
+
+			if (confirm('Are you sure you want to clear all items from your wishlist?')) {
+				wishlist = [];
+				updateWishlist();
+				showNotification('Wishlist cleared successfully', 'success', 'wishlist-panel');
+			}
+		}
+
+		// Continue shopping
+		function continueShopping() {
+			closePanels();
+			// Scroll to products section
+			const productsSection = document.querySelector('.products');
+			if (productsSection) {
+				productsSection.scrollIntoView({ behavior: 'smooth' });
+			}
+		}
+
+		// Quick View functionality for cars
+		function quickViewCar(carId) {
+			const car = carCollections.find(c => c.id === carId);
+			if (!car) return;
+
+			currentCar = car;
+
+			const quickViewModal = document.getElementById("quickViewModal");
+			const quickViewImage = document.getElementById("quickViewImage");
+			const quickViewCategory = document.getElementById("quickViewCategory");
+			const quickViewTitle = document.getElementById("quickViewTitle");
+			const quickViewPrice = document.getElementById("quickViewPrice");
+			const quickViewDesc = document.getElementById("quickViewDesc");
+
+			if (quickViewImage) quickViewImage.src = car.image;
+			if (quickViewCategory) quickViewCategory.textContent = "LUXURY VEHICLE";
+			if (quickViewTitle) quickViewTitle.textContent = car.title;
+			if (quickViewPrice) quickViewPrice.textContent = '₹' + car.price.toLocaleString();
+			if (quickViewDesc) quickViewDesc.textContent = car.description;
+
+			if (quickViewModal) quickViewModal.classList.add('active');
+		}
+
+		// Close quick view modal
+		function closeQuickViewModal() {
+			const quickViewModal = document.getElementById("quickViewModal");
+			if (quickViewModal) {
+				quickViewModal.classList.remove("active");
+			}
+		}
+
+		// Add to cart from quick view
+		function addToCartFromQuickView() {
+			if (currentCar) {
+				addCarToCart(currentCar.id);
+
+			} else if (currentProduct) {
+				// Original product logic
+				if (currentProduct) {
+					let existingItem = cart.find(item => String(item.id) === String(currentProduct.id));
+					if (existingItem) {
+						existingItem.quantity += 1;
+					} else {
+						cart.push({
+							...currentProduct,
+							quantity: 1
+						});
+					}
+					updateCart();
+					closeQuickViewModal();
+					showNotification(`${currentProduct.title} added to cart!`, 'success');
+					animateIcon('cartCount');
+				}
+			}
+		}
+
+		// Add to wishlist from quick view
+		function addToWishlistFromQuickView() {
+			if (currentCar) {
+				addCarToWishlist(currentCar.id);
+
+			} else if (currentProduct) {
+				// Original product logic
+				if (currentProduct) {
+					let existingItem = wishlist.find(item => String(item.id) === String(currentProduct.id));
+					if (!existingItem) {
+						wishlist.push({
+							...currentProduct,
+							quantity: 1
+						});
+						updateWishlist();
+						closeQuickViewModal();
+						showNotification(`${currentProduct.title} added to wishlist!`, 'success');
+						animateIcon('wishlistCount');
+					} else {
+						showNotification(`${currentProduct.title} is already in your wishlist!`, 'info');
+					}
+				}
+			}
+		}
+
+		// Show modern modal from quick view
+		function showModernModalFromQuickView() {
+			closeQuickViewModal();
+			if (currentCar) {
+				showCarModal(currentCar.id);
+			} else if (currentProduct) {
+				showModernModal(currentProduct.id);
+			}
+		}
+
+		// Show payment modal
+		function showPaymentModal() {
+			if (cart.length === 0) {
+				showNotification('Your cart is empty!', 'error', 'payment');
+				return;
+			}
+			closePanels();
+			const paymentModal = document.getElementById("paymentModal");
+			if (paymentModal) {
+				paymentModal.classList.add("active");
+				updateOrderSummary();
+			}
+		}
+
+		// Close payment modal
+		function closePaymentModal() {
+			const paymentModal = document.getElementById("paymentModal");
+			if (paymentModal) paymentModal.classList.remove("active");
+		}
+
+		// Update order summary in payment modal
+		function updateOrderSummary() {
+			const orderSummary = document.getElementById("orderSummary");
+			if (!orderSummary) return;
+
+			if (cart.length === 0) {
+				orderSummary.innerHTML = '<div class="empty-message">Your cart is empty</div>';
+				return;
+			}
+
+			orderSummary.innerHTML = '';
+			let subtotal = 0;
+			cart.forEach(item => {
+				const itemTotal = item.price * item.quantity;
+				subtotal += itemTotal;
+				const orderItem = document.createElement("div");
+				orderItem.className = "order-summary-item";
+				orderItem.innerHTML = `
+            <span>${item.title} x ${item.quantity}</span>
+            <span>₹${itemTotal.toLocaleString()}</span>
+            `;
+				orderSummary.appendChild(orderItem);
+			});
+
+			// Calculate shipping (free for orders over ₹5000)
+			const shipping = subtotal >= 5000 ? 0 : 200;
+			const tax = Math.round(subtotal * 0.18); // 18% GST
+			const total = subtotal + shipping + tax;
+
+			// Add shipping
+			const shippingItem = document.createElement("div");
+			shippingItem.className = "order-summary-item";
+			shippingItem.innerHTML = `
+            <span>Shipping</span>
+            <span>${shipping === 0 ? 'FREE' : '₹' + shipping.toLocaleString()}</span>
+            `;
+			orderSummary.appendChild(shippingItem);
+
+			// Add tax
+			const taxItem = document.createElement("div");
+			taxItem.className = "order-summary-item";
+			taxItem.innerHTML = `
+            <span>Tax (18%)</span>
+            <span>₹${tax.toLocaleString()}</span>
+            `;
+			orderSummary.appendChild(taxItem);
+
+			// Add total
+			const totalItem = document.createElement("div");
+			totalItem.className = "order-summary-item";
+			totalItem.innerHTML = `
+            <span>Total</span>
+            <span>₹${total.toLocaleString()}</span>
+            `;
+			orderSummary.appendChild(totalItem);
+		}
+
+		// Process payment
+		function processPayment() {
+			// Get form values
+			const cardNumber = document.getElementById("cardNumber").value;
+			const expiryDate = document.getElementById("expiryDate").value;
+			const cvv = document.getElementById("cvv").value;
+			const cardName = document.getElementById("cardName").value;
+			const fullName = document.getElementById("fullName").value;
+			const address = document.getElementById("address").value;
+			const city = document.getElementById("city").value;
+			const postalCode = document.getElementById("postalCode").value;
+
+			// Basic validation
+			if (!cardNumber || !expiryDate || !cvv || !cardName || !fullName || !address || !city || !postalCode) {
+				showNotification('Please fill in all required fields', 'error', 'payment');
+				return;
+			}
+
+			if (cardNumber.replace(/\s/g, '').length < 16) {
+				showNotification('Please enter a valid card number', 'error', 'payment');
+				return;
+			}
+
+			if (cvv.length < 3) {
+				showNotification('Please enter a valid CVV', 'error', 'payment');
+				return;
+			}
+
+			// Show processing notification
+			showNotification('Processing your payment...', 'info', 'payment');
+
+			// Simulate payment processing
+			setTimeout(() => {
+				// Clear cart after successful payment
+				cart = [];
+				updateCart();
+				closePaymentModal();
+
+				// Calculate total for confirmation message
+				const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+				const shipping = subtotal >= 5000 ? 0 : 200;
+				const tax = Math.round(subtotal * 0.18);
+				const total = subtotal + shipping + tax;
+
+				showNotification(`Payment successful! Total: ₹${total.toLocaleString()}. Thank you for your purchase!`, 'success', 'payment');
+			}, 2000);
+		}
+
+		// Format card number input
+		document.addEventListener('DOMContentLoaded', function () {
+			const cardNumberInput = document.getElementById("cardNumber");
+			if (cardNumberInput) {
+				cardNumberInput.addEventListener('input', function (e) {
+					let value = e.target.value.replace(/\s/g, '');
+					let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+					e.target.value = formattedValue;
+				});
+			}
+
+			// Format expiry date input
+			const expiryDateInput = document.getElementById("expiryDate");
+			if (expiryDateInput) {
+				expiryDateInput.addEventListener('input', function (e) {
+					let value = e.target.value.replace(/\D/g, '');
+					if (value.length >= 2) {
+						value = value.substring(0, 2) + '/' + value.substring(2, 4);
+					}
+					e.target.value = value;
+				});
+			}
+
+			// Payment method selection
+			const paymentMethods = document.querySelectorAll('.payment-method');
+			paymentMethods.forEach(method => {
+				method.addEventListener('click', function () {
+					paymentMethods.forEach(m => m.classList.remove('active'));
+					this.classList.add('active');
+				});
+			});
+		});
+
+		// Toggle side panels
+		function togglePanel(panelId) {
+			closePanels();
+			const overlay = document.getElementById("overlay");
+			const panel = document.getElementById(panelId);
+			if (overlay) overlay.classList.add("show");
+			if (panel) panel.classList.add("open");
+			// Hide the floating toggle, floating widget, and chat toggle when any panel is open
+			floatingToggle.classList.add('panel-open-hidden');
+			floatingWidget.classList.add('panel-open-hidden');
+			document.getElementById('chatBtn').classList.add('panel-open-hidden');
+		}
+
+		// Close all panels
+		function closePanels() {
+			const overlay = document.getElementById("overlay");
+			if (overlay) overlay.classList.remove("show");
+			document.querySelectorAll(".side-panel").forEach(panel => {
+				panel.classList.remove("open");
+			});
+			// Show the floating toggle, floating widget, and chat toggle again when all panels are closed
+			floatingToggle.classList.remove('panel-open-hidden');
+			floatingWidget.classList.remove('panel-open-hidden');
+			document.getElementById('chatBtn').classList.remove('panel-open-hidden');
+		}
+
+		// Show notification
+		function showNotification(message, type = 'success', position = '') {
+			// Create notification element
+			const notification = document.createElement("div");
+			notification.className = `notification ${type}`;
+			if (position) {
+				notification.classList.add(position);
+			}
+			notification.textContent = message;
+			document.body.appendChild(notification);
+
+			// Remove after 3 seconds
+			setTimeout(() => {
+				if (notification.parentNode) {
+					notification.parentNode.removeChild(notification);
+				}
+			}, 3000);
+		}
+
+		// Animate icon
+		function animateIcon(iconId) {
+			const icon = document.getElementById(iconId);
+			if (icon) {
+				icon.style.animation = 'none';
+				setTimeout(() => {
+					icon.style.animation = 'bounce 0.5s';
+				}, 10);
+			}
+		}
+
+		// Initialize the page
+		function init() {
+			renderProducts();
+			updateCart();
+			updateWishlist();
+			updateCompare();
+		}
+
+		// Close modal if clicked outside
+		window.onclick = function (event) {
+			const modernModal = document.getElementById('modernModal');
+			const carModal = document.getElementById('carModal');
+			const paymentModal = document.getElementById('paymentModal');
+			const compareModal = document.getElementById('compareModal');
+			const quickViewModal = document.getElementById('quickViewModal');
+
+			if (event.target === modernModal) {
+				closeModernModal();
+			}
+			if (event.target === carModal) {
+				closeCarModal();
+			}
+			if (event.target === paymentModal) {
+				closePaymentModal();
+			}
+			if (event.target === compareModal) {
+				closeComparisonModal();
+			}
+			if (event.target === quickViewModal) {
+				closeQuickViewModal();
+			}
+		};
+
+		// Search functionality
+		if (searchInput) {
+			searchInput.addEventListener('input', (e) => {
+				const searchQuery = e.target.value.toLowerCase();
+				if (searchQuery === '') {
+					renderProducts();
+				} else {
+					const filteredProducts = products.filter(product =>
+						product.title.toLowerCase().includes(searchQuery) ||
+						product.description.toLowerCase().includes(searchQuery) ||
+						product.category.toLowerCase().includes(searchQuery)
+					);
+					renderProducts(filteredProducts);
+				}
+			});
+		}
+
+		// Category filter functionality
+		categoryFilters.forEach(filter => {
+			filter.addEventListener('click', () => {
+				// Update active state
+				categoryFilters.forEach(f => f.classList.remove('active'));
+				filter.classList.add('active');
+
+				// Get selected category
+				currentCategory = filter.dataset.category;
+
+				// Filter products
+				if (currentCategory === 'all') {
+					renderProducts();
+				} else {
+					const filteredProducts = products.filter(product =>
+						product.category === currentCategory
+					);
+					renderProducts(filteredProducts);
+				}
+			});
+		});
+
+		// Initialize on page load
+		window.onload = init;
+
+		/* ========= DOM refs ========= */
+		const chatBtn = document.getElementById('chatBtn');
+		const chatWidget = document.getElementById('chatWidget');
+		const closeWidgetBtn = document.getElementById('closeWidgetBtn');
+		const themeToggleBtn = document.getElementById('themeToggleBtn');
+		const clearChatBtn = document.getElementById('clearChatBtn');
+		const expandWidgetBtn = document.getElementById('expandWidgetBtn');
+		const topicsMenuBtn = document.getElementById('topicsMenuBtn');
+		const topicsMenu = document.getElementById('topicsMenu');
+		const chatBody = document.getElementById('chatBody');
+		const chatInput = document.getElementById('chatInput');
+		const chatInputWrapper = document.getElementById('chatInputWrapper');
+		const sendBtn = document.getElementById('sendBtn');
+		const tabButtons = document.querySelectorAll('.tab-btn');
+		const tabsContainer = document.getElementById('tabsContainer');
+		const quickReplies = document.getElementById('quickReplies');
+		const emojiBtn = document.getElementById('emojiBtn');
+		const emojiPicker = document.getElementById('emojiPicker');
+		const attachBtn = document.getElementById('attachBtn');
+		const fileUpload = document.getElementById('fileUpload');
+		const fileUploadArea = document.getElementById('fileUploadArea');
+		const fileInput = document.getElementById('fileInput');
+		const fileList = document.getElementById('fileList');
+		const chatInputArea = document.getElementById('chatInputArea');
+
+		/* ========= LocalStorage helpers ========= */
+		const LS = {
+			open: 'carx_open',
+			history: 'carx_history',
+			theme: 'carx_theme',
+			view: 'carx_view',
+			expanded: 'carx_expanded',
+			favorites: 'carx_favorites'
+		};
+
+		const safeParse = (raw, fallback) => {
+			if (!raw) return fallback;
+			try {
+				const parsed = JSON.parse(raw);
+				return Array.isArray(parsed) ? parsed : fallback;
+			} catch (e) {
+				console.warn('LocalStorage parse failed, resetting key:', e);
+				return fallback;
+			}
+		};
+
+		/* ========= Theme autodetect & set ========= */
+		const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+		const savedTheme = localStorage.getItem(LS.theme);
+		const currentTheme = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
+
+		/* ========= Sounds ========= */
+		let sendSound, receiveSound;
+		try {
+			sendSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3');
+			receiveSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-bell-notification-933.mp3');
+		} catch (e) {
+			console.warn('Audio files could not be loaded:', e);
+			sendSound = { play: () => { } };
+			receiveSound = { play: () => { } };
+		}
+
+		/* ========= Vehicle Data ========= */
+		const vehicleData = [
+			{
+				id: 'sedan-premium',
+				title: 'CarX Sedan Premium',
+				category: 'Sedan',
+				price: '$32,999',
+				image: 'https://images.unsplash.com/photo-1554224712-d8560f709cbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+				description: 'Experience luxury and performance with our premium sedan featuring advanced safety technology, premium interior materials, and exceptional fuel efficiency.'
+			},
+			{
+				id: 'suv-adventure',
+				title: 'CarX SUV Adventure',
+				category: 'SUV',
+				price: '$42,999',
+				image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+				description: 'Conquer any terrain with our rugged SUV. Equipped with all-wheel drive, advanced off-road capabilities, and spacious interior for the whole family.'
+			},
+			{
+				id: 'electric-future',
+				title: 'CarX Electric Future',
+				category: 'Electric',
+				price: '$38,999',
+				image: 'https://images.unsplash.com/photo-1560972550-87ed900d3b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+				description: 'Join the electric revolution with our zero-emission vehicle featuring fast-charging technology, extended range, and cutting-edge autonomous driving features.'
+			},
+			{
+				id: 'sports-racer',
+				title: 'CarX Sports Racer',
+				category: 'Sports',
+				price: '$55,999',
+				image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+				description: 'Feel the adrenaline rush with our high-performance sports car. Precision engineering, aerodynamic design, and powerful engine deliver an unmatched driving experience.'
+			},
+			{
+				id: 'compact-urban',
+				title: 'CarX Compact Urban',
+				category: 'Compact',
+				price: '$22,999',
+				image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+				description: 'Navigate city streets with ease in our fuel-efficient compact car. Smart technology, agile handling, and compact size make it perfect for urban driving.'
+			},
+			{
+				id: 'hybrid-efficient',
+				title: 'CarX Hybrid Efficient',
+				category: 'Hybrid',
+				price: '$28,999',
+				image: 'https://images.unsplash.com/photo-1609521261020-6344b677ad6b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+				description: 'Get the best of both worlds with our hybrid vehicle. Combining gasoline engine with electric motor for exceptional fuel economy without sacrificing performance.'
+			}
+		];
+
+		/* ========= Dealership Data ========= */
+		const dealershipData = [
+			{
+				name: 'CarX Downtown',
+				address: '123 Main Street, Downtown',
+				distance: '2.5 miles'
+			},
+			{
+				name: 'CarX Westside',
+				address: '456 West Avenue, Westside',
+				distance: '5.8 miles'
+			},
+			{
+				name: 'CarX Northpark',
+				address: '789 North Road, Northpark',
+				distance: '8.2 miles'
+			},
+			{
+				name: 'CarX Eastend',
+				address: '101 East Boulevard, Eastend',
+				distance: '10.4 miles'
+			}
+		];
+
+		/* ========= Chat state ========= */
+		let currentView = localStorage.getItem(LS.view) || 'chat';
+		let chatHistory = safeParse(localStorage.getItem(LS.history), []);
+		let chatOpen = localStorage.getItem(LS.open) === 'true';
+		let widgetExpanded = localStorage.getItem(LS.expanded) === 'true';
+		let favorites = safeParse(localStorage.getItem(LS.favorites), []);
+		let attachedFiles = [];
+		let currentTestDriveVehicle = null;
+		let currentServiceVehicle = null;
+
+		/* ========= Init ========= */
+		function initChat() {
+			// Apply theme to widget only
+			chatWidget.setAttribute('data-theme', currentTheme);
+			themeToggleBtn.innerHTML = currentTheme === 'dark' ? '<i class="bi bi-brightness-high"></i>' : '<i class="bi bi-moon-stars"></i>';
+
+			// open state
+			chatWidget.style.display = chatOpen ? 'flex' : 'none';
+
+			// expanded state
+			if (widgetExpanded) {
+				chatWidget.classList.add('expanded');
+				expandWidgetBtn.innerHTML = '<i class="bi bi-arrows-angle-contract"></i>';
+			}
+
+			// render initial view
+			if (currentView === 'faq') {
+				renderFAQ();
+			} else if (currentView === 'vehicles') {
+				renderVehicles();
+			} else if (currentView === 'services') {
+				renderServiceBooking();
+			} else if (currentView === 'finance') {
+				renderFinanceCalculator();
+			} else if (currentView === 'dealership') {
+				renderDealershipFinder();
+			} else {
+				renderChatFromHistory();
+				if (chatHistory.length === 0) {
+					setTimeout(() => botReply("Welcome to CarX Support Hub! 🚗 How can I assist you today?"), 400);
+				}
+			}
+
+			// listeners
+			chatBtn.addEventListener('click', toggleChat);
+			closeWidgetBtn.addEventListener('click', toggleChat);
+			sendBtn.addEventListener('click', sendMessage);
+			chatInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
+			clearChatBtn.addEventListener('click', clearChatSafe);
+			themeToggleBtn.addEventListener('click', toggleTheme);
+			expandWidgetBtn.addEventListener('click', toggleWidgetSize);
+			tabButtons.forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
+
+			// Topics menu
+			topicsMenuBtn.addEventListener('click', function (e) {
+				e.stopPropagation();
+				topicsMenu.classList.toggle('show');
+				emojiPicker.classList.remove('show');
+				fileUpload.classList.remove('show');
+			});
+
+			document.addEventListener('click', function (e) {
+				if (!topicsMenuBtn.contains(e.target) && !topicsMenu.contains(e.target)) {
+					topicsMenu.classList.remove('show');
+				}
+			});
+
+			topicsMenu.addEventListener('click', function (e) {
+				if (e.target.classList.contains('topics-menu-item')) {
+					const value = e.target.getAttribute('data-value');
+					topicsMenu.classList.remove('show');
+
+					// Check if it's a tab selection
+					if (['chat', 'vehicles', 'services', 'finance', 'dealership', 'faq'].includes(value)) {
+						switchTab(value);
+					} else {
+						// It's a topic selection
+						const question = value;
+						addMessage(question, 'user');
+						handleUserMessage(question);
+					}
+				}
+			});
+
+			// Quick replies
+			quickReplies.addEventListener('click', function (e) {
+				if (e.target.classList.contains('quick-reply')) {
+					const message = e.target.getAttribute('data-message');
+					addMessage(message, 'user');
+					handleUserMessage(message);
+				}
+			});
+
+			// Emoji picker
+			emojiBtn.addEventListener('click', function () {
+				emojiPicker.classList.toggle('show');
+				fileUpload.classList.remove('show');
+				topicsMenu.classList.remove('show');
+			});
+
+			document.addEventListener('click', function (e) {
+				if (!emojiBtn.contains(e.target) && !emojiPicker.contains(e.target)) {
+					emojiPicker.classList.remove('show');
+				}
+			});
+
+			emojiPicker.addEventListener('click', function (e) {
+				if (e.target.classList.contains('emoji-item')) {
+					const emoji = e.target.textContent;
+					chatInput.value += emoji;
+					chatInput.focus();
+				}
+			});
+
+			// File upload
+			attachBtn.addEventListener('click', function () {
+				fileUpload.classList.toggle('show');
+				emojiPicker.classList.remove('show');
+				topicsMenu.classList.remove('show');
+			});
+
+			document.addEventListener('click', function (e) {
+				if (!attachBtn.contains(e.target) && !fileUpload.contains(e.target)) {
+					fileUpload.classList.remove('show');
+				}
+			});
+
+			fileUploadArea.addEventListener('click', function () {
+				fileInput.click();
+			});
+
+			fileInput.addEventListener('change', function () {
+				handleFiles(this.files);
+			});
+
+			// Drag and drop
+			['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+				fileUploadArea.addEventListener(eventName, preventDefaults, false);
+			});
+
+			function preventDefaults(e) {
+				e.preventDefault();
+				e.stopPropagation();
+			}
+
+			['dragenter', 'dragover'].forEach(eventName => {
+				fileUploadArea.addEventListener(eventName, highlight, false);
+			});
+
+			['dragleave', 'drop'].forEach(eventName => {
+				fileUploadArea.addEventListener(eventName, unhighlight, false);
+			});
+
+			function highlight() {
+				fileUploadArea.style.borderColor = 'var(--primary)';
+				fileUploadArea.style.backgroundColor = 'rgba(230, 57, 70, 0.1)';
+			}
+
+			function unhighlight() {
+				fileUploadArea.style.borderColor = 'var(--line)';
+				fileUploadArea.style.backgroundColor = 'transparent';
+			}
+
+			fileUploadArea.addEventListener('drop', function (e) {
+				handleFiles(e.dataTransfer.files);
+			});
+		}
+
+		function toggleChat() {
+			chatOpen = !chatOpen;
+			chatWidget.style.display = chatOpen ? 'flex' : 'none';
+			localStorage.setItem(LS.open, chatOpen);
+		}
+
+		function toggleWidgetSize() {
+			widgetExpanded = !widgetExpanded;
+			chatWidget.classList.toggle('expanded');
+			localStorage.setItem(LS.expanded, widgetExpanded);
+
+			if (widgetExpanded) {
+				expandWidgetBtn.innerHTML = '<i class="bi bi-arrows-angle-contract"></i>';
+			} else {
+				expandWidgetBtn.innerHTML = '<i class="bi bi-arrows-angle-expand"></i>';
+			}
+		}
+
+		function switchTab(tab) {
+			currentView = tab;
+			localStorage.setItem(LS.view, tab);
+			tabButtons.forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+
+			if (tab === 'faq') {
+				renderFAQ();
+			} else if (tab === 'vehicles') {
+				renderVehicles();
+			} else if (tab === 'services') {
+				renderServiceBooking();
+			} else if (tab === 'finance') {
+				renderFinanceCalculator();
+			} else if (tab === 'dealership') {
+				renderDealershipFinder();
+			} else {
+				renderChatFromHistory();
+			}
+		}
+
+		function renderChatFromHistory() {
+			chatBody.innerHTML = '';
+			chatHistory.forEach(m => addMessage(m.text, m.sender, false, m.time));
+		}
+
+		/* ========= Chat helpers ========= */
+		function addMessage(text, sender = 'bot', save = true, isoTime) {
+			// Always show in chat tab
+			if (currentView !== 'chat') switchTab('chat');
+
+			const msgDiv = document.createElement('div');
+			msgDiv.className = `msg ${sender}`;
+			const bubble = document.createElement('div');
+			bubble.className = 'message-bubble';
+			bubble.innerHTML = (sender === 'bot') ? text : escapeHTML(text);
+			const time = document.createElement('div');
+			time.className = 'message-time';
+			const t = isoTime ? new Date(isoTime) : new Date();
+			time.textContent = t.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+			msgDiv.appendChild(bubble);
+			msgDiv.appendChild(time);
+			chatBody.appendChild(msgDiv);
+			chatBody.scrollTop = chatBody.scrollHeight;
+
+			if (save) {
+				chatHistory.push({ text, sender, time: new Date().toISOString() });
+				localStorage.setItem(LS.history, JSON.stringify(chatHistory));
+			}
+		}
+
+		function botReply(text, sticker) {
+			// typing indicator
+			const typ = document.createElement('div');
+			typ.className = 'msg bot';
+			const tBubble = document.createElement('div');
+			tBubble.className = 'typing';
+			tBubble.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+			typ.appendChild(tBubble);
+			chatBody.appendChild(typ);
+			chatBody.scrollTop = chatBody.scrollHeight;
+
+			setTimeout(() => {
+				typ.remove();
+				const msgDiv = document.createElement('div');
+				msgDiv.className = 'msg bot';
+				const bubble = document.createElement('div');
+				bubble.className = 'message-bubble';
+				bubble.innerHTML = text;
+				const time = document.createElement('div');
+				time.className = 'message-time';
+				time.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+				msgDiv.appendChild(bubble);
+				if (sticker) {
+					const img = document.createElement('img');
+					img.className = 'chat-sticker';
+					img.src = sticker;
+					img.alt = "";
+					msgDiv.appendChild(img);
+				}
+				msgDiv.appendChild(time);
+				chatBody.appendChild(msgDiv);
+				chatBody.scrollTop = chatBody.scrollHeight;
+
+				chatHistory.push({ text, sender: 'bot', time: new Date().toISOString() });
+				localStorage.setItem(LS.history, JSON.stringify(chatHistory));
+
+				try {
+					receiveSound.play().catch(e => console.warn('Could not play receive sound:', e));
+				} catch (e) {
+					console.warn('Error playing receive sound:', e);
+				}
+			}, 850);
+		}
+
+		function sendMessage() {
+			const text = chatInput.value.trim();
+			if (!text) return;
+
+			addMessage(text, 'user');
+			chatInput.value = '';
+
+			try {
+				sendSound.play().catch(e => console.warn('Could not play send sound:', e));
+			} catch (e) {
+				console.warn('Error playing send sound:', e);
+			}
+
+			handleUserMessage(text);
+		}
+
+		function handleUserMessage(text) {
+			const lower = text.toLowerCase();
+			let response = "";
+			let sticker = "";
+			let showVehicles = false;
+			let showDateTimePicker = false;
+			let showServiceBooking = false;
+			let showFinanceCalculator = false;
+			let showDealershipFinder = false;
+
+			if (lower.includes('test drive')) {
+				response = "Great! I'd be happy to schedule a test drive for you. Please select your preferred date and time:";
+				showDateTimePicker = true;
+			} else if (lower.includes('service') || lower.includes('maintenance') || lower.includes('repair')) {
+				response = "I can help you book a service appointment. Please provide your vehicle details and preferred service date.";
+				showServiceBooking = true;
+			} else if (lower.includes('finance') || lower.includes('loan') || lower.includes('payment') || lower.includes('lease')) {
+				response = "Let me help you calculate your financing options. Please provide the vehicle price, down payment, and preferred loan term.";
+				showFinanceCalculator = true;
+			} else if (lower.includes('dealership') || lower.includes('location') || lower.includes('showroom') || lower.includes('near me')) {
+				response = "I can help you find the nearest CarX dealership. Here are our locations:";
+				showDealershipFinder = true;
+			} else if (lower.includes('vehicle') || lower.includes('car') || lower.includes('model') || lower.includes('inventory')) {
+				response = "I'd be happy to show you our vehicle inventory. Here are our current models:";
+				showVehicles = true;
+			} else if (lower.includes('buy') || lower.includes('purchase') || lower.includes('order')) {
+				response = "To purchase a vehicle, you can visit any of our dealerships or start the process online. Would you like to see our available vehicles first?";
+				showVehicles = true;
+			} else if (lower.includes('price') || lower.includes('cost') || lower.includes('how much')) {
+				response = "Our vehicle prices range from $22,999 to $55,999 depending on the model and features. We also offer financing options to fit your budget. Would you like to see specific models and their prices?";
+				showVehicles = true;
+			} else if (lower.includes('warranty') || lower.includes('guarantee')) {
+				response = "All our vehicles come with comprehensive warranty coverage. New vehicles include a 5-year/60,000-mile basic warranty and a 10-year/100,000-mile powertrain warranty. Extended warranty options are also available.";
+			} else if (lower.includes('feature') || lower.includes('spec') || lower.includes('tech')) {
+				response = "Our vehicles feature the latest automotive technology including advanced safety systems, infotainment, driver assistance, connectivity, and more. Specific features vary by model. Would you like details about a particular vehicle?";
+				showVehicles = true;
+			} else if (lower.includes('trade') || lower.includes('trade-in')) {
+				response = "Yes, we accept trade-ins! Our team will evaluate your current vehicle's condition, mileage, and market value to provide a fair trade-in offer that can be applied toward your new CarX vehicle.";
+			} else if (lower.includes('contact') || lower.includes('call') || lower.includes('phone')) {
+				response = "You can reach our customer support team at 1-800-CARX during business hours, or you can chat with us here 24/7. For emergencies, please call our roadside assistance at 1-800-HELP-CAR.";
+			} else if (lower.includes('hello') || lower.includes('hi')) {
+				response = "Hello! 👋 Welcome to CarX Support Hub! How can I assist you with your vehicle needs today?";
+				sticker = "https://media.giphy.com/media/3o7TKsQ8UQ4k4kGk5a/giphy.gif";
+			} else if (lower.includes('thank')) {
+				response = "You're welcome! 😊 Is there anything else I can help with regarding our vehicles or services?";
+			} else {
+				response = "Thanks for your message! Our support team will get back to you shortly with information about our vehicles and services.";
+			}
+
+			const funEmojis = ["🚗", "🚙", "🏎️", "🚐", "🚛", "🏁", "🛞", "⛽", "🔧", "🚦"];
+			response += " " + funEmojis[Math.floor(Math.random() * funEmojis.length)];
+
+			botReply(response, sticker);
+
+			if (showDateTimePicker) {
+				setTimeout(() => {
+					renderDateTimePicker();
+				}, 1500);
+			}
+
+			if (showServiceBooking) {
+				setTimeout(() => {
+					renderServiceBooking();
+				}, 1500);
+			}
+
+			if (showFinanceCalculator) {
+				setTimeout(() => {
+					renderFinanceCalculator();
+				}, 1500);
+			}
+
+			if (showDealershipFinder) {
+				setTimeout(() => {
+					renderDealershipFinder();
+				}, 1500);
+			}
+
+			if (showVehicles) {
+				setTimeout(() => {
+					addMessage("I'll show you our vehicle inventory now.", 'bot');
+					switchTab('vehicles');
+				}, 2000);
+			}
+		}
+
+		/* ========= File handling ========= */
+		function handleFiles(files) {
+			if (files.length > 0) {
+				for (let i = 0; i < files.length; i++) {
+					const file = files[i];
+					if (file.size > 10 * 1024 * 1024) {
+						botReply(`File "${file.name}" is too large. Please select files smaller than 10MB.`);
+						continue;
+					}
+					attachedFiles.push(file);
+					addFileToList(file);
+				}
+
+				const fileNames = Array.from(files).filter(file => file.size <= 10 * 1024 * 1024).map(file => file.name).join(', ');
+				if (fileNames) {
+					addMessage(`Attached files: ${fileNames}`, 'user');
+					botReply(`Thank you for attaching files. I've received your files and will review them.`);
+				}
+			}
+		}
+
+		function addFileToList(file) {
+			const fileItem = document.createElement('div');
+			fileItem.className = 'file-item';
+
+			const fileName = document.createElement('div');
+			fileName.className = 'file-name';
+			fileName.textContent = file.name;
+
+			const fileSize = document.createElement('div');
+			fileSize.className = 'file-size';
+			fileSize.textContent = formatFileSize(file.size);
+			fileSize.style.fontSize = '11px';
+			fileSize.style.color = 'var(--muted)';
+
+			const fileRemove = document.createElement('div');
+			fileRemove.className = 'file-remove';
+			fileRemove.innerHTML = '<i class="fas fa-times"></i>';
+			fileRemove.addEventListener('click', function () {
+				const index = attachedFiles.indexOf(file);
+				if (index > -1) {
+					attachedFiles.splice(index, 1);
+					fileItem.remove();
+				}
+			});
+
+			const fileInfo = document.createElement('div');
+			fileInfo.style.display = 'flex';
+			fileInfo.style.flexDirection = 'column';
+			fileInfo.style.flex = '1';
+			fileInfo.appendChild(fileName);
+			fileInfo.appendChild(fileSize);
+
+			fileItem.appendChild(fileInfo);
+			fileItem.appendChild(fileRemove);
+			fileList.appendChild(fileItem);
+		}
+
+		function formatFileSize(bytes) {
+			if (bytes === 0) return '0 Bytes';
+			const k = 1024;
+			const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+			const i = Math.floor(Math.log(bytes) / Math.log(k));
+			return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+		}
+
+		/* ========= Vehicle Rendering ========= */
+		function renderVehicles() {
+			chatBody.innerHTML = '';
+			const container = document.createElement('div');
+			container.className = 'vehicle-cards';
+
+			vehicleData.forEach(vehicle => {
+				const card = document.createElement('div');
+				card.className = 'vehicle-card';
+
+				const image = document.createElement('div');
+				image.className = 'vehicle-image';
+				image.style.backgroundImage = `url(${vehicle.image})`;
+
+				const badge = document.createElement('div');
+				badge.className = 'vehicle-badge';
+				badge.textContent = vehicle.category;
+				image.appendChild(badge);
+
+				const content = document.createElement('div');
+				content.className = 'vehicle-content';
+
+				const title = document.createElement('div');
+				title.className = 'vehicle-title';
+				title.textContent = vehicle.title;
+
+				const category = document.createElement('div');
+				category.className = 'vehicle-category';
+				category.innerHTML = `<i class="bi bi-tag"></i> ${vehicle.category}`;
+
+				const description = document.createElement('div');
+				description.className = 'vehicle-description';
+				description.textContent = vehicle.description;
+
+
+
+				const price = document.createElement('div');
+				price.className = 'vehicle-price';
+				price.textContent = vehicle.price;
+
+				const actions = document.createElement('div');
+				actions.className = 'vehicle-actions';
+
+				const testDriveBtn = document.createElement('button');
+				testDriveBtn.className = 'vehicle-btn';
+				testDriveBtn.innerHTML = '<i class="bi bi-calendar-event"></i> Test Drive';
+				testDriveBtn.addEventListener('click', function () {
+					currentTestDriveVehicle = vehicle.title;
+					addMessage(`I would like to schedule a test drive for ${vehicle.title}`, 'user');
+					botReply("Great! Please type 'test drive' in the chat to schedule your test drive session.");
+				});
+
+				const favoriteBtn = document.createElement('button');
+				favoriteBtn.className = 'vehicle-btn secondary';
+				favoriteBtn.innerHTML = favorites.includes(vehicle.id) ?
+					'<i class="bi bi-heart-fill"></i> Saved' :
+					'<i class="bi bi-heart"></i> Save';
+				favoriteBtn.addEventListener('click', function () {
+					if (favorites.includes(vehicle.id)) {
+						favorites = favorites.filter(id => id !== vehicle.id);
+						favoriteBtn.innerHTML = '<i class="bi bi-heart"></i> Save';
+						botReply(`Removed ${vehicle.title} from your favorites.`);
+					} else {
+						favorites.push(vehicle.id);
+						favoriteBtn.innerHTML = '<i class="bi bi-heart-fill"></i> Saved';
+						botReply(`Added ${vehicle.title} to your favorites!`);
+					}
+					localStorage.setItem(LS.favorites, JSON.stringify(favorites));
+				});
+
+				actions.appendChild(testDriveBtn);
+				actions.appendChild(favoriteBtn);
+
+
+
+				content.appendChild(title);
+				content.appendChild(category);
+				content.appendChild(description);
+
+
+				card.appendChild(image);
+				card.appendChild(content);
+				container.appendChild(card);
+			});
+
+			chatBody.appendChild(container);
+		}
+
+		/* ========= Service Booking ========= */
+		function renderServiceBooking() {
+			chatBody.innerHTML = '';
+			const container = document.createElement('div');
+			container.className = 'service-booking';
+
+			const form = document.createElement('div');
+			form.className = 'service-form';
+
+			const title = document.createElement('h3');
+			title.textContent = 'Book a Service Appointment';
+
+			const vehicleGroup = document.createElement('div');
+			vehicleGroup.className = 'form-group';
+			const vehicleLabel = document.createElement('label');
+			vehicleLabel.textContent = 'Select Vehicle';
+			vehicleLabel.setAttribute('for', 'service-vehicle');
+			const vehicleSelect = document.createElement('select');
+			vehicleSelect.id = 'service-vehicle';
+			vehicleSelect.className = 'form-control';
+			vehicleSelect.required = true;
+
+			const defaultOption = document.createElement('option');
+			defaultOption.value = '';
+			defaultOption.textContent = 'Select your vehicle...';
+			vehicleSelect.appendChild(defaultOption);
+
+			vehicleData.forEach(vehicle => {
+				const option = document.createElement('option');
+				option.value = vehicle.id;
+				option.textContent = vehicle.title;
+				vehicleSelect.appendChild(option);
+			});
+
+			vehicleGroup.appendChild(vehicleLabel);
+			vehicleGroup.appendChild(vehicleSelect);
+
+			const serviceGroup = document.createElement('div');
+			serviceGroup.className = 'form-group';
+			const serviceLabel = document.createElement('label');
+			serviceLabel.textContent = 'Service Type';
+			serviceLabel.setAttribute('for', 'service-type');
+			const serviceSelect = document.createElement('select');
+			serviceSelect.id = 'service-type';
+			serviceSelect.className = 'form-control';
+			serviceSelect.required = true;
+
+			const serviceOptions = [
+				{ value: '', text: 'Select service type...' },
+				{ value: 'oil-change', text: 'Oil Change' },
+				{ value: 'tire-rotation', text: 'Tire Rotation' },
+				{ value: 'brake-service', text: 'Brake Service' },
+				{ value: 'battery-replacement', text: 'Battery Replacement' },
+				{ value: 'engine-diagnostic', text: 'Engine Diagnostic' },
+				{ value: 'transmission-service', text: 'Transmission Service' },
+				{ value: 'air-conditioning', text: 'Air Conditioning Service' },
+				{ value: 'other', text: 'Other' }
+			];
+
+			serviceOptions.forEach(option => {
+				const opt = document.createElement('option');
+				opt.value = option.value;
+				opt.textContent = option.text;
+				serviceSelect.appendChild(opt);
+			});
+
+			serviceGroup.appendChild(serviceLabel);
+			serviceGroup.appendChild(serviceSelect);
+
+			const dateGroup = document.createElement('div');
+			dateGroup.className = 'form-group';
+			const dateLabel = document.createElement('label');
+			dateLabel.textContent = 'Preferred Date';
+			dateLabel.setAttribute('for', 'service-date');
+			const dateInput = document.createElement('input');
+			dateInput.type = 'date';
+			dateInput.id = 'service-date';
+			dateInput.className = 'form-control';
+			dateInput.required = true;
+			dateInput.min = new Date().toISOString().split('T')[0];
+
+			dateGroup.appendChild(dateLabel);
+			dateGroup.appendChild(dateInput);
+
+			const timeGroup = document.createElement('div');
+			timeGroup.className = 'form-group';
+			const timeLabel = document.createElement('label');
+			timeLabel.textContent = 'Preferred Time';
+			timeLabel.setAttribute('for', 'service-time');
+			const timeSelect = document.createElement('select');
+			timeSelect.id = 'service-time';
+			timeSelect.className = 'form-control';
+			timeSelect.required = true;
+
+			const timeOptions = [
+				{ value: '', text: 'Select time...' },
+				{ value: '09:00', text: '9:00 AM' },
+				{ value: '10:00', text: '10:00 AM' },
+				{ value: '11:00', text: '11:00 AM' },
+				{ value: '13:00', text: '1:00 PM' },
+				{ value: '14:00', text: '2:00 PM' },
+				{ value: '15:00', text: '3:00 PM' },
+				{ value: '16:00', text: '4:00 PM' }
+			];
+
+			timeOptions.forEach(option => {
+				const opt = document.createElement('option');
+				opt.value = option.value;
+				opt.textContent = option.text;
+				timeSelect.appendChild(opt);
+			});
+
+			timeGroup.appendChild(timeLabel);
+			timeGroup.appendChild(timeSelect);
+
+			const notesGroup = document.createElement('div');
+			notesGroup.className = 'form-group';
+			const notesLabel = document.createElement('label');
+			notesLabel.textContent = 'Additional Notes';
+			notesLabel.setAttribute('for', 'service-notes');
+			const notesTextarea = document.createElement('textarea');
+			notesTextarea.id = 'service-notes';
+			notesTextarea.className = 'form-control';
+			notesTextarea.rows = 3;
+			notesTextarea.placeholder = 'Any specific concerns or requests...';
+
+			notesGroup.appendChild(notesLabel);
+			notesGroup.appendChild(notesTextarea);
+
+			const actions = document.createElement('div');
+			actions.className = 'form-actions';
+
+			const submitBtn = document.createElement('button');
+			submitBtn.type = 'button';
+			submitBtn.className = 'btn btn-primary';
+			submitBtn.textContent = 'Book Appointment';
+			submitBtn.addEventListener('click', function () {
+				const vehicleId = vehicleSelect.value;
+				const serviceType = serviceSelect.value;
+				const date = dateInput.value;
+				const time = timeSelect.value;
+
+				if (!vehicleId || !serviceType || !date || !time) {
+					botReply("Please fill in all required fields to book your service appointment.");
+					return;
+				}
+
+				const vehicle = vehicleData.find(v => v.id === vehicleId);
+				const serviceText = serviceOptions.find(s => s.value === serviceType).text;
+				const formattedDate = new Date(date).toLocaleDateString();
+				const formattedTime = timeOptions.find(t => t.value === time).text;
+
+				addMessage(`Service appointment booked for ${vehicle.title} on ${formattedDate} at ${formattedTime} for ${serviceText}`, 'user');
+				botReply(`Perfect! Your service appointment has been confirmed. We'll send you a reminder before your appointment. Is there anything else you need help with?`);
+			});
+
+			const cancelBtn = document.createElement('button');
+			cancelBtn.type = 'button';
+			cancelBtn.className = 'btn btn-secondary';
+			cancelBtn.textContent = 'Cancel';
+			cancelBtn.addEventListener('click', function () {
+				switchTab('chat');
+			});
+
+			actions.appendChild(submitBtn);
+			actions.appendChild(cancelBtn);
+
+			form.appendChild(title);
+			form.appendChild(vehicleGroup);
+			form.appendChild(serviceGroup);
+			form.appendChild(dateGroup);
+			form.appendChild(timeGroup);
+			form.appendChild(notesGroup);
+			form.appendChild(actions);
+
+			container.appendChild(form);
+			chatBody.appendChild(container);
+		}
+
+		/* ========= Finance Calculator ========= */
+		function renderFinanceCalculator() {
+			chatBody.innerHTML = '';
+			const container = document.createElement('div');
+			container.className = 'finance-calculator';
+
+			const calc = document.createElement('div');
+			calc.className = 'calc-container';
+
+			const title = document.createElement('h3');
+			title.textContent = 'Finance Calculator';
+
+			const priceGroup = document.createElement('div');
+			priceGroup.className = 'form-group';
+			const priceLabel = document.createElement('label');
+			priceLabel.textContent = 'Vehicle Price ($)';
+			priceLabel.setAttribute('for', 'finance-price');
+			const priceInput = document.createElement('input');
+			priceInput.type = 'number';
+			priceInput.id = 'finance-price';
+			priceInput.className = 'form-control';
+			priceInput.placeholder = 'Enter vehicle price';
+			priceInput.value = '30000';
+			priceInput.required = true;
+
+			priceGroup.appendChild(priceLabel);
+			priceGroup.appendChild(priceInput);
+
+			const downGroup = document.createElement('div');
+			downGroup.className = 'form-group';
+			const downLabel = document.createElement('label');
+			downLabel.textContent = 'Down Payment ($)';
+			downLabel.setAttribute('for', 'finance-down');
+			const downInput = document.createElement('input');
+			downInput.type = 'number';
+			downInput.id = 'finance-down';
+			downInput.className = 'form-control';
+			downInput.placeholder = 'Enter down payment';
+			downInput.value = '5000';
+			downInput.required = true;
+
+			downGroup.appendChild(downLabel);
+			downGroup.appendChild(downInput);
+
+			const rateGroup = document.createElement('div');
+			rateGroup.className = 'form-group';
+			const rateLabel = document.createElement('label');
+			rateLabel.textContent = 'Interest Rate (%)';
+			rateLabel.setAttribute('for', 'finance-rate');
+			const rateInput = document.createElement('input');
+			rateInput.type = 'number';
+			rateInput.id = 'finance-rate';
+			rateInput.className = 'form-control';
+			rateInput.placeholder = 'Enter interest rate';
+			rateInput.value = '4.5';
+			rateInput.step = '0.1';
+			rateInput.required = true;
+
+			rateGroup.appendChild(rateLabel);
+			rateGroup.appendChild(rateInput);
+
+			const termGroup = document.createElement('div');
+			termGroup.className = 'form-group';
+			const termLabel = document.createElement('label');
+			termLabel.textContent = 'Loan Term (years)';
+			termLabel.setAttribute('for', 'finance-term');
+			const termSelect = document.createElement('select');
+			termSelect.id = 'finance-term';
+			termSelect.className = 'form-control';
+			termSelect.required = true;
+
+			const termOptions = [
+				{ value: '1', text: '1 year' },
+				{ value: '2', text: '2 years' },
+				{ value: '3', text: '3 years' },
+				{ value: '4', text: '4 years' },
+				{ value: '5', text: '5 years' },
+				{ value: '6', text: '6 years' },
+				{ value: '7', text: '7 years' }
+			];
+
+			termOptions.forEach(option => {
+				const opt = document.createElement('option');
+				opt.value = option.value;
+				opt.textContent = option.text;
+				termSelect.appendChild(opt);
+			});
+
+			termSelect.value = '5';
+
+			termGroup.appendChild(termLabel);
+			termGroup.appendChild(termSelect);
+
+			const calculateBtn = document.createElement('button');
+			calculateBtn.className = 'btn btn-primary';
+			calculateBtn.textContent = 'Calculate Payment';
+			calculateBtn.style.width = '100%';
+			calculateBtn.style.marginTop = '16px';
+			calculateBtn.addEventListener('click', function () {
+				const price = parseFloat(priceInput.value);
+				const down = parseFloat(downInput.value);
+				const rate = parseFloat(rateInput.value) / 100 / 12;
+				const term = parseFloat(termSelect.value) * 12;
+
+				if (!price || !down || !rate || !term) {
+					botReply("Please fill in all fields to calculate your payment.");
+					return;
+				}
+
+				const loanAmount = price - down;
+				const monthlyPayment = loanAmount * rate * Math.pow(1 + rate, term) / (Math.pow(1 + rate, term) - 1);
+				const totalPayment = monthlyPayment * term;
+				const totalInterest = totalPayment - loanAmount;
+
+				const resultDiv = document.createElement('div');
+				resultDiv.className = 'calc-result';
+				resultDiv.innerHTML = `
+                    <h4>Payment Summary</h4>
+                    <p>Monthly Payment: <strong>$${monthlyPayment.toFixed(2)}</strong></p>
+                    <p>Total Loan Amount: <strong>$${loanAmount.toFixed(2)}</strong></p>
+                    <p>Total Interest: <strong>$${totalInterest.toFixed(2)}</strong></p>
+                    <p>Total Payment: <strong>$${totalPayment.toFixed(2)}</strong></p>
+                `;
+
+				// Remove previous result if exists
+				const existingResult = calc.querySelector('.calc-result');
+				if (existingResult) {
+					existingResult.remove();
+				}
+
+				calc.appendChild(resultDiv);
+			});
+
+			calc.appendChild(title);
+			calc.appendChild(priceGroup);
+			calc.appendChild(downGroup);
+			calc.appendChild(rateGroup);
+			calc.appendChild(termGroup);
+			calc.appendChild(calculateBtn);
+
+			container.appendChild(calc);
+			chatBody.appendChild(container);
+		}
+
+		/* ========= Dealership Finder ========= */
+		function renderDealershipFinder() {
+			chatBody.innerHTML = '';
+			const container = document.createElement('div');
+			container.className = 'dealership-finder';
+
+			const finder = document.createElement('div');
+			finder.className = 'dealership-container';
+
+			const title = document.createElement('h3');
+			title.textContent = 'Find a Dealership Near You';
+
+			const map = document.createElement('div');
+			map.className = 'dealership-map';
+			map.innerHTML = `
+                <div style="text-align: center;">
+                    <i class="bi bi-geo-alt" style="font-size: 48px; color: var(--primary);"></i>
+                    <p>Map showing nearby dealerships</p>
+                </div>
+            `;
+
+			const list = document.createElement('div');
+			list.className = 'dealership-list';
+
+			dealershipData.forEach(dealership => {
+				const item = document.createElement('div');
+				item.className = 'dealership-item';
+
+				const name = document.createElement('div');
+				name.className = 'dealership-name';
+				name.textContent = dealership.name;
+
+				const address = document.createElement('div');
+				address.className = 'dealership-address';
+				address.innerHTML = `<i class="bi bi-geo-alt"></i> ${dealership.address}`;
+
+				const distance = document.createElement('div');
+				distance.className = 'dealership-distance';
+				distance.innerHTML = `<i class="bi bi-signpost"></i> ${dealership.distance} away`;
+
+				const actions = document.createElement('div');
+				actions.style.marginTop = '10px';
+
+				const directionsBtn = document.createElement('button');
+				directionsBtn.className = 'btn btn-primary';
+				directionsBtn.textContent = 'Get Directions';
+				directionsBtn.style.fontSize = '12px';
+				directionsBtn.style.padding = '6px 12px';
+				directionsBtn.addEventListener('click', function () {
+					addMessage(`Get directions to ${dealership.name}`, 'user');
+					botReply(`Opening directions to ${dealership.name} at ${dealership.address}.`);
+				});
+
+				const callBtn = document.createElement('button');
+				callBtn.className = 'btn btn-secondary';
+				callBtn.textContent = 'Call Now';
+				callBtn.style.fontSize = '12px';
+				callBtn.style.padding = '6px 12px';
+				callBtn.style.marginLeft = '8px';
+				callBtn.addEventListener('click', function () {
+					addMessage(`Call ${dealership.name}`, 'user');
+					botReply(`Connecting you to ${dealership.name}. Please wait...`);
+				});
+
+				actions.appendChild(directionsBtn);
+				actions.appendChild(callBtn);
+
+				item.appendChild(name);
+				item.appendChild(address);
+				item.appendChild(distance);
+				item.appendChild(actions);
+
+				list.appendChild(item);
+			});
+
+			finder.appendChild(title);
+			finder.appendChild(map);
+			finder.appendChild(list);
+
+			container.appendChild(finder);
+			chatBody.appendChild(container);
+		}
+
+		/* ========= FAQ Data ========= */
+		const faqData = [
+			{
+				category: "Vehicle Information",
+				questions: [
+					{
+						q: "What types of vehicles does CarX offer?",
+						a: "CarX offers a comprehensive range of vehicles including sedans, SUVs, electric vehicles, sports cars, trucks, hybrids, luxury vehicles, convertibles, minivans, crossovers, and coupes to meet diverse customer needs and preferences."
+					},
+					{
+						q: "Are CarX vehicles fuel efficient?",
+						a: "Yes, CarX prioritizes fuel efficiency across our lineup. Our hybrid and electric models offer exceptional efficiency, while our gasoline vehicles are engineered with advanced fuel-saving technologies. Specific MPG ratings vary by model and are available on our website."
+					},
+					{
+						q: "What safety features are included in CarX vehicles?",
+						a: "All CarX vehicles come equipped with advanced safety features including multiple airbags, anti-lock braking system (ABS), electronic stability control, lane departure warning, forward collision warning, automatic emergency braking, and rearview cameras. Higher trims offer additional safety technologies."
+					}
+				]
+			},
+			{
+				category: "Purchasing & Financing",
+				questions: [
+					{
+						q: "What financing options are available?",
+						a: "CarX offers multiple financing options including traditional loans, leasing programs, and special financing promotions. We work with various financial institutions to provide competitive rates and flexible terms tailored to your budget and credit profile."
+					},
+					{
+						q: "Can I trade in my current vehicle?",
+						a: "Yes, CarX accepts trade-ins. Our team will evaluate your current vehicle's condition, mileage, and market value to provide a fair trade-in offer that can be applied toward your new CarX vehicle purchase."
+					},
+					{
+						q: "Do you offer any special promotions or discounts?",
+						a: "CarX regularly offers special promotions, seasonal discounts, and incentives for various customer groups including military personnel, first responders, recent graduates, and loyal customers. Check our website or ask your dealership representative about current offers."
+					}
+				]
+			},
+			{
+				category: "Test Drives & Dealerships",
+				questions: [
+					{
+						q: "How do I schedule a test drive?",
+						a: "You can schedule a test drive by contacting your nearest CarX dealership directly, using our website's scheduling tool, or by chatting with us here. We recommend scheduling in advance to ensure your preferred model is available."
+					},
+					{
+						q: "How long does a test drive last?",
+						a: "Standard test drives typically last 30-45 minutes, allowing you to experience the vehicle in various driving conditions. Extended test drives may be available for serious buyers who need more time with the vehicle."
+					},
+					{
+						q: "Where can I find a CarX dealership?",
+						a: "CarX has dealerships located nationwide. You can find your nearest dealership by using the locator tool on our website, contacting our customer service, or asking in this chat for assistance based on your location."
+					}
+				]
+			},
+			{
+				category: "Warranty & Service",
+				questions: [
+					{
+						q: "What warranty coverage comes with CarX vehicles?",
+						a: "All new CarX vehicles come with a comprehensive warranty package including a 5-year/60,000-mile basic warranty, a 10-year/100,000-mile powertrain warranty, and corrosion coverage. Extended warranty options are available for additional protection."
+					},
+					{
+						q: "Where can I get my CarX vehicle serviced?",
+						a: "CarX vehicles can be serviced at any authorized CarX service center nationwide. Our certified technicians use genuine CarX parts and the latest diagnostic equipment to maintain your vehicle's performance and warranty coverage."
+					},
+					{
+						q: "How often should I service my CarX vehicle?",
+						a: "Service intervals vary by model and driving conditions, but generally we recommend oil changes every 5,000-7,500 miles and comprehensive maintenance every 15,000 miles. Your vehicle's specific maintenance schedule is detailed in the owner's manual."
+					}
+				]
+			},
+			{
+				category: "Technology & Features",
+				questions: [
+					{
+						q: "What infotainment systems are available?",
+						a: "CarX vehicles feature our advanced CarX Connect infotainment system with touchscreen displays, smartphone integration (Apple CarPlay and Android Auto), navigation, voice commands, Bluetooth connectivity, and available premium audio systems. Higher trims offer larger screens and additional features."
+					},
+					{
+						q: "Do CarX vehicles have autonomous driving capabilities?",
+						a: "CarX vehicles are equipped with advanced driver assistance systems (ADAS) that include features like adaptive cruise control, lane keeping assist, and automated parking. While these systems provide significant automation, they require driver supervision and are not fully autonomous."
+					},
+					{
+						q: "Can I connect my smartphone to my CarX vehicle?",
+						a: "Yes, all CarX vehicles support smartphone integration through Apple CarPlay and Android Auto, allowing you to access your apps, navigation, music, and messaging through the vehicle's infotainment system. Many models also offer wireless connectivity."
+					}
+				]
+			}
+		];
+
+		/* ========= FAQ Rendering ========= */
+		function renderFAQ() {
+			chatBody.innerHTML = '';
+			const wrap = document.createElement('div');
+			wrap.className = 'faq-wrap';
+
+			// Search bar
+			const search = document.createElement('div');
+			search.className = 'faq-search';
+			search.innerHTML = `<i class="bi bi-search"></i>
+            <input id="faqSearchInput" type="text" placeholder="Search FAQs...">`;
+			wrap.appendChild(search);
+
+			// Category blocks
+			faqData.forEach((cat, idx) => {
+				const catEl = document.createElement('div');
+				catEl.className = 'faq-category';
+				catEl.innerHTML = `<div class="left"><span>${cat.category}</span></div>
+            <small><i class="bi bi-caret-down"></i></small>`;
+				wrap.appendChild(catEl);
+
+				const acc = document.createElement('div');
+				acc.className = 'faq-accordion';
+
+				cat.questions.forEach(item => {
+					const q = document.createElement('div');
+					q.className = 'faq-question';
+					q.textContent = item.q;
+					q.addEventListener('click', () => {
+						addMessage(item.q, 'user');
+						botReply(item.a);
+					});
+					acc.appendChild(q);
+				});
+
+				wrap.appendChild(acc);
+
+				catEl.addEventListener('click', () => {
+					const opened = acc.classList.toggle('open');
+					catEl.querySelector('small').innerHTML = opened
+						? `<i class="bi bi-caret-up"></i>`
+						: `<i class="bi bi-caret-down"></i>`;
+				});
+			});
+
+			chatBody.appendChild(wrap);
+
+			// Search filter
+			const input = wrap.querySelector('#faqSearchInput');
+			input.addEventListener('input', () => {
+				const term = input.value.trim().toLowerCase();
+				const blocks = wrap.querySelectorAll('.faq-category');
+				const accordions = wrap.querySelectorAll('.faq-accordion');
+
+				faqData.forEach((cat, i) => {
+					const showCat = cat.category.toLowerCase().includes(term) ||
+						cat.questions.some(q => q.q.toLowerCase().includes(term));
+					blocks[i].style.display = showCat ? '' : 'none';
+					accordions[i].classList.toggle('open', term && showCat); // auto-open when search
+				});
+			});
+		}
+
+		/* ========= Modern Date/Time Picker ========= */
+		function renderDateTimePicker() {
+			const pickerHTML = `
+                <div class="datetime-picker-modern">
+                    <h5>Schedule Your Test Drive</h5>
+                    <div class="datetime-row">
+                        <div class="datetime-input-group">
+                            <div class="datetime-input-label">
+                                <i class="bi bi-calendar3"></i> Date
+                            </div>
+                            <input type="date" id="test-drive-date" class="datetime-input-field" min="${new Date().toISOString().split('T')[0]}">
+                        </div>
+                        <div class="datetime-input-group">
+                            <div class="datetime-input-label">
+                                <i class="bi bi-clock"></i> Time
+                            </div>
+                            <input type="time" id="test-drive-time" class="datetime-input-field">
+                        </div>
+                    </div>
+                    <button class="datetime-schedule-btn" id="schedule-test-drive-btn">Schedule Test Drive</button>
+                </div>
+            `;
+
+			// Add the picker as a bot message
+			const msgDiv = document.createElement('div');
+			msgDiv.className = 'msg bot';
+			const bubble = document.createElement('div');
+			bubble.className = 'message-bubble';
+			bubble.innerHTML = pickerHTML;
+			const time = document.createElement('div');
+			time.className = 'message-time';
+			time.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+			msgDiv.appendChild(bubble);
+			msgDiv.appendChild(time);
+			chatBody.appendChild(msgDiv);
+			chatBody.scrollTop = chatBody.scrollHeight;
+
+			// Add event listeners after the picker is rendered
+			setTimeout(() => {
+				const scheduleBtn = document.getElementById('schedule-test-drive-btn');
+				const dateInput = document.getElementById('test-drive-date');
+				const timeInput = document.getElementById('test-drive-time');
+
+				scheduleBtn.addEventListener('click', function () {
+					if (dateInput.value && timeInput.value) {
+						const selectedDateTime = new Date(`${dateInput.value}T${timeInput.value}`);
+						const formattedDateTime = selectedDateTime.toLocaleString();
+
+						let vehicleName = "a vehicle";
+						if (currentTestDriveVehicle) {
+							vehicleName = currentTestDriveVehicle;
+							currentTestDriveVehicle = null; // Reset after use
+						}
+
+						addMessage(`Test drive scheduled for ${vehicleName} on ${formattedDateTime}`, 'user');
+						botReply(`Perfect! Your test drive for ${vehicleName} has been scheduled for ${formattedDateTime}. Our team will send you a confirmation shortly. Is there anything else you'd like to know?`);
+					} else {
+						botReply("Please select both date and time to schedule your test drive.");
+					}
+				});
+			}, 100);
+		}
+
+		/* ========= Utilities ========= */
+		function clearChatSafe() {
+			if (!confirm('Clear conversation? This will reset the chat history.')) return;
+
+			// Clear chat history
+			chatHistory = [];
+			localStorage.setItem(LS.history, JSON.stringify(chatHistory));
+
+			// Switch to chat tab
+			currentView = 'chat';
+			localStorage.setItem(LS.view, 'chat');
+			tabButtons.forEach(b => b.classList.toggle('active', b.dataset.tab === 'chat'));
+
+			// Show welcome message
+			renderChatFromHistory();
+			botReply("Chat history cleared. How can I assist you today?");
+		}
+
+		function toggleTheme() {
+			const now = chatWidget.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+			chatWidget.setAttribute('data-theme', now);
+			localStorage.setItem(LS.theme, now);
+			themeToggleBtn.innerHTML = now === 'dark' ? '<i class="bi bi-brightness-high"></i>' : '<i class="bi bi-moon-stars"></i>';
+		}
+
+		function escapeHTML(s) {
+			return s.replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+		}
+
+		/* ========= Start ========= */
+		initChat();
+
+		// Set current year
+		document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+		// Newsletter form submission
+		document.getElementById('newsletterForm').addEventListener('submit', function (e) {
+			e.preventDefault();
+
+			const email = document.getElementById('newsletterEmail').value;
+			const messageDiv = document.getElementById('newsletterMessage');
+			const subscribeBtn = document.getElementById('subscribeBtn');
+
+			// Show loading state
+			const originalBtnText = subscribeBtn.innerHTML;
+			subscribeBtn.innerHTML = '<span class="loading"></span>';
+			subscribeBtn.disabled = true;
+
+			// Simulate API call
+			setTimeout(function () {
+				// Reset button
+				subscribeBtn.innerHTML = originalBtnText;
+				subscribeBtn.disabled = false;
+
+				// Show success message
+				messageDiv.textContent = 'Thank you for subscribing! Check your email for confirmation.';
+				messageDiv.className = 'newsletter-message success';
+				messageDiv.style.display = 'block';
+
+				// Reset form
+				document.getElementById('newsletterForm').reset();
+
+				// Hide message after 5 seconds
+				setTimeout(function () {
+					messageDiv.style.display = 'none';
+				}, 5000);
+			}, 1500);
+		});
+
+		// Smooth scroll for anchor links
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault();
+				const target = document.querySelector(this.getAttribute('href'));
+				if (target) {
+					target.scrollIntoView({
+						behavior: 'smooth'
+					});
+				}
+			});
+		});
+
+	</script>
+</body>
+</html>
